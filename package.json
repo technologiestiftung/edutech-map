@@ -1,7 +1,7 @@
 {
   "name": "react-starter",
   "config": {
-    "appname": "my-app-name"
+    "appname": "edutech-map"
   },
   "version": "6.0.1",
   "description": "lightweight react starterkit including webpack, unistore, styled components",
