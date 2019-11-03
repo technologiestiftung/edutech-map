@@ -1,14 +1,26 @@
 import fetch from 'unfetch';
-import config from '../../config';
+import base64 from 'base-64';
+
+import config from "../../config";
+
 
 const loadData = (Store) => async () => {
   Store.setState({ isLoading: true });
 
   let data = null;
   try {
-    console.log(config)
-    const res = await fetch('public/data/sample.json');
-    data = await res.json();
+    let headers = new Headers();
+
+    //headers.append('Content-Type', 'text/json');
+    headers.append('Authorization', 'Basic ' + base64.encode(config.api.username + ":" + config.api.password));
+
+    fetch(config.api.url, {method:'GET',
+            headers: headers,
+            //credentials: 'user:passwd'
+          })
+    .then(json => console.log(json));
+    //.done();
+
   } catch (err) {
     console.log(err);
   }
@@ -18,3 +30,10 @@ const loadData = (Store) => async () => {
 export default (Store) => ({
   loadData: loadData(Store)
 });
+
+
+
+
+
+
+
