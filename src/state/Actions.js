@@ -1,39 +1,21 @@
-import fetch from 'unfetch';
-import base64 from 'base-64';
+// import fetch from 'unfetch';
+// import config from "../../config";
 
-import config from "../../config";
-
-
-const loadData = (Store) => async () => {
+export const loadData = (Store) => async () => {
   Store.setState({ isLoading: true });
-
   let data = null;
+
   try {
-    let headers = new Headers();
-
-    //headers.append('Content-Type', 'text/json');
-    headers.append('Authorization', 'Basic ' + base64.encode(config.api.username + ":" + config.api.password));
-
-    fetch(config.api.url, {method:'GET',
-            headers: headers,
-            //credentials: 'user:passwd'
-          })
-    .then(json => console.log(json));
-    //.done();
-
+    // fetch(config.api.urlStrapi)
+    //   .then(json => console.log(json.json()));
+    data = [{ name: 'edutech company', location: [52.545951, 13.361694] }]
   } catch (err) {
     console.log(err);
   }
   return { data, isLoading: false };
+
 };
 
 export default (Store) => ({
   loadData: loadData(Store)
 });
-
-
-
-
-
-
-

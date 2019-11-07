@@ -8,7 +8,7 @@
       }
     ],
     "react/prop-types": 0,
-    "no-console": 0,
+    "no-console": 1,
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "react/destructuring-assignment": 0,
     "indent": "off",

@@ -7,7 +7,8 @@
   "description": "lightweight react starterkit including webpack, unistore, styled components",
   "scripts": {
     "build": "BABEL_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
-    "start": "webpack-dev-server --config webpack/webpack.config.dev.js"
+    "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
+    "lint": "eslint --ext .js --ext .jsx ."
   },
   "repository": {
     "url": "git@github.com:wbkd/react-starter.git",
@@ -53,10 +54,14 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
+    "@material-ui/core": "^4.6.0",
     "base-64": "^0.1.0",
     "core-js": "^3.3.4",
+    "history": "^4.10.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-mapbox-gl": "^4.7.3",
+    "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
     "unfetch": "^4.1.0",

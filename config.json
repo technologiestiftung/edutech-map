@@ -7,6 +7,7 @@
   "api": {
     "username": "mail@fabiandinklage.com",
     "password": "amd3200+",
-    "url": "https://edutech.fabiandinklage.com/rest/pages/institutions"
+    "url": "https://edutech.fabiandinklage.com/rest/pages/institutions",
+    "urlStrapi": "http://localhost:1337/institutions/"
   }
 }
