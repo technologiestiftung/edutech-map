@@ -5,7 +5,10 @@ import { withRouter } from 'react-router-dom';
 
 import Theme from '~/styles/DefaultTheme';
 
+import Map from '~/modules/Map';
 import Spinner from '~/components/Spinner';
+import Menu from '~/components/Menu';
+import Sidebar from '~/modules/Sidebar';
 
 const StyledAppWrapper = styled.div`
   width: 100vw;
@@ -24,13 +27,17 @@ class AppWrapper extends PureComponent {
 
         {/*  />
           <Logo />
+           */}
           <Menu />
           <Sidebar />
-          <Map /> */}
+          <Map />
         </StyledAppWrapper>
       </ThemeProvider>
     );
   }
 }
 
-export default withRouter(connect('isLoading')(AppWrapper));
+export default withRouter(connect(state => ({
+  isLoading: state.isLoading,
+  data: state.data
+}))(AppWrapper));

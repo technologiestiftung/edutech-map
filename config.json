@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "webkid react starterkit",
+    "description": "Edutech Datenportal",
     "viewport": "width=device-width, initial-scale=1",
     "robots": "noindex,nofollow"
   },
@@ -9,5 +9,9 @@
     "password": "amd3200+",
     "url": "https://edutech.fabiandinklage.com/rest/pages/institutions",
     "urlStrapi": "http://localhost:1337/institutions/"
+  },
+  "map": {
+    "token": "pk.eyJ1IjoiZmRua2xnIiwiYSI6ImNqeXptazB6czAzM3QzY215bG4xZ242dHEifQ.5ovP53lbKKEVb0OghgtQig",
+    "style": "mapbox://styles/mapbox/streets-v9"
   }
 }

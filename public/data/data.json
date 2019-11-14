@@ -1,0 +1,636 @@
+[
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution"
+    ],
+    "Anwendung": [
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Burgherrenstr. 8, 12101 Berlin",
+      "lat": 52.48419,
+      "lng": 13.38298,
+      "address": "Burgherrenstraße 8, 12101 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "10-49",
+    "Foerderung": "nein",
+    "Zielmarkt": [
+      "Schüler",
+      "Sekundarstufe 1"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bildungsinstitutionen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Waldemarstraße 37a, 10999. Wir haben eine Cloudlösung, die von überall genutzt werden kann. Momentan konzentrieren wir uns auf Berlin und Deutschland"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Techboost Telekom und Fraunhofer Techbridge Teilnehmer",
+    "Zielmarkt": [
+      "Lifelong Learning"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk"
+    ],
+    "Anwendung": [
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Jugend hackt, Open Knowledge Foundation Deutschland e. V., Singerstraße 109, 10179 Berlin"
+    },
+    "Mitarbeiter": "10-49",
+    "Foerderung": "Förderungen: u.a. mabb, SKala Initiative, bpb, DB Stiftung u.v.m. - Preise: Dieter Baacke Preis, Deutscher Engagementpreis, European Youth Culture Award, Theodor Heuss Medaille, BKM Preis Kulturelle Bildung",
+    "Zielmarkt": [
+      "Schüler",
+      "Sekundarstufe 1"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Inkubator",
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Museen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Luisenstraße 53, 10117 Berlin"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "BSS",
+    "Zielmarkt": [
+      "Schüler",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Netzwerk",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bibliotheken",
+      "Bildungsinstitutionen",
+      "Museen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Beheimatet in Weißensee, unterwegs deutschlandweit und gelegentlich auch weltweit (Projekte in Portugal, UK, Singapur)"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "\\-",
+    "Zielmarkt": [
+      "Kita/Vorschule",
+      "Lifelong Learning",
+      "Schüler",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Stillerzeile 100, 12587 Berlin",
+      "lat": 52.4537,
+      "lng": 13.60378,
+      "address": "Stillerzeile 100, 12587 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "10-49",
+    "Foerderung": "ESF, LSK,  preise bei Jugend-forscht, von Stiftungen",
+    "Zielmarkt": [
+      "Familie",
+      "Schüler",
+      "Studierende",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Fobizz \\| 101skills GmbH, Rostocker Straße 68, 2099 Hamburg. Wir agieren in Deutschland, Österreich und der Schweiz online  - überall."
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Wir sind Teil des InnoFounder Förderprogramms, welches besondern  Besonders innovative digital Startups fördert",
+    "Zielmarkt": [],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Coworking Space",
+      "Netzwerk"
+    ],
+    "Anwendung": [
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Knobeldorffstraße 22 - wir agieren international"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "noch nicht",
+    "Zielmarkt": [
+      "Lifelong Learning"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "TINCON e.V., Willibald-Alexis-Str. 20, 10965 Berlin",
+      "lat": 52.48799,
+      "lng": 13.38956,
+      "address": "Willibald-Alexis-Straße 20, 10965 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "6-9",
+    "Foerderung": "Zu unseren langjährigen Hauptförder*innen gehören die Robert Bosch Stiftung, das Bundesministerium für Familie, Senioren, Frauen und Jugend, die Initiative \"Gutes Aufwachsen mit Medien\", die ZEIT Stiftung, das Medienboard BerlinBrandenburg und funk // Auszeichnung für TINCON e.V.: Grimme Online Award 2019 (Kategorie Spezial), Orbanism Award 2017 (Kategorie Publikumsveranstaltung), Roman Herzog Preis 2018 (Finalist)",
+    "Zielmarkt": [
+      "Schüler",
+      "Studierende",
+      "Sekundarstufe 1"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Coworking Space",
+      "Netzwerk",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bildungsinstitutionen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Rheinsberger Straße 76/77 \\| c/o Factory Works GmbH"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Gründungsstipendium Schleswig-Holstein 06/2017-05/2018",
+    "Zielmarkt": [
+      "Schüler",
+      "Nachmittagsbereich"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Coworking Space",
+      "Hochschule",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Alte Münze, Am Molkenmarkt 2, 10179 Berlin"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "\\-",
+    "Zielmarkt": [
+      "Lifelong Learning",
+      "Studierende"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Hochschule"
+    ],
+    "Anwendung": [
+      "Bibliotheken",
+      "Bildungsinstitutionen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Prenzlauer Allee 173, 10409 Berlin",
+      "lat": 52.54659,
+      "lng": 13.42772,
+      "address": "Prenzlauer Allee 173, 10409 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "nein",
+    "Zielmarkt": [
+      "Familie",
+      "Kita/Vorschule",
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Hardware"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Inkubator",
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bibliotheken",
+      "Bildungsinstitutionen",
+      "Museen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Leipzig",
+      "lat": 51.3452,
+      "lng": 12.38594,
+      "address": "Leipzig, Sachsen, Deutschland"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "nein",
+    "Zielmarkt": [
+      "Familie",
+      "Kita/Vorschule",
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Grundschule 1-3"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Lehr- & Lernmaterial – Audiovisuelle Medien (Einzelprodukte)"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bildungsinstitutionen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Gneisenaustr. 7A, 10961 Berlin",
+      "lat": 52.49214,
+      "lng": 13.38996,
+      "address": "Gneisenaustraße 7A, 10961 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "10-49",
+    "Foerderung": "Leuphana Business Accelerator (2014)",
+    "Zielmarkt": [
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Gleditschstr. 46, 10781 Berlin",
+      "lat": 52.49252,
+      "lng": 13.35488,
+      "address": "Gleditschstraße 46, 10781 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "nein",
+    "Zielmarkt": [
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk",
+      "Unternehmen",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Friedelstraße 37"
+    },
+    "Mitarbeiter": "100-250",
+    "Foerderung": "2019: Unionslabor was shortlisted for the Spinelli-Prize by the European Commission, Brussels, Belgium 2019: Unionslabor was shortlisted for the Tommi Kindersoftwarepreis (German award for children’s software), Berlin, Germany. 2018: Junait was awarded with the “Sicherheit zu Hause” Award by the DEKRA-company, Düsseldorf, Germany 2017: Senaryon was shortlisted for the “Evens Prize for Peace Education” by the Belgian Evens Foundation, London, UK 2017: Senaryon was awarded as “Ort der Ideen” by the German Government, Berlin, Germany 2017: Junait was awarded with the “Klicksafe-Award”, by the EU-Initiative “Klicksafe”, Cologne, Germany 2016: Senaryon was awarded by the “Games4Change” organization with the „Migration Design Challenge Award“, New York City, USA 2015: Senaryon was awarded by the United Nations with the „PeaceApp Award“, Nikosia, Cyprus.",
+    "Zielmarkt": [
+      "Schüler",
+      "Studierende",
+      "Sekundarstufe 1"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Lehr- & Lernmaterial – Software / Apps (abgeschlossene Anwendung)"
+  },
+  {
+    "ArtDerInstitution": [],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Museen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Köpenicker Straße 325, Haus 41, 12555 Berlin"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "EXIST-Stipendium, 4. Platz Start2Grow, Preis Digitale Innovationen",
+    "Zielmarkt": [
+      "Kita/Vorschule",
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Grundschule 4-6"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Hardware"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk",
+      "Unternehmen",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Bibliotheken",
+      "Bildungsinstitutionen",
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Eylauer Str. 14"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Google Impact Challenge 2018",
+    "Zielmarkt": [
+      "Familie",
+      "Lifelong Learning",
+      "Schüler",
+      "Studierende",
+      "Nachmittagsbereich"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Inkubator",
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Kronenstraße 69, 10117 Berlin"
+    },
+    "Mitarbeiter": "",
+    "Foerderung": "DBU Green Startup",
+    "Zielmarkt": [
+      "Schüler",
+      "Sekundarstufe 1"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bildungsinstitutionen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Skalitzer Str. 85/86 in 10997 Berlin",
+      "lat": 52.5002,
+      "lng": 13.4356,
+      "address": "Skalitzer Straße 85, 10997 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "",
+    "Foerderung": "Ja, digita, Comenius, edtech europe, gefördert durch EU-Regionalfonds",
+    "Zielmarkt": [
+      "Schüler",
+      "Studierende",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Lehr- & Lernmaterial – Software / Apps (abgeschlossene Anwendung)"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsinstitution",
+      "Netzwerk",
+      "Unternehmen"
+    ],
+    "Anwendung": [
+      "Pädagog*innen",
+      "Vereine / Initiativen"
+    ],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Linienstraße 214, 10119 Berlin"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Charlie Award 2018 für Gesellschaftliches Engagement, verliehen vom Campus Symposium",
+    "Zielmarkt": [
+      "Familie"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Hochschule"
+    ],
+    "Anwendung": [
+      "Bildungsinstitutionen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Einsteinufer 17, 10587 Berlin",
+      "lat": 52.51551,
+      "lng": 13.32658,
+      "address": "Einsteinufer 17, 10587 Berlin, Deutschland"
+    },
+    "Mitarbeiter": "10-19",
+    "Foerderung": "Meet and Code Award 2017 und 2018; DBU 2014;",
+    "Zielmarkt": [
+      "Schüler",
+      "Studierende",
+      "Grundschule 4-6"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Bildungsinstitution",
+      "Hochschule",
+      "Netzwerk",
+      "Unternehmen",
+      "Andere"
+    ],
+    "Anwendung": [
+      "Administration",
+      "Bildungsinstitutionen",
+      "Pädagog*innen"
+    ],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Georgenstraße 23"
+    },
+    "Mitarbeiter": "1-5",
+    "Foerderung": "Wir sind ausschließlich über Mitgliedsbeiträge finanziert",
+    "Zielmarkt": [
+      "Schüler",
+      "Unterricht"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Hochschule"
+    ],
+    "Anwendung": [],
+    "Rechtsform": "Gemeinnützig",
+    "Adresse": {
+      "initialAddress": "Lohmühlenstraße 65, 12435 Berlin"
+    },
+    "Mitarbeiter": "",
+    "Foerderung": "",
+    "Zielmarkt": [
+      "Schüler",
+      "Nachmittagsbereich"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  },
+  {
+    "ArtDerInstitution": [
+      "Bildungsadministration",
+      "Unternehmen"
+    ],
+    "Anwendung": [],
+    "Rechtsform": "Gewerblich",
+    "Adresse": {
+      "initialAddress": "Köpenicker Str. 126, 10179 Berlin"
+    },
+    "Mitarbeiter": "50-99",
+    "Foerderung": "VC (IBB) 2016",
+    "Zielmarkt": [
+      "Lifelong Learning"
+    ],
+    "Beschreibung": "",
+    "Angebote": "Services / Plattformen / Dienstleistungen"
+  }
+]

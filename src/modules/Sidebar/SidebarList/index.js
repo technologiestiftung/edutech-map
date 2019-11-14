@@ -1,0 +1,1 @@
+import SidebarTitle from '../SidebarTitle';

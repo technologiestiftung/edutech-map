@@ -27,7 +27,7 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public'), to: 'public' }
     ]),
     new Webpack.ProvidePlugin({
-      config: '~/../config.json'
+      config: '../config.json'
     }),
     new HtmlWebpackPlugin({
       inject: true,
