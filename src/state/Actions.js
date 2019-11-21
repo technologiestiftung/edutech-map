@@ -6,7 +6,7 @@ const createPoint = d => ({
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [d['Adresse']['lng'], d['Adresse']['lat']],
+      coordinates: [d['standort']['lng'], d['standort']['lat']],
     },
     properties: {
       ...d // spread notation: expanding a set of properties inside an object or an array

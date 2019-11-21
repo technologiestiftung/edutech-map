@@ -20,7 +20,7 @@ class MarkerLayer extends PureComponent {
         coordinates={feat.geometry.coordinates}
         key={`feat-${i}`}
         // onClick={evt => (isMobile ? noop() : this.timeoutClick(evt, feat))}
-        // onMouseEnter={evt => this.handleMouseEnter(evt, feat)}
+        onMouseEnter={evt => this.handleMouseEnter(evt, feat)}
         // onMouseLeave={evt => this.handleMouseLeave(evt)}
         // onTouchStart={evt => this.handleClick(evt)}
         properties={feat.properties}
@@ -28,6 +28,21 @@ class MarkerLayer extends PureComponent {
     );
 
     return feature;
+  }
+
+  handleMouseEnter(evt, { properties = {} }) {
+    console.log(properties)
+    // if (isMobile) {
+    //   return this.props.setDetailRoute(properties.id);
+    // }
+
+    // evt.map.getCanvas().style.cursor = 'pointer';
+
+    // if (properties && properties.isFiltered) {
+    //   return false;
+    // }
+
+    // this.props.setTooltipData(properties);
   }
 
   render() {
