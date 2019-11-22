@@ -10,9 +10,11 @@ const Store = createStore({
   additionalData: {
     districts: []
   },
-  data: [],
+  data: null,
   mapCenter: [13.4124999, 52.5040961],
   mapZoom: [10],
+  tooltipPos: [0, 0],
+  tooltipData: false,
   filter: filterSection,
   colorizer: () => '#bbb',
 });

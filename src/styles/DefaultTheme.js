@@ -1,4 +1,4 @@
-const px = (d) => { `${d}px` };
+const px = (d) => { return `${d}px` };
 
 export default {
   fonts: {

@@ -33,6 +33,14 @@ export const loadDataAPI = (Store) => async () => {
   }
 };
 
+const setTooltipData = (state, tooltipData) => (
+  { tooltipData }
+);
+
+const setTooltipPos = (state, tooltipPos) => (
+  { tooltipPos }
+);
+
 export const loadData = (Store) => async () => {
   Store.setState({ isLoading: true });
   const dataPath = "../../public/data/data.json";
@@ -60,4 +68,6 @@ export const loadData = (Store) => async () => {
 export default (Store) => ({
   loadDataAPI: loadDataAPI(Store),
   loadData: loadData(Store),
+  setTooltipData,
+  setTooltipPos
 });

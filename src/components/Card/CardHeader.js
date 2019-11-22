@@ -33,6 +33,8 @@ const CardHeaderWrapper = styled.div`
 
   ${CardTitle} {
     color: ${props => (props.teaserUrl ? 'white' : props.theme.colors.black)};
+    font-family: ${props => props.theme.fonts.sansBold };
+    font-weight: 600;
   }
 `;
 

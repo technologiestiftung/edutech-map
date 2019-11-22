@@ -21,7 +21,7 @@ class MarkerLayer extends PureComponent {
         key={`feat-${i}`}
         // onClick={evt => (isMobile ? noop() : this.timeoutClick(evt, feat))}
         onMouseEnter={evt => this.handleMouseEnter(evt, feat)}
-        // onMouseLeave={evt => this.handleMouseLeave(evt)}
+        onMouseLeave={evt => this.handleMouseLeave(evt)}
         // onTouchStart={evt => this.handleClick(evt)}
         properties={feat.properties}
       />
@@ -31,18 +31,28 @@ class MarkerLayer extends PureComponent {
   }
 
   handleMouseEnter(evt, { properties = {} }) {
-    console.log(properties)
     // if (isMobile) {
     //   return this.props.setDetailRoute(properties.id);
     // }
 
-    // evt.map.getCanvas().style.cursor = 'pointer';
+    evt.map.getCanvas().style.cursor = 'pointer';
 
-    // if (properties && properties.isFiltered) {
-    //   return false;
-    // }
+    if (properties && properties.isFiltered) {
+      return false;
+    }
 
-    // this.props.setTooltipData(properties);
+    this.props.setTooltipData(properties);
+  }
+
+  handleMouseLeave(evt) {
+    evt.map.getCanvas().style.cursor = '';
+
+    this.props.setTooltipData(null);
+  }
+
+  handleMouseMove(evt) {
+    console.log([evt.lngLat.lng, evt.lngLat.lat]);
+    this.props.setTooltipPos([evt.lngLat.lng, evt.lngLat.lat]);
   }
 
   render() {
@@ -54,7 +64,7 @@ class MarkerLayer extends PureComponent {
           id="MarkerLayer"
           type="circle"
           paint={paintProps}
-          // onMouseMove={evt => this.handleMouseMove(evt)}
+          onMouseMove={evt => this.handleMouseMove(evt)}
         >
           {data.features.map((feat,i) => this.renderFeat(feat, i))}
         </Layer>

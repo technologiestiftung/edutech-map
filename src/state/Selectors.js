@@ -1,19 +1,22 @@
 import { createSelector } from 'reselect';
 
-const dataFeaturesSelector = state => state.data.features;
+const dataSelector = state => state.data;
 
-export const dataPropsSelector = createSelector(
-  [dataFeaturesSelector],
-  features => {
-    if (features) {
-      const feat = features.map(features => ( features.properties ));
-      return feat;
-    } else {
+const geojsonToArray = geojson => geojson.features.map(d => d.properties);
+
+export const dataAsArraySelector = createSelector(
+  [dataSelector],
+  (data) => {
+    if (!data) {
       return [];
     }
+
+    console.log(data);
+
+    return geojsonToArray(data);
   }
-)
+);
 
 export default {
-  dataPropsSelector
+  dataAsArraySelector
 };

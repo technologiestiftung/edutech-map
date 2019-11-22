@@ -17,8 +17,8 @@ const NavWrapper = styled.div`
   box-shadow: ${ props => props.theme.boxShadow };
   flex-grow: 0;
   position: absolute;
-  top: 12px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   z-index: 1000;
 
   ${media.m`

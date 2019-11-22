@@ -3,7 +3,7 @@ import { connect } from 'unistore/react';
 import styled from 'styled-components';
 
 import Actions from '~/state/Actions';
-import { dataPropsSelector } from '~/state/Selectors'
+import { dataAsArraySelector } from '~/state/Selectors'
 
 import CardCompact from '~/components/Card/CardCompact';
 
@@ -21,7 +21,7 @@ class SidebarList extends PureComponent {
     const { data } = this.props;
     return (
       <Fragment>
-        <SidebarTitle><strong>{data.length}</strong> Kulturorte gefunden.</SidebarTitle>
+        <SidebarTitle><strong>{data.length}</strong> Institutionen gefunden.</SidebarTitle>
         <ListItems>
           {data.map(d => (
             <CardCompact
@@ -39,5 +39,5 @@ class SidebarList extends PureComponent {
 };
 
 export default connect(state => ({
-  data: dataPropsSelector(state)
+  data: dataAsArraySelector(state)
 }), Actions)(SidebarList);

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ReactMapboxGl from 'react-mapbox-gl';
 
 import FilterView from './MapViews/FilterView';
+import Tooltip from '../Tooltip';
 
 import Actions from '~/state/Actions';
 const config = require('../../../config.json');
@@ -73,6 +74,7 @@ class Map extends PureComponent {
                     // onMoveEnd={() => this.onMoveEnd()}
                 >
                     <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
+                    <Tooltip />
                 </MapGL>
             </MapWrapper>
         )
