@@ -7,7 +7,7 @@ import Theme from '~/styles/DefaultTheme';
 
 import Map from '~/modules/Map';
 import Spinner from '~/components/Spinner';
-import Menu from '~/components/Menu';
+import Nav from '~/components/Nav';
 import Sidebar from '~/modules/Sidebar';
 
 const StyledAppWrapper = styled.div`
@@ -28,7 +28,7 @@ class AppWrapper extends PureComponent {
         {/*  />
           <Logo />
            */}
-          <Menu />
+          <Nav />
           <Sidebar />
           <Map />
         </StyledAppWrapper>

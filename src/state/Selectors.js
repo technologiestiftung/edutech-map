@@ -1,16 +1,19 @@
-const districtDataSelector = state => state.additionalData.districts;
-const districtFilterSelector = state => state.filter.districtFilter;
+import { createSelector } from 'reselect';
 
-export const districtBoundsSelector = createSelector(
-    [districtDataSelector, districtFilterSelector],
-    (districtData, districtFilter) => {
-      if (!districtFilter || !districtData) {
-        return false;
-      }
-  
-      const selectedDistrict = districtData.features
-        .find(feat => feat.properties.spatial_name === districtFilter);
-  
-      return selectedDistrict && getDistrictBounds(selectedDistrict);
+const dataFeaturesSelector = state => state.data.features;
+
+export const dataPropsSelector = createSelector(
+  [dataFeaturesSelector],
+  features => {
+    if (features) {
+      const feat = features.map(features => ( features.properties ));
+      return feat;
+    } else {
+      return [];
     }
-);
+  }
+)
+
+export default {
+  dataPropsSelector
+};

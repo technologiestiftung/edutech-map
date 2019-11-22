@@ -13,6 +13,7 @@ const StyledCardWrapper = styled(CardWrapper)`
   border-radius: 0;
   will-change: border-color, transform;
   transition: border-color .2s, transform .2s;
+  padding: 10px;
 
   &:hover {
     border-color: ${props => props.theme.colors.midgrey};
@@ -25,8 +26,8 @@ class CardCompact extends PureComponent {
     return (
       <StyledCardWrapper
         onClick={this.props.onClick}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
+        // onMouseEnter={this.props.onMouseEnter}
+        // onMouseLeave={this.props.onMouseLeave}
       >
         <CardHeader
           data={this.props.data}

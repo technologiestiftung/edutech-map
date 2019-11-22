@@ -38,10 +38,6 @@ class Map extends PureComponent {
         map: false,
     };
 
-    componentDidUpdate() {
-        console.log(this.props.data)
-    }
-
     onStyleLoad = (map) => {
         map.resize();
         this.setState({ isLoading: false});

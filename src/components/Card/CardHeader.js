@@ -1,12 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import idx from 'idx';
-import FavIcon from '@material-ui/icons/BookmarkBorder';
-import UnFavIcon from '@material-ui/icons/Bookmark';
+// import idx from 'idx';
+// import FavIcon from '@material-ui/icons/BookmarkBorder';
+// import UnFavIcon from '@material-ui/icons/Bookmark';
 
 import CategoryLabels from '~/components/CategoryLabels';
-import Button from '~/components/GhostButton';
+// import Button from '~/components/GhostButton';
 import Actions from '~/state/Actions';
 
 const StyledCategoryLabels = styled(CategoryLabels)``;
@@ -25,6 +25,7 @@ const CardTitle = styled.div`
 
 const CardHeaderWrapper = styled.div`
   display: flex;
+  flex-direction: column;
 
   ${CardAddress} {
     color: ${props => (props.teaserUrl ? 'white' : props.theme.colors.textgrey)};
@@ -60,53 +61,39 @@ const CardTeaserImage = styled.div`
   height: 150px;
 `;
 
-const FavButton = styled(Button)`
-  color: #222;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: ${props => (props.active ? 1 : 0.7)};
+// const FavButton = styled(Button)`
+//   color: #222;
+//   width: 24px;
+//   height: 24px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   opacity: ${props => (props.active ? 1 : 0.7)};
 
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-`;
+//   svg {
+//     width: 18px;
+//     height: 18px;
+//   }
+// `;
 
 class CardHeader extends PureComponent {
   render() {
     const {
-      data, className, isListMode, toggleFav, favs
+      data
     } = this.props;
     // const logoUrl = idx(data, _ => _.logo.url);
     // const teaserUrl = idx(data, _ => _.teaser.url);
-    const isFav = favs.includes(data.id);
+    // const isFav = favs.includes(data.id);
 
     return (
       <Fragment>
-        <CardHeaderWrapper
-          className={className}
-        >
+        <CardHeaderWrapper>
           <CardHeaderLeft>
-            <StyledCategoryLabels categories={data.tags} /*hasBorder={teaserUrl} *//>
-            <CardTitle>{data.name}</CardTitle>
-            <CardAddress>{data.address}</CardAddress>
+            <CardTitle>{data.produktGruppe}</CardTitle>
+            <StyledCategoryLabels categories={data.produktUntergruppe} /*hasBorder={teaserUrl}*/ />
+            <CardAddress>{data.standort.initialAddress}</CardAddress>
           </CardHeaderLeft>
-          <CardHeaderRight>
-            {(/*logoUrl && */!isListMode) && <CardImage src={logoUrl} />}
-            {isListMode && (
-              <FavButton
-                onClick={() => toggleFav(data.id)}
-                active={isFav}
-              >
-                {isFav ? <UnFavIcon /> : <FavIcon />}
-              </FavButton>
-            )}
-          </CardHeaderRight>
         </CardHeaderWrapper>
-        {teaserUrl && <CardTeaserImage src={teaserUrl} />}
       </Fragment>
     );
   }

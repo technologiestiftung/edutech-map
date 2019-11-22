@@ -2,12 +2,14 @@ const px = (d) => { `${d}px` };
 
 export default {
   fonts: {
-    sans: 'Arial, sans-serif',
+    sans: 'Clan Book',
     serif: 'Georgia, Times, Times New Roman, serif',
-    mono: 'monospace'
+    mono: 'monospace',
+    sansBold: 'Clan Bold',
+    sansMedium: 'Clan Medium'
   },
   fontSizes: [12, 13, 15, 19, 24, 32, 48, 64].map(px),
-  boxShadow: '0 0 50px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 2px 40px 0 rgba(30,55,145,0.15)`,
   borderRadius: '2px',
   colors: {
     primary: '#e60005',

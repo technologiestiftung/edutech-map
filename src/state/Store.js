@@ -13,7 +13,8 @@ const Store = createStore({
   data: [],
   mapCenter: [13.4124999, 52.5040961],
   mapZoom: [10],
-  filter: filterSection
+  filter: filterSection,
+  colorizer: () => '#bbb',
 });
 
 export default Store;

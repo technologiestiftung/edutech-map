@@ -4,17 +4,22 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 
 import SidebarClose from './SidebarClose';
 
+import SidebarList from './SidebarList';
+
 const SidebarWrapper = styled.div`
   display: block;
   background: #fefefe;
   display: flex;
   box-shadow: ${props => (props.isVisible ? props.theme.boxShadow : 'none')};
   z-index: 1000;
+  flex-direction: column;
   position: absolute;
-  height: 100%;
   transform: ${props => (props.isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(-100%, 0, 0)')};
   transition: transform .5s, box-shadow .5s;
   overflow: auto;
+  height: calc((100vh - 0px) - 24px);
+  margin: 12px;
+  max-width: 370px;
   -webkit-overflow-scrolling: touch;
 `;
 
@@ -33,6 +38,12 @@ class Sidebar extends PureComponent {
                     <SidebarWrapper isVisible={match}>
                         <SidebarClose />
                         <SidebarContent />
+                        <Switch>
+                          {/* <Route path="/suche" component={SidebarFilter} /> */}
+                          <Route path="/liste" component={SidebarList} />
+                          {/* <Route path="/favoriten" component={SidebarFavorites} /> */}
+                          {/* <Route path="/info" component={SidebarInfo} /> */}
+                        </Switch>
                     </SidebarWrapper>
                 )}
             />
