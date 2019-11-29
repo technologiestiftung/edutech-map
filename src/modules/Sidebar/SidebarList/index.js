@@ -15,7 +15,7 @@ const ListItems = styled.div``;
 
 class SidebarList extends PureComponent {
   render() {
-    const { data } = this.props;
+    const { data, setDetailRoute } = this.props;
     return (
       <Fragment>
         <SidebarTitle><strong>{data.length}</strong> Institutionen gefunden.</SidebarTitle>
@@ -24,7 +24,7 @@ class SidebarList extends PureComponent {
             <CardCompact
               key={`item-${i}`}
               data={d}
-              // onClick={() => setDetailRoute(d.id)}
+              onClick={() => setDetailRoute(d.id)}
               // onMouseEnter={() => setHighlightData(d)}
               // onMouseLeave={() => setHighlightData(false)}
             />

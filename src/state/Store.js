@@ -12,6 +12,7 @@ const Store = createStore({
   },
   categories: ['app', 'service', 'media', 'hardware'],
   data: null,
+  detailData: false,
   mapCenter: [13.4124999, 52.5040961],
   mapZoom: [10],
   subCategories: [],

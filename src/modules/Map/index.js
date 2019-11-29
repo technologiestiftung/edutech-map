@@ -39,6 +39,10 @@ class Map extends PureComponent {
         map: false,
     };
 
+    componentDidMount() {
+        this.props.loadDataApi();
+    }
+
     onStyleLoad = (map) => {
         map.resize();
         this.setState({ isLoading: false});
@@ -84,5 +88,5 @@ class Map extends PureComponent {
 export default withRouter(connect(state => ({
     mapZoom: state.mapZoom,
     data: state.data,
-    mapCenter: state.mapCenter,
+    mapCenter: state.mapCenter
   }), Actions)(Map));

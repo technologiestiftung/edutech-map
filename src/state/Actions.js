@@ -7,10 +7,15 @@ import { getUniqueSubCategories, getColorizer } from './DataUtils';
 
 const createArray = (d) => {
   const key = `categories${d['category']}`;
-  return d[key].map(d => (d.text))
+  if (d[key]) {
+    return d[key].map(d => (d.text))
+  } else {
+    return [];
+  }
 }
 
-const createPoint = d => ({
+const createPoint = d => {
+  return {
     type: 'Feature',
     geometry: {
       type: 'Point',
@@ -20,28 +25,40 @@ const createPoint = d => ({
       ...d,
       categoriesSelected: createArray(d)
     }
-});
+  };
+};
 
 export const loadEntryData = Store => async (state, detailId) => {
   if (!detailId) return { detailData: false };
   Store.setState({ isLoading: true });
 
-  try {
-    // insert API fetch here!
-    // const data = await fetchJSON(`${config.api.base}${config.api.locations}/${detailId}`);
+  const dataAll = Store.getState().data;
 
-    const coordinates = [data.standort.lat, data.standort.lng];
+
+  try {
+    const feat = dataAll.features;
+
+    const all = feat.map(item => {
+      return {
+        ...item.properties
+      }
+    })
+
+    const filtered = all.filter(i => i.id === detailId)[0];
+
+    const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
     // data.tags = data.tags.map(t => t.name);
     // [data.mainCategory] = data.tags;
+
 
     return {
       mapCenter: coordinates,
       mapZoom: [Math.max(14, state.mapZoom)],
-      detailData: data,
+      detailData: filtered,
       isLoading: false,
-      subCategories: getUniqueSubCategories(data.categoriesSelected)
     };
   } catch (err) {
+    console.log(err)
     return { isLoading: false };
   }
 };
@@ -91,7 +108,9 @@ const setDetailRoute = (state, id = false) => {
     return history.push(nextLocation);
   }
 
+  console.log(state, 'sadsda');
   history.push(history.location.pathname.replace(/\?location=.+/, ''));
+
 
   return {
     detailData: false
@@ -111,5 +130,5 @@ export default (Store) => ({
   setTooltipData,
   setTooltipPos,
   setDetailRoute,
-  loadEntryData
+  loadEntryData: loadEntryData(Store)
 });

@@ -9,19 +9,33 @@ import {
 import { connect } from 'unistore/react';
 import history from '~/history';
 
-import Actions, { loadDataApi } from '~/state/Actions';
+import Actions, { loadEntryData } from '~/state/Actions';
 import AppWrapper from './AppWrapper';
 import Store from '~/state/Store';
+import queryString from 'query-string';
 
-const loadDataApiAction = Store.action(loadDataApi(Store));
-loadDataApiAction();
+const loadEntryDataAction = Store.action(loadEntryData(Store));
 
-// const loadDataAction = Store.action(loadData(Store));
-// loadDataAction();
+function syncLocation(state, location) {
+  const parsedQuery = queryString.parse(location.search);
 
-const updateLocation = Store.action(loadDataApiAction);
+  if (!parsedQuery.location) {
+    return {
+      detailData: false
+    };
+  }
+
+  loadEntryDataAction(parsedQuery.location);
+
+  return {};
+}
+
+
+const updateLocation = Store.action(syncLocation);
 
 history.listen(location => updateLocation(location));
+
+updateLocation(history.location);
 
 const NotFoundRoute = () => (
   <Redirect to="/" />

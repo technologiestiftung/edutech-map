@@ -18,6 +18,7 @@ export default {
     midgrey: '#d8d8d8',
     textgrey: '#777'
   },
+  lineHeight: '150px',
   margin: [10, 15, 25].map(px),
   padding: [5, 10, 15].map(px)
 };
