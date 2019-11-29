@@ -19,7 +19,6 @@ const Store = createStore({
   tooltipData: false,
   colorizer: () => '#bbb',
   filter: filterSection,
-  colorizer: () => '#bbb',
 });
 
 export default Store;

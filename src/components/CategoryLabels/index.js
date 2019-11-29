@@ -33,7 +33,7 @@ const CategoryLabel = styled.div`
 class CategoryLabels extends PureComponent {
   render() {
     const {
-      categories, colorizer, className/*, hasBorder*/
+      categories, colorizer, className, category/*, hasBorder*/
     } = this.props;
 
     return (
@@ -41,7 +41,7 @@ class CategoryLabels extends PureComponent {
         {categories.map(cat => (
           <CategoryLabel
             key={`CategoryLabel__${cat}`}
-            color={colorizer(cat)}
+            color={colorizer(category)}
             // hasBorder={hasBorder}
           >
             {cat}

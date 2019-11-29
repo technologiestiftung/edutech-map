@@ -51,7 +51,6 @@ class MarkerLayer extends PureComponent {
   }
 
   handleMouseMove(evt) {
-    console.log([evt.lngLat.lng, evt.lngLat.lat]);
     this.props.setTooltipPos([evt.lngLat.lng, evt.lngLat.lat]);
   }
 

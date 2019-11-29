@@ -92,8 +92,8 @@ class CardHeader extends PureComponent {
         <CardHeaderWrapper>
           <CardHeaderLeft>
             <CardTitle>{data.name}</CardTitle>
-            <StyledCategoryLabels categories={data.categoriesSelected} /*hasBorder={teaserUrl}*/ />
-            {/* <CardAddress>{data.location[0].address}</CardAddress> */}
+            <StyledCategoryLabels categories={data.categoriesSelected} category={data.category} /*hasBorder={teaserUrl}*/ />
+            <CardAddress>{data.location[0].address}</CardAddress>
           </CardHeaderLeft>
         </CardHeaderWrapper>
       </Fragment>
