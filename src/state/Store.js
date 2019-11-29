@@ -16,6 +16,7 @@ const Store = createStore({
   mapCenter: [13.4124999, 52.5040961],
   mapZoom: [10],
   subCategories: [],
+  highlightData: false,
   tooltipPos: [0, 0],
   tooltipData: false,
   colorizer: () => '#bbb',

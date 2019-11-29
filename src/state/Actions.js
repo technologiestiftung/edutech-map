@@ -36,27 +36,29 @@ export const loadEntryData = Store => async (state, detailId) => {
 
 
   try {
-    const feat = dataAll.features;
+    if (dataAll) {
+      const feat = dataAll.features;
 
-    const all = feat.map(item => {
+      const all = feat.map(item => {
+        return {
+          ...item.properties
+        }
+      })
+
+      const filtered = all.filter(i => i.id === detailId)[0];
+
+      const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
+      // data.tags = data.tags.map(t => t.name);
+      // [data.mainCategory] = data.tags;
+
+
       return {
-        ...item.properties
-      }
-    })
-
-    const filtered = all.filter(i => i.id === detailId)[0];
-
-    const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
-    // data.tags = data.tags.map(t => t.name);
-    // [data.mainCategory] = data.tags;
-
-
-    return {
-      mapCenter: coordinates,
-      mapZoom: [Math.max(14, state.mapZoom)],
-      detailData: filtered,
-      isLoading: false,
-    };
+        mapCenter: coordinates,
+        mapZoom: [Math.max(14, state.mapZoom)],
+        detailData: filtered,
+        isLoading: false,
+      };
+    }
   } catch (err) {
     console.log(err)
     return { isLoading: false };
@@ -102,6 +104,8 @@ export const loadDataApi = (Store) => async () => {
   }
 };
 
+export const setHighlightData = (state, highlightData) => ({ highlightData });
+
 const setDetailRoute = (state, id = false) => {
   if (id) {
     const nextLocation = isMobile ? `/?location=${id}` : `?location=${id}`;
@@ -130,5 +134,6 @@ export default (Store) => ({
   setTooltipData,
   setTooltipPos,
   setDetailRoute,
+  setHighlightData,
   loadEntryData: loadEntryData(Store)
 });
