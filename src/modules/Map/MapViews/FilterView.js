@@ -9,20 +9,30 @@ import MarkerLayer from '../Layers/MarkerLayer';
 // import IsolineLayer from '../Layers/IsolineLayer';
 
 class FilterView extends PureComponent {
-  render() {
-    const { data, detailData } = this.props;
 
-    return (
-      <Fragment>
-        {/* <DistrictLayer /> */}
-        <MarkerLayer data={data} />
-        {/* {detailData && <IsolineLayer detailData={detailData} />} */}
-        {/* <LocationFilterLayer /> */}
-      </Fragment>
-    );
+  render() {
+    const { data, detailData, isLoading } = this.props;
+
+    if (data) {
+      return (
+        <Fragment>
+          {/* <DistrictLayer /> */}
+          <MarkerLayer if={data} data={data} />
+          {/* {detailData && <IsolineLayer detailData={detailData} />} */}
+          {/* <LocationFilterLayer /> */}
+        </Fragment>
+      );
+    } else {
+      return (
+        <Fragment>
+        </Fragment>
+      )
+    }
+
   }
 }
 
 export default connect(state => ({
   data: state.data,
+  isLoading: state.isLoading
 }), Actions)(FilterView);

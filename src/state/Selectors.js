@@ -10,9 +10,6 @@ export const dataAsArraySelector = createSelector(
     if (!data) {
       return [];
     }
-
-    console.log(data);
-
     return geojsonToArray(data);
   }
 );

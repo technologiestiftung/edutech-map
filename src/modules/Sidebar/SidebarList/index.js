@@ -14,18 +14,15 @@ import SidebarTitle from '../SidebarTitle';
 const ListItems = styled.div``;
 
 class SidebarList extends PureComponent {
-  componentDidUpdate() {
-    console.log(this.props)
-  }
   render() {
     const { data } = this.props;
     return (
       <Fragment>
         <SidebarTitle><strong>{data.length}</strong> Institutionen gefunden.</SidebarTitle>
         <ListItems>
-          {data.map(d => (
+          {data.map((d,i) => (
             <CardCompact
-              // key={d.id}
+              key={`item-${i}`}
               data={d}
               // onClick={() => setDetailRoute(d.id)}
               // onMouseEnter={() => setHighlightData(d)}

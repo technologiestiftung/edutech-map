@@ -10,8 +10,6 @@ import Spinner from '~/components/Spinner';
 import Nav from '~/components/Nav';
 import Sidebar from '~/modules/Sidebar';
 
-console.log(Theme)
-
 const StyledAppWrapper = styled.div`
   width: 100vw;
   height: 100vh;

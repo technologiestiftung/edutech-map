@@ -33,8 +33,8 @@ class SearchFilter extends PureComponent {
         <Select
           ref={(ref) => { this.select = ref; }}
           options={this.props.options}
-          getOptionValue={option => (option.name)}
-          getOptionLabel={option => (option.name)}
+          getOptionValue={option => (option.location[0].address)} // set option.standort.initialAddress here later
+          getOptionLabel={option => (option.location[0].address)} // set option.name here later
           onChange={item => this.onChange(item)}
           placeholder="Nach einer Einrichtung suchen..."
           classNamePrefix="rs"

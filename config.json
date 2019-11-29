@@ -13,5 +13,21 @@
   "map": {
     "token": "pk.eyJ1IjoiZmRua2xnIiwiYSI6ImNqeXptazB6czAzM3QzY215bG4xZ242dHEifQ.5ovP53lbKKEVb0OghgtQig",
     "style": "mapbox://styles/fdnklg/ck2z00nir0hft1cphm2dvt6ol"
-  }
+  },
+  "colors": [
+    "#1f77b4",
+    "#ff7f0e",
+    "#aec7e8",
+    "#d62728",
+    "#bcbd22",
+    "#98df8a",
+    "#8c564b",
+    "#e377c2",
+    "#9467bd",
+    "#17becf",
+    "#2ca02c",
+    "#ffbb78",
+    "#8f8f8f",
+    "#ff9896"
+  ]
 }
