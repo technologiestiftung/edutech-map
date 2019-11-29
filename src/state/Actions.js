@@ -69,13 +69,15 @@ export const loadDataApi = (Store) => async () => {
       features
     };
 
-    const colorizer = getColorizer(Store.getState().categories);
+    const colorizer = getColorizer(Store.getState().categories, 'dark');
+    const colorizerLight = getColorizer(Store.getState().categories, 'light');
 
     return {
       data: parsedData,
       isLoading: false,
       subCategories: getUniqueSubCategories(parsedData),
-      colorizer
+      colorizer,
+      colorizerLight
     }
   } catch (err) {
     console.log(err);

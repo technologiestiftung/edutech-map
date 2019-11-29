@@ -13,7 +13,8 @@ const StyledCategoryLabels = styled(CategoryLabels)``;
 
 const CardAddress = styled.div`
   font-size: 12px;
-  color: ${props => props.theme.colors.textgrey};
+  line-height: 150%;
+  color: ${props => props.type}
 `;
 
 const CardTitle = styled.div`
@@ -21,6 +22,7 @@ const CardTitle = styled.div`
   font-weight: bold;
   margin: 4px 0;
   line-height: 1.2;
+  color: ${props => props.type}
 `;
 
 const CardHeaderWrapper = styled.div`
@@ -28,7 +30,7 @@ const CardHeaderWrapper = styled.div`
   flex-direction: column;
 
   ${CardAddress} {
-    color: ${props => (props.teaserUrl ? 'white' : props.theme.colors.textgrey)};
+    color: ${props => props.type}
   }
 
   ${CardTitle} {
@@ -81,7 +83,7 @@ const CardTeaserImage = styled.div`
 class CardHeader extends PureComponent {
   render() {
     const {
-      data
+      data, type
     } = this.props;
     // const logoUrl = idx(data, _ => _.logo.url);
     // const teaserUrl = idx(data, _ => _.teaser.url);
@@ -91,9 +93,9 @@ class CardHeader extends PureComponent {
       <Fragment>
         <CardHeaderWrapper>
           <CardHeaderLeft>
-            <CardTitle>{data.name}</CardTitle>
+            <CardTitle type={type}>{data.name}</CardTitle>
             <StyledCategoryLabels categories={data.categoriesSelected} category={data.category} /*hasBorder={teaserUrl}*/ />
-            <CardAddress>{data.location[0].address}</CardAddress>
+            <CardAddress type={type}>{data.location[0].address}</CardAddress>
           </CardHeaderLeft>
         </CardHeaderWrapper>
       </Fragment>

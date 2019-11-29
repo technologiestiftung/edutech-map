@@ -13,6 +13,7 @@ const StyledCardWrapper = styled(CardWrapper)`
   will-change: border-color, transform;
   transition: border-color .2s, transform .2s;
   padding: ${props => props.theme.margin[0]};
+  padding-bottom: ${props => props.theme.margin[2]};
 
   &:hover {
     border-color: ${props => props.theme.colors.midgrey};
@@ -31,6 +32,7 @@ class CardCompact extends PureComponent {
         <CardHeader
           data={this.props.data}
           isListMode
+          type='black'
         />
       </StyledCardWrapper>
     );

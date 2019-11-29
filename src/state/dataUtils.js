@@ -13,9 +13,11 @@ export const getUniqueSubCategories = (data) => {
   return [...new Set(allCategories)];
 };
 
-export const getColorizer = (uniqueCategories) => {
+export const getColorizer = (uniqueCategories, type) => {
+  const t = type === 'light' ? 'colorsLight' : 'colors';
+
   const normalizedCategories = uniqueCategories.map(cat => cat.toLowerCase());
-  const colorScale = scaleOrdinal().domain(normalizedCategories).range(config.colors);
+  const colorScale = scaleOrdinal().domain(normalizedCategories).range(config[t]);
 
   return (category) => {
     const loweredCategory = category ? category.toString().toLowerCase() : '';

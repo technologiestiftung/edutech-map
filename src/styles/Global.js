@@ -13,7 +13,7 @@ export default createGlobalStyle`
 
   @font-face {
       font-family: 'Clan Medium';
-      src: url('../../public/fonts/clanot-bold-webfont.woff') format('woff');
+      src: url('../../public/fonts/clanot-medium-webfont.woff') format('woff');
       font-weight: 600;
       font-style: normal;
   }
@@ -33,6 +33,6 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     position: relative;
-    font-family: 'Clan Book';
+    font-family: 'Clan Medium';
   }
 `;

@@ -11,6 +11,14 @@ const StyledPopup = styled(Popup)`
     max-width: 250px;
     line-height: 1;
     font-family: ${props => props.theme.fonts.sans};
+
+    .mapboxgl-popup-content {
+      background: black;
+    }
+
+    .mapboxgl-popup-tip {
+      border-top-color: black;
+    }
   }
 `;
 
@@ -24,7 +32,7 @@ class Tooltip extends PureComponent {
 
     return (
       <StyledPopup coordinates={tooltipPos} style={{ zIndex: 2000 }}>
-        <CardHeader data={data} />
+        <CardHeader data={data} type='white' />
       </StyledPopup>
     );
   }

@@ -10,13 +10,13 @@ const CategoryLabelWrapper = styled.div`
 const CategoryLabel = styled.div`
   display: block;
   font-size: ${props => props.theme.fontSizes[0]};
-  margin-right: 5px;
-  padding: 2px 5px 2px 12px;
-  border-radius: 8px;
+  margin: 0 5px 5px 0;
+  padding: 7px 10px 6px 24px;
+  border-radius: 12px;
   color: ${props => props.color || '#ddd'};
   position: relative;
   line-height: 1;
-  background: ${props => (props.hasBorder ? 'white' : 'none')};
+  background: ${props => (props.colorLight)};
 
   &:before {
     content: '';
@@ -25,15 +25,16 @@ const CategoryLabel = styled.div`
     width: 8px;
     background: ${props => props.color || '#ddd'};
     border-radius: 100%;
-    left: ${props => (props.hasBorder ? '3px' : 0)};
-    top: ${props => (props.hasBorder ? '3px' : '2px')};
+    border: 2px solid white;
+    left: ${props => (props.hasBorder ? '3px' : "7px")};
+    top: ${props => (props.hasBorder ? '3px' : '6px')};
   }
 `;
 
 class CategoryLabels extends PureComponent {
   render() {
     const {
-      categories, colorizer, className, category/*, hasBorder*/
+      categories, colorizer, colorizerLight, className, category/*, hasBorder*/
     } = this.props;
 
     return (
@@ -42,7 +43,7 @@ class CategoryLabels extends PureComponent {
           <CategoryLabel
             key={`CategoryLabel__${cat}`}
             color={colorizer(category)}
-            // hasBorder={hasBorder}
+            colorLight={colorizerLight(category)}
           >
             {cat}
           </CategoryLabel>
@@ -53,5 +54,6 @@ class CategoryLabels extends PureComponent {
 }
 
 export default connect(state => ({
-  colorizer: state.colorizer
+  colorizer: state.colorizer,
+  colorizerLight: state.colorizerLight,
 }))(CategoryLabels);
