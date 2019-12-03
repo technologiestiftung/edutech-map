@@ -2,6 +2,10 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { NavLink, withRouter, matchPath } from 'react-router-dom';
 
+import Actions from '~/state/Actions';
+
+import { connect } from 'unistore/react';
+
 import ListIcon from '@material-ui/icons/List';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import FavIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -45,6 +49,13 @@ const navConfig = [
 ];
 
 class Nav extends PureComponent {
+
+  handleClick(path) { 
+    if (path === 'Listenansicht') {
+      this.props.setSelectedData(false);
+    }
+  }
+
   render() {
     const { pathname } = this.props.location;
 
@@ -58,6 +69,7 @@ class Nav extends PureComponent {
           <NavItem
             exact
             to={{ pathname: m.path, search: this.props.location.search }}
+            onClick={() => (this.handleClick(m.title))}
             key={m.path}
           >
             <EdgeButton title={m.title} aria-label={m.title} isActive={pathname === m.path}>
@@ -70,4 +82,6 @@ class Nav extends PureComponent {
   }
 }
 
-export default withRouter(Nav);
+export default withRouter(connect(state => ({
+  detailData: state.detailData
+}), Actions)(Nav));

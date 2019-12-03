@@ -89,12 +89,14 @@ class CardHeader extends PureComponent {
     // const teaserUrl = idx(data, _ => _.teaser.url);
     // const isFav = favs.includes(data.id);
 
+    console.log(type)
+
     return (
       <Fragment>
         <CardHeaderWrapper>
           <CardHeaderLeft>
             <CardTitle type={type}>{data.name}</CardTitle>
-            <StyledCategoryLabels categories={data.categoriesSelected} category={data.category} /*hasBorder={teaserUrl}*/ />
+            <StyledCategoryLabels categories={data.categoriesSelected} type={type} category={data.category} /*hasBorder={teaserUrl}*/ />
             <CardAddress type={type}>{data.location[0].address}</CardAddress>
           </CardHeaderLeft>
         </CardHeaderWrapper>

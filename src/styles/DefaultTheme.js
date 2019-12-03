@@ -12,13 +12,13 @@ export default {
   boxShadow: `0 2px 40px 0 rgba(30,55,145,0.15)`,
   borderRadius: '2px',
   colors: {
-    primary: '#e60005',
-    secondary: '#1e3791',
+    primary: '#000000',
+    secondary: '#e60005',
     lightgrey: '#f5f5f5',
     midgrey: '#d8d8d8',
     textgrey: '#777'
   },
-  lineHeight: '150px',
-  margin: [10, 15, 25].map(px),
+  lineHeight: '140%',
+  margin: [10, 15, 25, 50, 75, 100].map(px),
   padding: [5, 10, 15].map(px)
 };

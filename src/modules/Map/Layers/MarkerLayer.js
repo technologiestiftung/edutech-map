@@ -98,7 +98,8 @@ class MarkerLayer extends PureComponent {
     evt.originalEvent.preventDefault();
     evt.originalEvent.stopPropagation();
 
-    this.props.setDetailRoute(properties.id);
+    this.props.setDetailRoute(properties.name);
+    this.props.setSelectedData(true);
   }
 
   handleMouseMove(evt) {

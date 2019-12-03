@@ -13,7 +13,7 @@ const CategoryLabel = styled.div`
   margin: 0 5px 5px 0;
   padding: 7px 10px 6px 24px;
   border-radius: 12px;
-  color: ${props => props.color || '#ddd'};
+  color: ${props => props.color || '#000'};
   position: relative;
   line-height: 1;
   background: ${props => (props.colorLight)};
@@ -23,9 +23,9 @@ const CategoryLabel = styled.div`
     position: absolute;
     height: 8px;
     width: 8px;
-    background: ${props => props.color || '#ddd'};
+    background: ${props => props.color || '#000'};
     border-radius: 100%;
-    border: 2px solid white;
+    border: 2px solid ${props => props.type == 'black' ? 'black' : 'white'};
     left: ${props => (props.hasBorder ? '3px' : "7px")};
     top: ${props => (props.hasBorder ? '3px' : '6px')};
   }
@@ -34,26 +34,44 @@ const CategoryLabel = styled.div`
 class CategoryLabels extends PureComponent {
   render() {
     const {
-      categories, colorizer, colorizerLight, className, category/*, hasBorder*/
+      categories, colorizer, colorizerLight, type, className, category/*, hasBorder*/
     } = this.props;
 
-    return (
-      <CategoryLabelWrapper className={className}>
-        {categories.map(cat => (
-          <CategoryLabel
-            key={`CategoryLabel__${cat}`}
-            color={colorizer(category)}
-            colorLight={colorizerLight(category)}
-          >
-            {cat}
-          </CategoryLabel>
-        ))}
-      </CategoryLabelWrapper>
-    );
+    if (category === 'targetGroup') {
+      return (
+        <CategoryLabelWrapper className={className}>
+          {categories.map(cat => (
+            <CategoryLabel
+              key={`CategoryLabel__${cat}`}
+              color={'#000000'}
+              colorLight={'#e1e1e1'}
+              type={type}
+            >
+              {cat}
+            </CategoryLabel>
+          ))}
+        </CategoryLabelWrapper>
+      )
+    } else {
+      return (
+          <CategoryLabelWrapper className={className}>
+            {categories.map(cat => (
+              <CategoryLabel
+                key={`CategoryLabel__${cat}`}
+                color={colorizer(category)}
+                colorLight={colorizerLight(category)}
+              >
+                {cat}
+              </CategoryLabel>
+            ))}
+          </CategoryLabelWrapper>
+      );
+    }
+
   }
 }
 
 export default connect(state => ({
   colorizer: state.colorizer,
-  colorizerLight: state.colorizerLight,
+  colorizerLight: state.colorizerLight
 }))(CategoryLabels);

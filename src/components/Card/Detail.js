@@ -11,26 +11,17 @@ import CardBody from './CardBody';
 import CardDivider from './CardDivider';
 // import CardNearby from './CardNearby';
 
+import CategoryLabels from '~/components/CategoryLabels';
+
+const StyledCategoryLabels = styled(CategoryLabels)`
+  margin-bottom: ${props => props.theme.margin[2]};
+`;
+
 const DetailCardWrapper = styled(CardWrapper)`
-  position: absolute;
-  z-index: 9000;
-  top: 80px;
-  right: 5%;
-  left: 5%;
-  margin: auto;
-  max-width: 500px;
-  box-shadow: ${props => props.theme.boxShadow};
-  border-radius: 2px;
-
-  @media screen and (min-width: 768px) {
-    right: 20px;
-    left: auto;
-    width: 325px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    top: 120px;
-  }
+  display: flex;
+  flex-direction: column;
+  padding-top: ${props => props.theme.padding[0]};
+  padding-left: ${props => props.theme.padding[1]};
 `;
 
 const StyledCardHeader = styled(CardHeader)`
@@ -38,22 +29,7 @@ const StyledCardHeader = styled(CardHeader)`
 `;
 
 const StyledCardBody = styled(CardBody)`
-  padding: ${props => props.theme.padding[1]};
-`;
-
-const CloseButton = styled(RoundButton)`
-  position: absolute;
-  top: -15px;
-  right: -12px;
-  z-index: 9999;
-`;
-
-const ScrollWrapper = styled.div`
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: 100%;
-  width: 100%;
-  background: #fff;
+  padding-top: ${props => props.theme.padding[1]};
 `;
 
 class DetailCard extends PureComponent {
@@ -85,16 +61,9 @@ class DetailCard extends PureComponent {
 
     return (
       <DetailCardWrapper>
-        <CloseButton onClick={evt => this.onClose(evt)} aria-label="Detailansicht schließen">
-          <Clear />
-        </CloseButton>
-        <ScrollWrapper style={{ maxHeight: this.state.maxHeight }}>
-          <StyledCardHeader data={data} />
-          {/* <CardActions data={data} /> */}
-          <CardDivider />
-          <StyledCardBody data={data} />
-          <CardNearby data={data.nearby} />
-        </ScrollWrapper>
+        <StyledCategoryLabels categories={data.categoriesSelected} category={data.category} /*hasBorder={teaserUrl}*/ />
+        {/* <CardActions data={data} /> */}
+        <StyledCardBody data={data} />
       </DetailCardWrapper>
     );
   }

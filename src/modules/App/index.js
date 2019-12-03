@@ -21,13 +21,15 @@ function syncLocation(state, location) {
 
   if (!parsedQuery.location) {
     return {
-      detailData: false
+      detailData: false,
+      selectedData: false
     };
   }
 
   loadEntryDataAction(parsedQuery.location);
 
   return {};
+
 }
 
 

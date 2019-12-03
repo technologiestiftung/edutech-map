@@ -24,7 +24,7 @@ class SearchFilter extends PureComponent {
   }
 
   onChange(item) {
-    this.props.setDetailRoute(item ? item.id : false);
+    this.props.setDetailRoute(item ? item.name : false);
   }
 
   render() {

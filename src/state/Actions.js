@@ -34,7 +34,6 @@ export const loadEntryData = Store => async (state, detailId) => {
 
   const dataAll = Store.getState().data;
 
-
   try {
     if (dataAll) {
       const feat = dataAll.features;
@@ -45,19 +44,25 @@ export const loadEntryData = Store => async (state, detailId) => {
         }
       })
 
-      const filtered = all.filter(i => i.id === detailId)[0];
+      const filtered = all.filter(i => i.name === detailId)[0];
 
       const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
-      // data.tags = data.tags.map(t => t.name);
-      // [data.mainCategory] = data.tags;
 
+      if (isNaN(coordinates[1])) {
+        return {
+          mapZoom: [Math.max(14, state.mapZoom)],
+          detailData: filtered,
+          isLoading: false,
+        };
+      } else {
+        return {
+          mapCenter: coordinates,
+          mapZoom: [Math.max(14, state.mapZoom)],
+          detailData: filtered,
+          isLoading: false,
+        };
+      }
 
-      return {
-        mapCenter: coordinates,
-        mapZoom: [Math.max(14, state.mapZoom)],
-        detailData: filtered,
-        isLoading: false,
-      };
     }
   } catch (err) {
     console.log(err)
@@ -68,18 +73,21 @@ export const loadEntryData = Store => async (state, detailId) => {
 export const loadDataApi = (Store) => async () => {
   Store.setState({ isLoading: true });
 
-  try {
-    const data = await fetch(config.api.url,
-      {
-        headers: new Headers({
-        "Authorization": `Basic ${base64.encode(`${config.api.username}:${config.api.password}`)}`
-        })
-      }
-    )
-    .then(json => json.json())
-    .then(d => { return d.data.content.institution })
+  const credentials = {
+    headers: new Headers({
+    "Authorization": `Basic ${base64.encode(`${config.api.username}:${config.api.password}`)}`
+    })
+  }
 
-    // convert array into geojson
+  try {
+    const data = await fetch(config.api.url, credentials)
+      .then(json => json.json())
+      .then(d => { return d.data.content.institution })
+
+    const content = await fetch(config.api.urlInfo, credentials)
+      .then(json => json.json())
+      .then(d => { return d.data.content })
+
     const features = data
       .map(createPoint);
 
@@ -93,6 +101,7 @@ export const loadDataApi = (Store) => async () => {
 
     return {
       data: parsedData,
+      content: content,
       isLoading: false,
       subCategories: getUniqueSubCategories(parsedData),
       colorizer,
@@ -104,7 +113,9 @@ export const loadDataApi = (Store) => async () => {
   }
 };
 
-export const setHighlightData = (state, highlightData) => ({ highlightData });
+export const setHighlightData = (state, highlightData) => {
+  return { highlightData };
+};
 
 const setDetailRoute = (state, id = false) => {
   if (id) {
@@ -112,14 +123,15 @@ const setDetailRoute = (state, id = false) => {
     return history.push(nextLocation);
   }
 
-  console.log(state, 'sadsda');
   history.push(history.location.pathname.replace(/\?location=.+/, ''));
 
-
   return {
-    detailData: false
+    detailData: false,
   };
 };
+
+const setDetailData = (state, detailData) => ({ detailData })
+const setSelectedData = (state, selectedData) => ({ selectedData })
 
 const setTooltipData = (state, tooltipData) => (
   { tooltipData }
@@ -132,7 +144,9 @@ const setTooltipPos = (state, tooltipPos) => (
 export default (Store) => ({
   loadDataApi: loadDataApi(Store),
   setTooltipData,
+  setDetailData,
   setTooltipPos,
+  setSelectedData,
   setDetailRoute,
   setHighlightData,
   loadEntryData: loadEntryData(Store)
