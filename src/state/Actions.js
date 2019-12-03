@@ -2,6 +2,7 @@
 import config from "../../config";
 import base64 from "base-64";
 import history from '~/history';
+import xor from 'lodash.xor';
 import { isMobile } from '~/utils';
 import { getUniqueSubCategories, getColorizer } from './DataUtils';
 
@@ -141,11 +142,22 @@ const setTooltipPos = (state, tooltipPos) => (
   { tooltipPos }
 );
 
+const toggleFav = (state, favId) => {
+  let { favs } = state;
+
+  favs = xor(favs, [favId]);
+
+  setFavs(favs);
+
+  return { favs };
+};
+
 export default (Store) => ({
   loadDataApi: loadDataApi(Store),
   setTooltipData,
   setDetailData,
   setTooltipPos,
+  toggleFav,
   setSelectedData,
   setDetailRoute,
   setHighlightData,

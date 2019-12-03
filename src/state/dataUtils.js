@@ -25,7 +25,13 @@ export const getColorizer = (uniqueCategories, type) => {
   };
 };
 
+export const getFavs = () => Store.get(config.localStorage.favKey) || [];
+
+export const setFavs = favs => Store.set(config.localStorage.favKey, favs);
+
 export default {
   getColorizer,
-  getUniqueSubCategories
+  getUniqueSubCategories,
+  getFavs,
+  setFavs
 };
