@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 
 import Actions from '~/state/Actions';
+import { filteredDataSelector } from '~/state/Selectors';
 
 // import DistrictLayer from '../Layers/DistrictsLayer';
 import MarkerLayer from '../Layers/MarkerLayer';
@@ -33,6 +34,6 @@ class FilterView extends PureComponent {
 }
 
 export default connect(state => ({
-  data: state.data,
+  data: filteredDataSelector(state),
   isLoading: state.isLoading
 }), Actions)(FilterView);

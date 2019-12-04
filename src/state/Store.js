@@ -3,7 +3,8 @@ import createStore from 'unistore';
 import { getFavs } from './dataUtils';
 
 export const filterSection = {
-  categoryFilter: [],
+  categoryFilter: ['service', 'hardware', 'media', 'app'],
+  subCategoryFilter: [],
   districtFilter: false,
 };
 

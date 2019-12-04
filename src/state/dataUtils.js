@@ -7,6 +7,16 @@ export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
 );
 
+export const getCategoryLabel = (value) => {
+  const categoryDict = {
+    "service": "Services / Plattformen / Dienstleistungen",
+    "app": "Lehr- & Lernmaterial – Software / Apps (abgeschlossene Anwendung)",
+    "media": "Lehr- & Lernmaterial – Audiovisuelle Medien (Einzelprodukte)",
+    "hardware": "Hardware"
+  };
+  return categoryDict[value];
+}
+
 export const getUniqueSubCategories = (data) => {
   const allCategories = data.features
     .map(d => d.properties.categoriesSelected)
@@ -26,13 +36,25 @@ export const getColorizer = (uniqueCategories, type) => {
   };
 };
 
+export const filterCategories = (props, categoryFilter) => {
+  if (!categoryFilter || !props) {
+    return false;
+  }
+
+  return !categoryFilter.some(cat => props.category.includes(cat));
+};
+
+
+
 export const getFavs = () => Store.get(config.localStorage.favKey) || [];
 
 export const setFavs = favs => Store.set(config.localStorage.favKey, favs);
 
 export default {
   getColorizer,
+  filterCategories,
   getUniqueSubCategories,
   getFavs,
-  setFavs
+  setFavs,
+  getCategoryLabel
 };

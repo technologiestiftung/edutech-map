@@ -37,9 +37,6 @@ function formatWebsite(str) {
 class CardParagraph extends PureComponent {
   render() {
     const { label, data } = this.props;
-
-    console.log(data)
-
     if (data.length > 0) {
       return (
         <CardParagraphWrapper>

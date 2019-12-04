@@ -152,6 +152,22 @@ const toggleFav = (state, favId) => {
   return { favs };
 };
 
+const toggleCategoryFilter = (state, category, deactivate = false) => {
+  let { categoryFilter } = state.filter;
+  const { categories } = state;
+
+  if (categoryFilter.length === 1 && categoryFilter.includes(category)) {
+    categoryFilter = categories;
+  } else if (categoryFilter.includes(category) || deactivate) {
+    categoryFilter = [category];
+  } else {
+    categoryFilter.push(category);
+  }
+
+  const filter = Object.assign({}, state.filter, { categoryFilter });
+  return { filter };
+};
+
 export default (Store) => ({
   loadDataApi: loadDataApi(Store),
   setTooltipData,
@@ -161,5 +177,6 @@ export default (Store) => ({
   setSelectedData,
   setDetailRoute,
   setHighlightData,
+  toggleCategoryFilter,
   loadEntryData: loadEntryData(Store)
 });

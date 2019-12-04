@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
 
+import {
+  filterCategories,
+} from './dataUtils';
+
 const dataSelector = state => state.data;
 const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
+const filterSelector = state => state.filter;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
@@ -18,21 +23,48 @@ export const dataAsArraySelector = createSelector(
 
 export const enrichedDataSelector = createSelector(
   [
-    dataSelector, favsSelector
+    dataSelector,
+    favsSelector,
+    filterSelector
   ],
   (
-    data, favs
+    data,
+    favs,
+    filter
   ) => {
     const features = data.features
     .map((feat) => {
-        const { properties } = feat;
-        feat.properties = properties;
-        properties.isFav = favs.includes(properties.name);
-        return feat;
+      const { properties } = feat;
+      console.log(properties, filter);
+      feat.properties = properties;
+      properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
+      properties.isFav = favs.includes(properties.name);
+      properties.isFiltered = false;
+      return feat;
   });
   return Object.assign({}, data, { features });
   }
 )
+
+export const filteredDataSelector = createSelector(
+  [enrichedDataSelector],
+  (data) => {
+    const features = data.features
+      .map((feat) => {
+        feat.properties.isFiltered = (
+          feat.properties.categoryFilter
+          /* || feat.properties.districtFilter
+          || feat.properties.locationFilter 
+          || feat.properties.a11yFilter
+          || feat.properties.fundedFilter */
+        );
+        return feat;
+      })
+      console.log(features);
+      // .sort(sortData('properties.isFiltered', 'dec'));
+    return Object.assign({}, data, { features });
+  }
+);
 
 export const targetGroupsArraySelector = createSelector(
   [detailDataSelector],

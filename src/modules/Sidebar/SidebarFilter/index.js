@@ -3,7 +3,7 @@ import React, { PureComponent, Fragment } from 'react';
 // import ResetFilter from './ResetFilter';
 import SidebarTitle from '../SidebarTitle';
 import SearchFilter from './SearchFilter';
-// import CategoryFilter from './CategoryFilter';
+import CategoryFilter from './CategoryFilter';
 // import DistrictFilter from './DistrictFilter';
 // import LocationFilter from './LocationFilter';
 
@@ -17,8 +17,8 @@ class SidebarFilter extends PureComponent {
         </SidebarTitle>
         {/* <ResetFilter /> */}
         <SearchFilter />
-        {/* <CategoryFilter />
-        <DistrictFilter />
+        <CategoryFilter />
+        {/* <DistrictFilter />
         <AccessibilityFilter />
         <LocationFilter /> */}
       </Fragment>
