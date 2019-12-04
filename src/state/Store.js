@@ -1,5 +1,7 @@
 import createStore from 'unistore';
 
+import { getFavs } from './dataUtils';
+
 export const filterSection = {
   categoryFilter: [],
   districtFilter: false,
@@ -20,6 +22,7 @@ const Store = createStore({
   subCategories: [],
   highlightData: false,
   tooltipPos: [0, 0],
+  favs: getFavs(),
   tooltipData: false,
   colorizer: () => '#bbb',
   colorizerLight: () => '#bbb',

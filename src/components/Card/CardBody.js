@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import CardParagraph from './CardParagraph';
 import CardTags from './CardTags';
 import CardLink from './CardLink';
+import CardLogo from './CardLogo';
 
 // import { SimpleOpeningHours } from 'simple-opening-hours';
 
@@ -75,6 +77,7 @@ function formatWebsite(str) {
 class CardBody extends PureComponent {
   render() {
     const { data, targetGroups } = this.props;
+    const logoUrl = idx(data, _ => _.logo[0].url);
     // const openingHours = detailData.openingHours && new SimpleOpeningHours(detailData.openingHours);
     // const hasSocial = (
     //   detailData.twitter
@@ -89,7 +92,7 @@ class CardBody extends PureComponent {
         <CardParagraphAddress label='Adresse:' data={data.location[0].address}></CardParagraphAddress>
         <CardLink label='Webseite:' data={data.contact[0].website}></CardLink>
         <CardParagraphDescription label='Beschreibung:' data={data.description}></CardParagraphDescription>
-
+        { (logoUrl) && <CardLogo label='Logo:' data={logoUrl}></CardLogo> }
         <CardTags label="Zielgruppen:"></CardTags>
 {/* 
         {detailData.description && (

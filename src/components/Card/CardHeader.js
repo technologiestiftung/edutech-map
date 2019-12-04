@@ -1,12 +1,11 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-// import idx from 'idx';
-// import FavIcon from '@material-ui/icons/BookmarkBorder';
-// import UnFavIcon from '@material-ui/icons/Bookmark';
+import FavIcon from '@material-ui/icons/FavoriteBorder';
+import UnFavIcon from '@material-ui/icons/Favorite';
 
 import CategoryLabels from '~/components/CategoryLabels';
-// import Button from '~/components/GhostButton';
+import Button from '~/components/GhostButton';
 import Actions from '~/state/Actions';
 
 const StyledCategoryLabels = styled(CategoryLabels)``;
@@ -27,7 +26,7 @@ const CardTitle = styled.div`
 
 const CardHeaderWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   ${CardAddress} {
     color: ${props => props.type}
@@ -42,21 +41,12 @@ const CardHeaderWrapper = styled.div`
 
 const CardHeaderLeft = styled.div`
   overflow: hidden;
+  width: 290px;
   margin-right: 10px;
 `;
 
 const CardHeaderRight = styled.div`
   margin-left: auto;
-`;
-
-const CardImage = styled.div`
-  display: block;
-  width: 70px;
-  height: 70px;
-  background-image: ${props => `url(${props.src.replace(/\s/g, '%20')})`};
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
 `;
 
 const CardTeaserImage = styled.div`
@@ -65,40 +55,58 @@ const CardTeaserImage = styled.div`
   height: 150px;
 `;
 
-// const FavButton = styled(Button)`
-//   color: #222;
-//   width: 24px;
-//   height: 24px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   opacity: ${props => (props.active ? 1 : 0.7)};
+const FavButton = styled(Button)`
+  color: black;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//   svg {
-//     width: 18px;
-//     height: 18px;
-//   }
-// `;
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+`;
 
 class CardHeader extends PureComponent {
+
+  handleClick = (d) => {
+    const { setDetailRoute, setSelectedData } = this.props;
+    setDetailRoute(d.name);
+    setSelectedData(true);
+  }
+
   render() {
     const {
-      data, type
+      data,
+      type,
+      toggleFav,
+      favs,
+      isListMode
     } = this.props;
-    // const logoUrl = idx(data, _ => _.logo.url);
-    // const teaserUrl = idx(data, _ => _.teaser.url);
-    // const isFav = favs.includes(data.id);
 
-    console.log(type)
+    const isFav = favs.includes(data.name);
+
 
     return (
       <Fragment>
         <CardHeaderWrapper>
-          <CardHeaderLeft>
+          <CardHeaderLeft onClick={() => this.handleClick(data)} >
             <CardTitle type={type}>{data.name}</CardTitle>
             <StyledCategoryLabels categories={data.categoriesSelected} type={type} category={data.category} /*hasBorder={teaserUrl}*/ />
             <CardAddress type={type}>{data.location[0].address}</CardAddress>
           </CardHeaderLeft>
+          <CardHeaderRight>
+            {isListMode && (
+              <FavButton
+                onClick={() => toggleFav(data.name)}
+                active={isFav}
+              >
+                {isFav ? <UnFavIcon /> : <FavIcon />}
+              </FavButton>
+            )}
+          </CardHeaderRight>
         </CardHeaderWrapper>
       </Fragment>
     );

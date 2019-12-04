@@ -4,7 +4,7 @@ import base64 from "base-64";
 import history from '~/history';
 import xor from 'lodash.xor';
 import { isMobile } from '~/utils';
-import { getUniqueSubCategories, getColorizer } from './DataUtils';
+import { getUniqueSubCategories, getColorizer, setFavs } from './dataUtils';
 
 const createArray = (d) => {
   const key = `categories${d['category']}`;

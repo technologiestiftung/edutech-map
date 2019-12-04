@@ -6,7 +6,7 @@
   "version": "6.0.1",
   "description": "lightweight react starterkit including webpack, unistore, styled components",
   "scripts": {
-    "build": "BABEL_ENV=production webpack --config webpack/webpack.config.dev.js",
+    "build": "BABEL_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "lint": "eslint --ext .js --ext .jsx ."
   },
@@ -73,6 +73,7 @@
     "react-router-dom": "^5.1.2",
     "react-select": "^3.0.8",
     "reselect": "^4.0.0",
+    "store": "^2.0.12",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
     "unfetch": "^4.1.0",

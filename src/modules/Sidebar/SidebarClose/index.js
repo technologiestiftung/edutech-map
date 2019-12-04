@@ -9,6 +9,7 @@ const StyledLink = styled(Link)`
   position: absolute;
   top: 15px;
   right: 15px;
+  z-index: 10;
 `;
 
 class SidebarClose extends PureComponent {

@@ -16,7 +16,7 @@ class SidebarLinks extends PureComponent {
       <LinksWrapper>
         { data.map((d,i) => {
           const LinkWrapper = styled.a.attrs({
-              href: 'https://technologiestiftung-berlin.de',
+              href: `${d.urllink}`,
               target: '_blank'
             })`
             margin-bottom: ${props => props.theme.margin[1]};

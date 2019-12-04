@@ -11,6 +11,7 @@ export default styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
   cursor: pointer;
   box-shadow: none;
   outline: none;

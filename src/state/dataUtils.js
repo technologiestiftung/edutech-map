@@ -1,6 +1,7 @@
 import turfBbox from '@turf/bbox';
 import { scaleOrdinal } from 'd3-scale';
 const config = require('../../config.json');
+import Store from 'store';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)

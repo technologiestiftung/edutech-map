@@ -6,6 +6,7 @@ import SidebarClose from './SidebarClose';
 
 import SidebarList from './SidebarList';
 import SidebarInfo from './SidebarInfo';
+import SidebarFavorites from './SidebarFavorites';
 import SidebarFilter from './SidebarFilter';
 
 const SidebarWrapper = styled.div`
@@ -43,7 +44,7 @@ class Sidebar extends PureComponent {
                           <Switch>
                             <Route path="/suche" component={SidebarFilter} />
                             <Route path="/liste" component={SidebarList} />
-                            {/* <Route path="/favoriten" component={SidebarFavorites} /> */}
+                            <Route path="/favoriten" component={SidebarFavorites} />
                             <Route path="/info" component={SidebarInfo} />
                           </Switch>
                         </SidebarContent>

@@ -9,7 +9,7 @@ import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
 import Logo from '~/components/TSBLogo';
 import SidebarTitle from '../SidebarTitle';
-import SidebarLinks from './links';
+import SidebarLinks from './SidebarInfoLinks';
 
 const StyledParagraph = styled.p`
   padding-left: ${props => props.theme.padding[1]};
