@@ -1,14 +1,24 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
+import styled from 'styled-components';
 
 import ResetFilter from './ResetFilter';
 import SidebarTitle from '../SidebarTitle';
 import SearchFilter from './SearchFilter';
 import CategoryFilter from './CategoryFilter';
 import DetailCard from '~/components/Card/Detail';
+import CardDivider from '~/components/Card/CardDivider';
+import SidebarSubtitle from '~/modules/Sidebar/SidebarSubtitle';
 // import DistrictFilter from './DistrictFilter';
 // import LocationFilter from './LocationFilter';
+
+const StyledDivider = styled(CardDivider)`
+  margin: 30px 0;
+  transform: translateX(-15px);
+  width: 375px;
+  border-top: 1px solid #ddd;
+`;
 
 
 class SidebarFilter extends PureComponent {
@@ -26,10 +36,11 @@ class SidebarFilter extends PureComponent {
           </SidebarTitle>
           <ResetFilter />
           <SearchFilter />
+          <StyledDivider />
+          <SidebarSubtitle>Leistungsangebot</SidebarSubtitle>
           <CategoryFilter />
-          {/* <DistrictFilter />
-          <AccessibilityFilter />
-          <LocationFilter /> */}
+          <StyledDivider />
+          <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
         </Fragment>
         )}
       </Fragment>
