@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 import {
   filterCategories,
+  getSubCategoryLabel,
+  filterSubCategories
 } from './dataUtils';
 
 const dataSelector = state => state.data;
@@ -35,9 +37,9 @@ export const enrichedDataSelector = createSelector(
     const features = data.features
     .map((feat) => {
       const { properties } = feat;
-      console.log(properties, filter);
       feat.properties = properties;
       properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
+      properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
       properties.isFav = favs.includes(properties.name);
       properties.isFiltered = false;
       return feat;
@@ -52,7 +54,8 @@ export const filteredDataSelector = createSelector(
     const features = data.features
       .map((feat) => {
         feat.properties.isFiltered = (
-          feat.properties.categoryFilter
+          feat.properties.categoryFilter ||
+          feat.properties.subCategoryFilter
           /* || feat.properties.districtFilter
           || feat.properties.locationFilter 
           || feat.properties.a11yFilter
@@ -60,7 +63,6 @@ export const filteredDataSelector = createSelector(
         );
         return feat;
       })
-      console.log(features);
       // .sort(sortData('properties.isFiltered', 'dec'));
     return Object.assign({}, data, { features });
   }

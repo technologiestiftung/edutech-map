@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
 import styled, { ThemeProvider } from 'styled-components';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { withRouter } from 'react-router-dom';
 
 import Theme from '~/styles/DefaultTheme';
@@ -18,21 +19,29 @@ const StyledAppWrapper = styled.div`
   font-family: ${props => props.theme.fonts.sans};
 `;
 
+const muiTheme = createMuiTheme({
+  typography: {
+    fontFamily: "Clan Medium"
+  }
+});
+
 class AppWrapper extends PureComponent {
   render() {
     return (
-      <ThemeProvider theme={Theme}>
-        <StyledAppWrapper>
-          <Spinner loading={this.props.isLoading}/>
+      <MuiThemeProvider theme={muiTheme}>
+        <ThemeProvider theme={Theme}>
+          <StyledAppWrapper>
+            <Spinner loading={this.props.isLoading}/>
 
-        {/*  />
-          <Logo />
-           */}
-          <Nav />
-          <Sidebar />
-          <Map />
-        </StyledAppWrapper>
-      </ThemeProvider>
+          {/*  />
+            <Logo />
+            */}
+            <Nav />
+            <Sidebar />
+            <Map />
+          </StyledAppWrapper>
+        </ThemeProvider>
+      </MuiThemeProvider>
     );
   }
 }

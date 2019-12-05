@@ -17,6 +17,50 @@ export const getCategoryLabel = (value) => {
   return categoryDict[value];
 }
 
+export const getSubCategoryLabel = (category, subcategory) => {
+  const dict = {
+    'service': {
+      "coachingService": "Beratung/ Coaching",
+      "blendedLearningService": "Blended Learning Angebote",
+      "campsService": "Camps",
+      "codingService": "Coding Angebote",
+      "courseService": "Courseware (z.B. MOOCs)",
+      "educationService": "Fort- & Weiterbildung",
+      "workshopService": "Workshop",
+      "otherService": "Andere Formate"
+    },
+    'hardware': {
+      "controllerHardware": "Microcontroller/Platine",
+      "productHardware": "Produkt/Erfindung",
+      "materialHardware": "Dazugehöriges Lehrmaterial Pädagogen",
+      "deviceHardware": "Endgeräte, Smartboards etc.",
+      "kitsHardware": "Lernmaterial Kids/ Privatpersonen",
+      "otherhardware": "Andere"
+    },
+    'media': {
+      "cmsMedia": "LMS, CMS etc.",
+      "oerMedia": "OER",
+      "videosMedia": "Videos",
+      "audioMedia": "Podcast/andere Audio",
+      "socialMedia": "Social Media & Collaboration tools",
+      "vrMedia": "VR/AR-Inhalte",
+      "otherMedia": "Andere innovative Medien"
+    },
+    'app': {
+      "adaptiveLearningApp": "Adaptive Learning",
+      "orgaApp": "Administration/Organisation",
+      "backMiddleTechApp": "Back/Middle technologies",
+      "inclContentApp": "Inklusiver Content",
+      "analyticsApp": "Learning Analytics",
+      "cmsApp": "LMS, CMS etc.",
+      "oerApp": "OER",
+      "otherApp": "Anderer innovativer Content"
+    }
+  }
+
+  return dict[category][subcategory];
+}
+
 export const getUniqueSubCategories = (data) => {
   const allCategories = data.features
     .map(d => d.properties.categoriesSelected)
@@ -44,6 +88,14 @@ export const filterCategories = (props, categoryFilter) => {
   return !categoryFilter.some(cat => props.category.includes(cat));
 };
 
+export const filterSubCategories = (props, subCategoryFilter) => {
+  if (!subCategoryFilter[props.category] || !props) {
+    return false;
+  }
+
+  return !subCategoryFilter[props.category].some(cat => props.subCategoriesSelected.includes(cat));
+}
+
 
 
 export const getFavs = () => Store.get(config.localStorage.favKey) || [];
@@ -53,6 +105,7 @@ export const setFavs = favs => Store.set(config.localStorage.favKey, favs);
 export default {
   getColorizer,
   filterCategories,
+  filterSubCategories,
   getUniqueSubCategories,
   getFavs,
   setFavs,

@@ -6,10 +6,10 @@ import xor from 'lodash.xor';
 import { isMobile } from '~/utils';
 import { getUniqueSubCategories, getColorizer, setFavs } from './dataUtils';
 
-const createArray = (d) => {
+const createArray = (d, type) => {
   const key = `categories${d['category']}`;
   if (d[key]) {
-    return d[key].map(d => (d.text))
+    return d[key].map(d => (d[type]))
   } else {
     return [];
   }
@@ -24,7 +24,8 @@ const createPoint = d => {
     },
     properties: {
       ...d,
-      categoriesSelected: createArray(d)
+      categoriesSelected: createArray(d, 'text'),
+      subCategoriesSelected: createArray(d, 'value')
     }
   };
 };
@@ -156,10 +157,14 @@ const toggleCategoryFilter = (state, category, deactivate = false) => {
   let { categoryFilter } = state.filter;
   const { categories } = state;
 
-  if (categoryFilter.length === 1 && categoryFilter.includes(category)) {
-    categoryFilter = categories;
-  } else if (categoryFilter.includes(category) || deactivate) {
-    categoryFilter = [category];
+  console.log(categoryFilter)
+
+  if (categoryFilter.includes(category) || deactivate) {
+
+    categoryFilter = categoryFilter.filter(item => {
+        return item !== category
+    });
+
   } else {
     categoryFilter.push(category);
   }
@@ -167,6 +172,24 @@ const toggleCategoryFilter = (state, category, deactivate = false) => {
   const filter = Object.assign({}, state.filter, { categoryFilter });
   return { filter };
 };
+
+const toggleSubCategoryFilter = (state, category, subcategory) => {
+  let { subCategoryFilter } = state.filter;
+  let subCategories = subCategoryFilter[category];
+
+  if (subCategories.includes(subcategory)) {
+    subCategoryFilter[category] = subCategories.filter(item => {
+      return item !== subcategory
+    });
+  } else {
+    subCategoryFilter[category].push(subcategory)
+  }
+
+  console.log(subCategoryFilter);
+
+  const filter = Object.assign({}, state.filter, { subCategoryFilter });
+  return { filter };
+}
 
 export default (Store) => ({
   loadDataApi: loadDataApi(Store),
@@ -178,5 +201,6 @@ export default (Store) => ({
   setDetailRoute,
   setHighlightData,
   toggleCategoryFilter,
+  toggleSubCategoryFilter,
   loadEntryData: loadEntryData(Store)
 });
