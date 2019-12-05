@@ -13,10 +13,10 @@ const CategoryLabel = styled.div`
   margin: 0 5px 5px 0;
   padding: 7px 10px 6px 24px;
   border-radius: 12px;
-  color: ${props => props.color || '#000'};
+  color: white;
   position: relative;
   line-height: 1;
-  background: ${props => (props.colorLight)};
+  background: ${props => (props.color)};
 
   &:before {
     content: '';
@@ -36,6 +36,8 @@ class CategoryLabels extends PureComponent {
     const {
       categories, colorizer, colorizerLight, type, className, category/*, hasBorder*/
     } = this.props;
+
+    console.log(type)
 
     if (category === 'targetGroup') {
       return (

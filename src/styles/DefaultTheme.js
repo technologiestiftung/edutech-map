@@ -20,5 +20,6 @@ export default {
   },
   lineHeight: '160%',
   margin: [10, 15, 25, 50, 75, 100].map(px),
+  letterSpacing: [.25,.5,1].map(px),
   padding: [5, 10, 15].map(px)
 };

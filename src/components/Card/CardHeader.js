@@ -15,6 +15,7 @@ const StyledCategoryLabels = styled(CategoryLabels)`
 const CardAddress = styled.div`
   font-size: 12px;
   line-height: 150%;
+  letter-spacing: ${props => props.theme.letterSpacing[1]};
   color: ${props => props.type}
 `;
 
@@ -23,6 +24,7 @@ const CardTitle = styled.div`
   font-weight: bold;
   margin: 4px 0;
   line-height: 1.2;
+  letter-spacing: ${props => props.theme.letterSpacing[1]};
   margin-bottom: ${props => props.theme.margin[0]};
   color: ${props => props.type}
 `;

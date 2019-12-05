@@ -19,6 +19,7 @@ const CardParagraphWrapper = styled.div`
     margin: 0 15px 0 0;
     line-height: ${props => props.theme.lineHeight};
     font-family: ${props => props.theme.fonts.sansBold};
+    letter-spacing: ${props => props.theme.letterSpacing[1]};
   }
 `;
 
