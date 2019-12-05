@@ -15,7 +15,8 @@ const StyledCheckbox = styled(Checkbox)`
 `;
 
 const StyledFormControlLabel = styledUi(FormControlLabel)({
-  fontSize: '13px !important'
+  fontSize: '13px !important',
+  marginBottom: '10px'
 });
 
 import Actions from '~/state/Actions';

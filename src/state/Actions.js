@@ -157,8 +157,6 @@ const toggleCategoryFilter = (state, category, deactivate = false) => {
   let { categoryFilter } = state.filter;
   const { categories } = state;
 
-  console.log(categoryFilter)
-
   if (categoryFilter.includes(category) || deactivate) {
 
     categoryFilter = categoryFilter.filter(item => {
@@ -185,9 +183,8 @@ const toggleSubCategoryFilter = (state, category, subcategory) => {
     subCategoryFilter[category].push(subcategory)
   }
 
-  console.log(subCategoryFilter);
-
   const filter = Object.assign({}, state.filter, { subCategoryFilter });
+  console.log(filter)
   return { filter };
 }
 
