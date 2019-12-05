@@ -8,7 +8,7 @@ export default {
     sansBold: 'Clan Bold',
     sansMedium: 'Clan Medium'
   },
-  fontSizes: [12, 13, 15, 19, 24, 32, 48, 64].map(px),
+  fontSizes: [12, 14, 15, 19, 24, 32, 48, 64].map(px),
   boxShadow: `0 2px 40px 0 rgba(30,55,145,0.15)`,
   borderRadius: '2px',
   colors: {
@@ -18,7 +18,7 @@ export default {
     midgrey: '#d8d8d8',
     textgrey: '#777'
   },
-  lineHeight: '140%',
+  lineHeight: '160%',
   margin: [10, 15, 25, 50, 75, 100].map(px),
   padding: [5, 10, 15].map(px)
 };

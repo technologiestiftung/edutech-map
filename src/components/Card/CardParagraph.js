@@ -13,20 +13,20 @@ const CardParagraphWrapper = styled.div`
 
   h3 {
     font-size: ${props => props.theme.fontSizes[1]};
-    padding: ${props => props.theme.padding[1]} 0 0 0;
+    padding: ${props => props.theme.padding[0]} 0 0 0;
     margin: 0 15px 0 0;
     line-height: ${props => props.theme.lineHeight};
-    font-family: ${props => props.theme.fonts.sansBold};
+    font-family: ${props => props.type == 'bold' ? `${props.theme.fonts.sansBold}` : `${props.theme.fonts.sans}`}
   }
 `;
 
 class CardParagraph extends PureComponent {
   render() {
-    const { label, data } = this.props;
+    const { label, data, type } = this.props;
     
     if (data.length > 0) {
       return (
-        <CardParagraphWrapper>
+        <CardParagraphWrapper type={type}>
           <span>{label}</span>
           <h3>{data}</h3>
         </CardParagraphWrapper>

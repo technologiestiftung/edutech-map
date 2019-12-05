@@ -18,11 +18,6 @@ import CardLogo from './CardLogo';
 
 const CardParagraphAddress = styled(CardParagraph)``;
 const CardParagraphWebsite = styled(CardParagraph)``;
-const CardParagraphDescription = styled(CardParagraph)`
-  h3 {
-    font-family: ${props => props.theme.fonts.sansMedium}
-  }
-`;
 
 const CardBodyWrapper = styled.div`
   font-size: ${props => props.theme.fontSizes[0]};
@@ -89,9 +84,9 @@ class CardBody extends PureComponent {
     return (
       <CardBodyWrapper className={this.props.className}>
 
-        <CardParagraphAddress label='Adresse:' data={data.location[0].address}></CardParagraphAddress>
+        <CardParagraph type="bold" label='Adresse:' data={data.location[0].address}></CardParagraph>
         <CardLink label='Webseite:' data={data.contact[0].website}></CardLink>
-        <CardParagraphDescription label='Beschreibung:' data={data.description}></CardParagraphDescription>
+        <CardParagraph label='Beschreibung:' data={data.description}></CardParagraph>
         { (logoUrl) && <CardLogo label='Logo:' data={logoUrl}></CardLogo> }
         <CardTags label="Zielgruppen:"></CardTags>
 {/* 

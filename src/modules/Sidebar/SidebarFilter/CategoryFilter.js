@@ -47,7 +47,6 @@ class CategoryFilter extends Component {
   render() {
     const { categories, subCategoryList, filter } = this.props;
 
-
     return (
       <FormGroup aria-label="position" row>
       { categories.map((category,i) => {

@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
 
-// import ResetFilter from './ResetFilter';
+import ResetFilter from './ResetFilter';
 import SidebarTitle from '../SidebarTitle';
 import SearchFilter from './SearchFilter';
 import CategoryFilter from './CategoryFilter';
@@ -24,7 +24,7 @@ class SidebarFilter extends PureComponent {
           <SidebarTitle>
             Suche
           </SidebarTitle>
-          {/* <ResetFilter /> */}
+          <ResetFilter />
           <SearchFilter />
           <CategoryFilter />
           {/* <DistrictFilter />

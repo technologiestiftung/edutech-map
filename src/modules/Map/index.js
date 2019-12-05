@@ -87,6 +87,5 @@ class Map extends PureComponent {
 
 export default withRouter(connect(state => ({
     mapZoom: state.mapZoom,
-    data: state.data,
     mapCenter: state.mapCenter
   }), Actions)(Map));

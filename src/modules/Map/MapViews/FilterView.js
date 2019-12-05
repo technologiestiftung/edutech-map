@@ -18,7 +18,7 @@ class FilterView extends PureComponent {
       return (
         <Fragment>
           {/* <DistrictLayer /> */}
-          <MarkerLayer if={data} data={data} />
+          <MarkerLayer if={data && !isLoading} data={data} />
           {/* {detailData && <IsolineLayer detailData={detailData} />} */}
           {/* <LocationFilterLayer /> */}
         </Fragment>

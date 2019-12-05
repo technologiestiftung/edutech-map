@@ -15,6 +15,8 @@ const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
+import { filterSection } from './Store';
+
 export const dataAsArraySelector = createSelector(
   [dataSelector],
   (data) => {
@@ -22,6 +24,14 @@ export const dataAsArraySelector = createSelector(
       return [];
     }
     return geojsonToArray(data);
+  }
+);
+
+export const initialFilterSelector = createSelector(
+  [filterSelector],
+  filter => {
+    let obj = Object.assign({}, filterSection)
+    return obj;
   }
 );
 
@@ -40,39 +50,43 @@ export const enrichedDataSelector = createSelector(
     colorizer,
     colorizerLight
   ) => {
-    const features = data.features
-    .map((feat) => {
-      const { properties } = feat;
-      feat.properties = properties;
-      properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
-      properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
-      properties.isFav = favs.includes(properties.name);
-      properties.color = colorizer(properties.category);
-      properties.colorLight = colorizerLight(properties.category);
-      properties.isFiltered = false;
-      return feat;
-  });
-  return Object.assign({}, data, { features });
-  }
+    if (data) {
+      const features = data.features
+      .map((feat) => {
+        const { properties } = feat;
+        feat.properties = properties;
+        properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
+        properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
+        properties.isFav = favs.includes(properties.name);
+        properties.color = colorizer(properties.category);
+        properties.colorLight = colorizerLight(properties.category);
+        properties.isFiltered = false;
+        return feat;
+    });
+      return Object.assign({}, data, { features });
+    }
+    }
 )
 
 export const filteredDataSelector = createSelector(
   [enrichedDataSelector],
   (data) => {
-    const features = data.features
-      .map((feat) => {
-        feat.properties.isFiltered = (
-          feat.properties.categoryFilter ||
-          feat.properties.subCategoryFilter
-          /* || feat.properties.districtFilter
-          || feat.properties.locationFilter 
-          || feat.properties.a11yFilter
-          || feat.properties.fundedFilter */
-        );
-        return feat;
-      })
-      // .sort(sortData('properties.isFiltered', 'dec'));
-    return Object.assign({}, data, { features });
+    if (data) {
+      const features = data.features
+        .map((feat) => {
+          feat.properties.isFiltered = (
+            feat.properties.categoryFilter ||
+            feat.properties.subCategoryFilter
+            /* || feat.properties.districtFilter
+            || feat.properties.locationFilter 
+            || feat.properties.a11yFilter
+            || feat.properties.fundedFilter */
+          );
+          return feat;
+        })
+        // .sort(sortData('properties.isFiltered', 'dec'));
+      return Object.assign({}, data, { features });
+    }
   }
 );
 

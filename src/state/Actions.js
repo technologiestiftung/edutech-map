@@ -171,6 +171,10 @@ const toggleCategoryFilter = (state, category, deactivate = false) => {
   return { filter };
 };
 
+const setFilter = (state, filter) => ({
+  filter
+});
+
 const toggleSubCategoryFilter = (state, category, subcategory) => {
   let { subCategoryFilter } = state.filter;
   let subCategories = subCategoryFilter[category];
@@ -191,6 +195,7 @@ export default (Store) => ({
   loadDataApi: loadDataApi(Store),
   setTooltipData,
   setDetailData,
+  setFilter,
   setTooltipPos,
   toggleFav,
   setSelectedData,
