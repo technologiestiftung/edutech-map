@@ -46,10 +46,6 @@ class SubCategoryTags extends PureComponent {
     toggleSubCategoryFilter(category, subCat);
   }
 
-  componentDidUpdate() {
-    console.log(this.props.subCategoryFilter);
-  }
-
   render() {
     const {
       categories, 

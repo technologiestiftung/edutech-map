@@ -7,9 +7,10 @@ import { dataAsArraySelector } from '~/state/Selectors';
 import Actions from '~/state/Actions';
 
 const SearchFilterWrapper = styled.div`
-  display: block;
   margin-bottom: ${props => props.theme.margin[2]};
   font-size: ${props => props.theme.fontSizes[1]};
+  padding-left: ${props => props.theme.margin[1]};
+  padding-right: ${props => props.theme.margin[1]};
 
   .rs__clear-indicator {
     cursor: pointer;

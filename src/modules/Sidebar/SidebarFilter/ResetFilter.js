@@ -9,17 +9,18 @@ import GhostButton from '~/components/GhostButton';
 
 const ResetFilterButtonWrapper = styled.div`
   height: 15px;
+  padding-left: ${props => props.theme.padding[1]};
+  margin-bottom: ${props => props.theme.margin[1]};
 `;
 
 const ResetFilterButton = styled(GhostButton)`
   display: block;
-  color: ${props => props.theme.colors.primary};
+  color: #E60032;
 `;
 
 class ResetFilter extends PureComponent {
   render() {
     const { initialFilter } = this.props;
-
     const hasFilter = true;
 
     return (

@@ -1,7 +1,17 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+const StyledCircularProgress = withStyles({
+  root: {
+    color: 'black',
+  },
+  svg: {
+    fill: 'black'
+  }
+})(CircularProgress);
 
 const SpinnerWrapper = styled.div`
   position: absolute;
@@ -21,7 +31,7 @@ class Spinner extends PureComponent {
 
     return (
       <SpinnerWrapper>
-        <CircularProgress />
+        <StyledCircularProgress />
       </SpinnerWrapper>
     );
   }

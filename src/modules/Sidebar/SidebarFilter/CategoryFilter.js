@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import { styled as styledUi } from '@material-ui/core/styles';
+import { styled as styledUi, withStyles } from '@material-ui/core/styles';
 
 import { getCategoryLabel, getSubCategoryLabel } from '~/state/dataUtils';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -10,20 +10,32 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SubCategoryTags from '~/components/SubCategoryTags'
 
-const StyledCheckbox = styled(Checkbox)`
-  font-family: ${props => props.theme.fonts.sansBold};
-`;
-
-const StyledFormControlLabel = styledUi(FormControlLabel)({
-  fontSize: '13px !important',
-  marginBottom: '10px'
-});
-
 import Actions from '~/state/Actions';
 
 const CategoryFilterWrapper = styled.div`
   margin-left: ${props => props.theme.margin[0]};
 `;
+
+const StyledCheckbox = withStyles({
+  root: {
+    color: 'black',
+  },
+  checked: {
+    color: '#1f1f1f'
+  },
+})(Checkbox);
+
+const StyledFormControlLabel = withStyles({
+  root: {
+    marginBottom: '10px'
+  },
+  label: {
+    fontSize: '13px',
+    fontFamily: 'Clan Book'
+  },
+})(FormControlLabel);
+
+
 
 class CategoryFilter extends Component {
   constructor(props) {
@@ -51,17 +63,16 @@ class CategoryFilter extends Component {
       <FormGroup aria-label="position" row>
       { categories.map((category,i) => {
         return (
-          <CategoryFilterWrapper>
+          <CategoryFilterWrapper key={`CategoryFilter__${i}__${category}`}>
             <StyledFormControlLabel
               value={category}
-              checked={this.state[category]}
-              key={`CategoryFilter__${i}__${category}`}
+              checked={filter.categoryFilter.includes(category)}
               onClick={() => {this.onChange(category)}}
-              control={<StyledCheckbox color="primary" />}
+              control={<StyledCheckbox color="default"/>}
               label={getCategoryLabel(category)}
               labelPlacement="end"
             />
-            { this.state[category] &&
+            { filter.categoryFilter.includes(category) &&
               <SubCategoryTags
                 categories={ subCategoryList[category] }
                 key={`SubCategoryTags__${i}__${category}`}

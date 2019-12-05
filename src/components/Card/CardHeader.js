@@ -8,7 +8,9 @@ import CategoryLabels from '~/components/CategoryLabels';
 import Button from '~/components/GhostButton';
 import Actions from '~/state/Actions';
 
-const StyledCategoryLabels = styled(CategoryLabels)``;
+const StyledCategoryLabels = styled(CategoryLabels)`
+  margin-bottom: ${props => props.theme.padding[0]};
+`;
 
 const CardAddress = styled.div`
   font-size: 12px;
@@ -21,6 +23,7 @@ const CardTitle = styled.div`
   font-weight: bold;
   margin: 4px 0;
   line-height: 1.2;
+  margin-bottom: ${props => props.theme.margin[0]};
   color: ${props => props.type}
 `;
 

@@ -34,7 +34,7 @@ const FavButton = styled(Button)`
 `;
 
 const DetailTitle = styled(SidebarTitle)`
-  margin-bottom: ${props => props.theme.padding[0]};
+  margin-bottom: ${props => props.theme.padding[1]};
   padding-right: ${props => props.theme.padding[0]};
   padding-left: 0;
 `;

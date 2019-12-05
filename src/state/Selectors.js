@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { cloneDeep } from 'lodash';
 
 import {
   filterCategories,
@@ -11,11 +12,12 @@ const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
 const filterSelector = state => state.filter;
 const colorizerSelector = state => state.colorizer;
+const subCategoryListSelector = state => state.subCategoryList;
 const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
-import { filterSection } from './Store';
+import { filterSection, subCategories } from './Store';
 
 export const dataAsArraySelector = createSelector(
   [dataSelector],
@@ -29,9 +31,12 @@ export const dataAsArraySelector = createSelector(
 
 export const initialFilterSelector = createSelector(
   [filterSelector],
-  filter => {
-    let obj = Object.assign({}, filterSection)
-    return obj;
+  (filter) => {
+    console.log(subCategories)
+    return Object.assign({}, {
+    categoryFilter: cloneDeep(filterSection.categoryFilter),
+    subCategoryFilter: cloneDeep(subCategories)
+  })
   }
 );
 
