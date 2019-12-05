@@ -184,7 +184,6 @@ const toggleSubCategoryFilter = (state, category, subcategory) => {
   }
 
   const filter = Object.assign({}, state.filter, { subCategoryFilter });
-  console.log(filter)
   return { filter };
 }
 

@@ -17,10 +17,11 @@ const paintProps = {
 }
 
 function getPaintProps(props) {
-  const detailId = idx(props, _ => _.detailData.name) || idx(props, _ => _.highlightData.name) || '';
+  console.log(props);
+  const detailId = idx(props, _ => _.detailData.name) || '';
   const tooltipId = idx(props, _ => _.tooltipData.name) || '';
-  const activeExpr = ['case', ['==', ['string', ['get', 'name']], detailId], 10, 2];
-  const activeExprZoomedIn = ['case', ['==', ['string', ['get', 'name']], detailId], 16, 12];
+  const activeExpr = ['case', ['==', ['string', ['get', 'name']], detailId], 8, 4];
+  const activeExprZoomedIn = ['case', ['==', ['string', ['get', 'name']], detailId], 16, 8];
 
   return {
     'circle-radius': [
@@ -31,15 +32,15 @@ function getPaintProps(props) {
     'circle-color': [
       'case',
       ['==', ['string', ['get', 'name']], detailId], ['get', 'color'],
-      ['get', 'isFiltered'], '#ddd',
+      ['get', 'isFiltered'], ['get', 'colorLight'],
       ['get', 'color']
     ],
-    'circle-stroke-color': '#fff',
+    'circle-stroke-color': ['get', 'colorLight'],
     'circle-stroke-width': [
       'case',
-      ['==', ['string', ['get', 'name']], tooltipId], 2,
-      ['==', ['string', ['get', 'name']], detailId], 2,
-      1
+      ['==', ['string', ['get', 'name']], tooltipId], 4,
+      ['==', ['string', ['get', 'name']], detailId], 4,
+      4
     ],
   };
 }

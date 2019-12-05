@@ -44,37 +44,7 @@ export const subCategories = {
 
 export const filterSection = {
   categoryFilter: ['service', 'hardware', 'media', 'app'],
-  subCategoryFilter: {
-  'service': [
-    "coachingService",
-    "blendedLearningService",
-    "campsService",
-    "codingService",
-    "courseService",
-    "educationService",
-    "workshopService",
-    "otherService"
-  ],
-  'hardware': [
-    "controllerHardware",
-    "productHardware",
-    "materialHardware"
-  ],
-  'media': [
-    "cmsMedia",
-    "otherMedia",
-  ],
-  'app': [
-    "adaptiveLearningApp",
-    "orgaApp",
-    "backMiddleTechApp",
-    "inclContentApp",
-    "analyticsApp",
-    "cmsApp",
-    "oerApp",
-    "otherApp",
-  ]
-}
+  subCategoryFilter: Object.assign({}, subCategories),
 };
 
 const Store = createStore({

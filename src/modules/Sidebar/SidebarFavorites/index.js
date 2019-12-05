@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
+import Actions from '~/state/Actions';
 import styled from 'styled-components';
 
 import { favoritesSelector } from '~/state/Selectors';
-import Actions from '~/state/Actions';
 
 import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
@@ -29,7 +29,7 @@ class SidebarList extends PureComponent {
   }
 
   render() {
-    const { data, setDetailRoute, selectedData, detailData } = this.props;
+    const { data, selectedData, detailData } = this.props;
 
     return (
       <Fragment>

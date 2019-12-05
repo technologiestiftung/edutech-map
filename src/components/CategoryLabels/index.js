@@ -40,9 +40,9 @@ class CategoryLabels extends PureComponent {
     if (category === 'targetGroup') {
       return (
         <CategoryLabelWrapper className={className}>
-          {categories.map(cat => (
+          {categories.map((cat, i) => (
             <CategoryLabel
-              key={`CategoryLabel__${cat}`}
+              key={`CategoryLabel__${cat}__${i}`}
               color={'#000000'}
               colorLight={'#e1e1e1'}
               type={type}

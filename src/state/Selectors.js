@@ -10,6 +10,8 @@ const dataSelector = state => state.data;
 const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
 const filterSelector = state => state.filter;
+const colorizerSelector = state => state.colorizer;
+const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
@@ -27,12 +29,16 @@ export const enrichedDataSelector = createSelector(
   [
     dataSelector,
     favsSelector,
-    filterSelector
+    filterSelector,
+    colorizerSelector,
+    colorizerLightSelector,
   ],
   (
     data,
     favs,
-    filter
+    filter,
+    colorizer,
+    colorizerLight
   ) => {
     const features = data.features
     .map((feat) => {
@@ -41,6 +47,8 @@ export const enrichedDataSelector = createSelector(
       properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
       properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
       properties.isFav = favs.includes(properties.name);
+      properties.color = colorizer(properties.category);
+      properties.colorLight = colorizerLight(properties.category);
       properties.isFiltered = false;
       return feat;
   });
@@ -91,7 +99,6 @@ export const targetGroupsArraySelector = createSelector(
 export const favoritesSelector = createSelector(
   [enrichedDataSelector],
   (data) => {
-    console.log(data);
     const features = data.features.filter(feat => feat.properties.isFav);
     return geojsonToArray(Object.assign({}, data, { features }));
   }

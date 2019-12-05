@@ -51,7 +51,8 @@ const navConfig = [
 class Nav extends PureComponent {
 
   handleClick(path) { 
-    if (path === 'Listenansicht' || path === 'Favoriten' ) {
+    console.log(path)
+    if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' ) {
       this.props.setSelectedData(false);
     }
   }
