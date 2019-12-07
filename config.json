@@ -15,11 +15,16 @@
   },
   "map": {
     "token": "pk.eyJ1IjoiZmRua2xnIiwiYSI6ImNqeXptazB6czAzM3QzY215bG4xZ242dHEifQ.5ovP53lbKKEVb0OghgtQig",
-    "style": "mapbox://styles/fdnklg/ck2z00nir0hft1cphm2dvt6ol"
+    "style": "mapbox://styles/fdnklg/ck2z00nir0hft1cphm2dvt6ol",
+    "flyToOptions": {
+      "speed": 2
+    }
   },
   "localStorage": {
     "favKey": "tsb:favs"
   },
+  "position": [13.4124999, 52.5040961],
+  "zoom": [11],
   "colorsLight": [
     "#D2D7E9",
     "#D9F0EA",

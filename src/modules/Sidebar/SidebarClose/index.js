@@ -2,6 +2,11 @@ import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
+import Actions from '~/state/Actions';
+import history from '~/history';
+import config from '../../../../config';
+
+import { connect } from 'unistore/react';
 
 import RoundButton from '~/components/RoundButton';
 
@@ -13,9 +18,18 @@ const StyledLink = styled(Link)`
 `;
 
 class SidebarClose extends PureComponent {
+  handleClick() {
+    const { setDetailData, setMapCenter, setZoom, setHighlightData } = this.props;
+    console.log('inside handle', history)
+    setMapCenter(config.position);
+    setZoom(config.zoom);
+    setDetailData(false);
+    setHighlightData(false);
+  }
+
   render() {
     return (
-      <StyledLink to={{ pathname: '/', search: this.props.location.search }}>
+      <StyledLink onClick={() => {this.handleClick()}} to={{ pathname: '/', search: '' }}>
         <RoundButton aria-label="Leiste schließen" title="Leiste schließen">
           <CloseIcon />
         </RoundButton>
@@ -24,4 +38,8 @@ class SidebarClose extends PureComponent {
   }
 }
 
-export default withRouter(SidebarClose);
+// export default withRouter(SidebarClose);
+
+export default withRouter(connect(state => ({
+  detailData: state.detailData
+}), Actions)(SidebarClose));

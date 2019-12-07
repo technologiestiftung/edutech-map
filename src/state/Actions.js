@@ -145,7 +145,6 @@ export const loadDataApi = (Store) => async () => {
 };
 
 export const setHighlightData = (state, highlightData) => {
-  console.log(highlightData)
   return { highlightData };
 };
 
@@ -242,6 +241,10 @@ const setFilter = (state, filter) => ({
   filter
 });
 
+const setZoom = (state, mapZoom) => ({
+  mapZoom
+});
+
 const toggleSubCategoryFilter = (state, category, subcategory) => {
   let { subCategoryFilter } = state.filter;
   let subCategories = subCategoryFilter[category];
@@ -281,6 +284,7 @@ export default (Store) => ({
   setFilter,
   setTooltipPos,
   toggleFav,
+  setZoom,
   setSelectedData,
   setDetailRoute,
   setDetailRouteWithListPath,

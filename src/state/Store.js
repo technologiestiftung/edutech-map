@@ -1,6 +1,7 @@
 import createStore from 'unistore';
 
 import { getFavs, subCategories, targetGroups, targetGroupTypes } from './dataUtils';
+import config from '../../config';
 
 export const filterSection = {
   categoryFilter: ['service', 'hardware', 'media', 'app'],
@@ -21,8 +22,8 @@ const Store = createStore({
   local: false,
   detailData: false,
   selectedData: false,
-  mapCenter: [13.4124999, 52.5040961],
-  mapZoom: [10],
+  mapCenter: config.position,
+  mapZoom: config.zoom,
   subCategoryList: Object.assign({}, subCategories),
   subCategories: [],
   highlightData: false,

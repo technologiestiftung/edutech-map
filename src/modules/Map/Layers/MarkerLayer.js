@@ -19,14 +19,14 @@ const paintProps = {
 function getPaintProps(props) {
   const detailId = idx(props, _ => _.detailData.name) || idx(props, _ => _.highlightData.name) || '';
   const tooltipId = idx(props, _ => _.tooltipData.name) || '';
-  const activeExpr = ['case', ['==', ['string', ['get', 'name']], detailId], 8, 4];
+  const activeExpr = ['case', ['==', ['string', ['get', 'name']], detailId], 2, 3];
   const activeExprZoomedIn = ['case', ['==', ['string', ['get', 'name']], detailId], 12, 6];
 
   return {
     'circle-radius': [
       'interpolate', ['linear'], ['zoom'],
-      12, activeExpr,
-      18, activeExprZoomedIn
+      8, activeExpr,
+      16, activeExprZoomedIn
     ],
     'circle-color': [
       'case',
