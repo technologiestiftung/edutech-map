@@ -17,6 +17,109 @@ export const getCategoryLabel = (value) => {
   return categoryDict[value];
 }
 
+export const subCategories = {
+  'service': [
+    "coachingService",
+    "blendedLearningService",
+    "campsService",
+    "codingService",
+    "courseService",
+    "educationService",
+    "workshopService",
+    "otherService"
+  ],
+  'hardware': [
+    "controllerHardware",
+    "productHardware",
+    "materialHardware",
+    "deviceHardware",
+    "kitsHardware",
+    "otherhardware",
+  ],
+  'media': [
+    "cmsMedia",
+    "oerMedia",
+    "videosMedia",
+    "audioMedia",
+    "socialMedia",
+    "vrMedia",
+    "otherMedia",
+  ],
+  'app': [
+    "adaptiveLearningApp",
+    "orgaApp",
+    "backMiddleTechApp",
+    "inclContentApp",
+    "analyticsApp",
+    "cmsApp",
+    "oerApp",
+    "otherApp",
+  ]
+}
+
+export const targetGroupTypes = [
+  'private', 'institution'
+];
+
+export const targetGroups = {
+  'private': [
+    "family",
+    "preschool",
+    "lifelong",
+    "pupils",
+    "students",
+    "elementaryPupils",
+    "other",
+    "none",
+  ],
+  'institution': [
+    "eduAdministration",
+    "eduInstitution",
+    "coworking",
+    "uni",
+    "incubator",
+    "network",
+    "company",
+    "other",
+    "none"
+  ]
+};
+
+export const getTargetGroupType = (value) => {
+  const dict = {
+    'private': 'Privat',
+    'institution': 'Institionell'
+  }
+  return dict[value];
+}
+
+export const getTargetGroupLabel = (type, group) => {
+  const dict = {
+    'institution': {
+      eduAdministration: "Bildungsadministration",
+      eduInstitution: "Bildungsinstitution",
+      coworking: "Coworking Space",
+      uni: "Hochschule",
+      incubator: "Inkubator",
+      network: "Netzwerk",
+      company: "Unternehmen",
+      other: "Andere",
+      none: "Nein"
+    },
+    'private': {
+      family: "Familie",
+      preschool: "Kita/Vorschule",
+      lifelong: "Lifelong Learning",
+      pupils: "Schüler",
+      students: "Studierende",
+      elementaryPupils: "Grundschule 1-3",
+      other: "Andere",
+      none: "Keine"
+    }
+  }
+  return dict[type][group];
+}
+
 export const getSubCategoryLabel = (category, subcategory) => {
   const dict = {
     'service': {
@@ -96,6 +199,24 @@ export const filterSubCategories = (props, subCategoryFilter) => {
   return !subCategoryFilter[props.category].some(cat => props.subCategoriesSelected.includes(cat));
 }
 
+export const filterTargetGroupTypes = (props, targetGroupFilter) => {
+  if (!targetGroupFilter || !props) {
+    return false;
+  }
+
+  return !targetGroupFilter.some(cat => props.targetGroupsSelected.includes(cat));
+};
+
+
+export const filterTargetGroupTags = (props, targetGroupTagsFilter, type) => {
+  if (!targetGroupTagsFilter[type] || !props) {
+    return false;
+  }
+
+  return !targetGroupTagsFilter[type].some(cat => props.targetGroupTagsSelectedArr.includes(cat));
+}
+
+
 
 
 export const getFavs = () => Store.get(config.localStorage.favKey) || [];
@@ -109,5 +230,11 @@ export default {
   getUniqueSubCategories,
   getFavs,
   setFavs,
-  getCategoryLabel
+  getCategoryLabel,
+  subCategories,
+  targetGroups,
+  getTargetGroupLabel,
+  getTargetGroupType,
+  filterTargetGroupTypes,
+  filterTargetGroupTags
 };

@@ -26,8 +26,8 @@ class CardCompact extends PureComponent {
     return (
       <StyledCardWrapper
         onClick={this.props.onClick}
-        // onMouseEnter={this.props.onMouseEnter}
-        // onMouseLeave={this.props.onMouseLeave}
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
       >
         <CardHeader
           data={this.props.data}

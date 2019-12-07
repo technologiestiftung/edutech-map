@@ -17,7 +17,7 @@ const paintProps = {
 }
 
 function getPaintProps(props) {
-  const detailId = idx(props, _ => _.detailData.name) || '';
+  const detailId = idx(props, _ => _.detailData.name) || idx(props, _ => _.highlightData.name) || '';
   const tooltipId = idx(props, _ => _.tooltipData.name) || '';
   const activeExpr = ['case', ['==', ['string', ['get', 'name']], detailId], 8, 4];
   const activeExprZoomedIn = ['case', ['==', ['string', ['get', 'name']], detailId], 12, 6];
@@ -43,7 +43,8 @@ function getPaintProps(props) {
     'circle-stroke-width': [
       'case',
       ['==', ['string', ['get', 'name']], tooltipId], 12,
-      ['==', ['string', ['get', 'name']], detailId], 6, 6
+      ['==', ['string', ['get', 'name']], detailId], 6, 
+      4
     ],
   };
 }
@@ -102,7 +103,7 @@ class MarkerLayer extends PureComponent {
     evt.originalEvent.preventDefault();
     evt.originalEvent.stopPropagation();
 
-    this.props.setDetailRoute(properties.name);
+    this.props.setDetailRouteWithListPath(properties.name);
     this.props.setSelectedData(true);
   }
 
@@ -111,8 +112,11 @@ class MarkerLayer extends PureComponent {
   }
 
   render() {
-    const { data, detailData } = this.props;
+    const { data, detailData, highlightData } = this.props;
     const paintProps = getPaintProps(this.props);
+    const highlightFeat = data.features.find(
+      feat => highlightData && (feat.properties.name === highlightData.name)
+    );
 
     return (
       <Fragment>
@@ -124,6 +128,19 @@ class MarkerLayer extends PureComponent {
         >
           {data.features.map((feat,i) => this.renderFeat(feat, i))}
         </Layer>
+        {highlightFeat && (
+          <Layer
+            id="HighlightLayer"
+            type="circle"
+            paint={paintProps}
+          >
+            <Feature
+              coordinates={highlightFeat.geometry.coordinates}
+              key={highlightFeat.properties.name}
+              properties={highlightFeat.properties}
+            />
+          </Layer>
+        )}
       </Fragment>
     )
   }

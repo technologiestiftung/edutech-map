@@ -7,6 +7,7 @@ import ResetFilter from './ResetFilter';
 import SidebarTitle from '../SidebarTitle';
 import SearchFilter from './SearchFilter';
 import CategoryFilter from './CategoryFilter';
+import TargetGroupFilter from './TargetGroupFilter';
 import DetailCard from '~/components/Card/Detail';
 import CardDivider from '~/components/Card/CardDivider';
 import SidebarSubtitle from '~/modules/Sidebar/SidebarSubtitle';
@@ -41,6 +42,7 @@ class SidebarFilter extends PureComponent {
           <CategoryFilter />
           <StyledDivider />
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
+          <TargetGroupFilter />
         </Fragment>
         )}
       </Fragment>

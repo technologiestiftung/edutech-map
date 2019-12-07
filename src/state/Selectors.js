@@ -4,7 +4,12 @@ import { cloneDeep } from 'lodash';
 import {
   filterCategories,
   getSubCategoryLabel,
-  filterSubCategories
+  filterSubCategories,
+  subCategories,
+  targetGroupTypes,
+  targetGroups,
+  filterTargetGroupTypes,
+  filterTargetGroupTags
 } from './dataUtils';
 
 const dataSelector = state => state.data;
@@ -17,7 +22,7 @@ const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
-import { filterSection, subCategories } from './Store';
+import { filterSection } from './Store';
 
 export const dataAsArraySelector = createSelector(
   [dataSelector],
@@ -32,10 +37,11 @@ export const dataAsArraySelector = createSelector(
 export const initialFilterSelector = createSelector(
   [filterSelector],
   (filter) => {
-    console.log(subCategories)
     return Object.assign({}, {
     categoryFilter: cloneDeep(filterSection.categoryFilter),
-    subCategoryFilter: cloneDeep(subCategories)
+    subCategoryFilter: cloneDeep(subCategories),
+    targetGroupFilter: cloneDeep(targetGroupTypes),
+    targetGroupTagsFilter: cloneDeep(targetGroups)
   })
   }
 );
@@ -57,17 +63,22 @@ export const enrichedDataSelector = createSelector(
   ) => {
     if (data) {
       const features = data.features
-      .map((feat) => {
-        const { properties } = feat;
-        feat.properties = properties;
-        properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
-        properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
-        properties.isFav = favs.includes(properties.name);
-        properties.color = colorizer(properties.category);
-        properties.colorLight = colorizerLight(properties.category);
-        properties.isFiltered = false;
-        return feat;
-    });
+        .map((feat) => {
+          const { properties } = feat;
+          feat.properties = properties;
+          properties.nameStr = properties.name.replace(' ', '').replace('-', '')
+          properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
+          properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
+          properties.targetGroupTypesFilter = filterTargetGroupTypes(properties, filter.targetGroupFilter)
+          properties.targetGroupTagsPrivateFilter = filterTargetGroupTags(properties, filter.targetGroupTagsFilter, 'private')
+          properties.targetGroupTagsInstitutionFilter = filterTargetGroupTags(properties, filter.targetGroupTagsFilter, 'institution')
+          properties.isFav = favs.includes(properties.name);
+          properties.color = colorizer(properties.category);
+          properties.colorLight = colorizerLight(properties.category);
+          properties.isFiltered = false;
+          return feat;
+      });
+      console.log(features)
       return Object.assign({}, data, { features });
     }
     }
@@ -81,7 +92,10 @@ export const filteredDataSelector = createSelector(
         .map((feat) => {
           feat.properties.isFiltered = (
             feat.properties.categoryFilter ||
-            feat.properties.subCategoryFilter
+            feat.properties.subCategoryFilter ||
+            feat.properties.targetGroupTypesFilter ||
+            feat.properties.targetGroupTagsPrivateFilter &&
+            feat.properties.targetGroupTagsInstitutionFilter
             /* || feat.properties.districtFilter
             || feat.properties.locationFilter 
             || feat.properties.a11yFilter
@@ -98,28 +112,32 @@ export const filteredDataSelector = createSelector(
 export const targetGroupsArraySelector = createSelector(
   [detailDataSelector],
   (data) => {
-    const keys = ['targetgroupprivate', 'targetgroupinstituion'];
-    const keysOther = ['targetgroupinstituionother', 'targetgroupprivateother'];
+    if (data) {
+      const keys = ['targetgroupprivate', 'targetgroupinstituion'];
+      const keysOther = ['targetgroupinstituionother', 'targetgroupprivateother'];
 
-    let arr = keys.map(key => {
-      return data[key].map(val => (val.text));
-    })
+      let arr = keys.map(key => {
+        return data[key].map(val => (val.text));
+      })
 
-    keysOther.forEach(key => {
-      if (data[key].length > 0) {
-        arr.push(data[key]);
-      }
-    });
+      keysOther.forEach(key => {
+        if (data[key].length > 0) {
+          arr.push(data[key]);
+        }
+      });
 
-    return arr.flat();
+      return arr.flat();
+    }
   }
 )
 
 export const favoritesSelector = createSelector(
   [enrichedDataSelector],
   (data) => {
-    const features = data.features.filter(feat => feat.properties.isFav);
-    return geojsonToArray(Object.assign({}, data, { features }));
+    if (data) {
+      const features = data.features.filter(feat => feat.properties.isFav);
+      return geojsonToArray(Object.assign({}, data, { features }));
+    }
   }
 );
 

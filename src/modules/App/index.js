@@ -32,12 +32,14 @@ function syncLocation(state, location) {
 
 }
 
-
 const updateLocation = Store.action(syncLocation);
 
 history.listen(location => updateLocation(location));
 
-updateLocation(history.location);
+setTimeout(() => {
+  updateLocation(history.location);
+}, 1500);
+
 
 const NotFoundRoute = () => (
   <Redirect to="/" />

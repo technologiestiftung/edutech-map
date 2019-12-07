@@ -4,7 +4,7 @@ import base64 from "base-64";
 import history from '~/history';
 import xor from 'lodash.xor';
 import { isMobile } from '~/utils';
-import { getUniqueSubCategories, getColorizer, setFavs } from './dataUtils';
+import { getUniqueSubCategories, getColorizer, setFavs, targetGroups } from './dataUtils';
 
 const createArray = (d, type) => {
   const key = `categories${d['category']}`;
@@ -13,6 +13,32 @@ const createArray = (d, type) => {
   } else {
     return [];
   }
+}
+
+const createTargetGroupTags = (d) => {
+  let arr = ['private', 'institution', 'institutionother', 'privateother'];
+  arr = arr.map(key => {
+    const concattedKey = `targetgroup${key}`;
+    if (d[concattedKey]) {
+      return d[concattedKey].map(d => (d['value']))
+    } else {
+      return [];
+    }
+  })
+
+  return arr.flat()
+}
+
+const checkTargetGroups = (d) => {
+  let arr = [];
+  if (d['targetgroupinstituion'].length > 0) {
+     arr.push('institution')
+  }
+
+  if (d['targetgroupprivate'].length > 0) {
+    arr.push('private');
+  }
+  return arr;
 }
 
 const createPoint = d => {
@@ -25,7 +51,9 @@ const createPoint = d => {
     properties: {
       ...d,
       categoriesSelected: createArray(d, 'text'),
-      subCategoriesSelected: createArray(d, 'value')
+      subCategoriesSelected: createArray(d, 'value'),
+      targetGroupsSelected: checkTargetGroups(d),
+      targetGroupTagsSelectedArr: createTargetGroupTags(d),
     }
   };
 };
@@ -34,11 +62,10 @@ export const loadEntryData = Store => async (state, detailId) => {
   if (!detailId) return { detailData: false };
   Store.setState({ isLoading: true });
 
-  const dataAll = Store.getState().data;
 
   try {
-    if (dataAll) {
-      const feat = dataAll.features;
+    if (state.data) {
+      const feat = state.data.features;
 
       const all = feat.map(item => {
         return {
@@ -82,6 +109,7 @@ export const loadDataApi = (Store) => async () => {
   }
 
   try {
+
     const data = await fetch(config.api.url, credentials)
       .then(json => json.json())
       .then(d => { return d.data.content.institution })
@@ -109,6 +137,7 @@ export const loadDataApi = (Store) => async () => {
       colorizer,
       colorizerLight
     }
+
   } catch (err) {
     console.log(err);
     return { isLoading: false };
@@ -116,6 +145,7 @@ export const loadDataApi = (Store) => async () => {
 };
 
 export const setHighlightData = (state, highlightData) => {
+  console.log(highlightData)
   return { highlightData };
 };
 
@@ -132,8 +162,22 @@ const setDetailRoute = (state, id = false) => {
   };
 };
 
+const setDetailRouteWithListPath = (state, id = false) => {
+  if (id) {
+    const nextLocation = isMobile ? `/liste/?location=${id}` : `/liste?location=${id}`;
+    return history.push(nextLocation);
+  }
+
+  history.push(history.location.pathname.replace(/\?location=.+/, ''));
+
+  return {
+    detailData: false,
+  };
+};
+
 const setDetailData = (state, detailData) => ({ detailData })
 const setSelectedData = (state, selectedData) => ({ selectedData })
+const setMapCenter = (state, mapCenter) => ({ mapCenter })
 
 const setTooltipData = (state, tooltipData) => (
   { tooltipData }
@@ -151,6 +195,29 @@ const toggleFav = (state, favId) => {
   setFavs(favs);
 
   return { favs };
+};
+
+
+const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
+  let { targetGroupFilter, targetGroupTagsFilter } = state.filter;
+  const { categories } = state;
+
+  if (targetGroupFilter.includes(type) || deactivate) {
+
+    targetGroupFilter = targetGroupFilter.filter(item => {
+        return item !== type
+    });
+
+    targetGroupTagsFilter[type] = [];
+
+  } else {
+    targetGroupFilter.push(type);
+    targetGroupTagsFilter[type] = targetGroups[type];
+  }
+
+  const filter = Object.assign({}, state.filter, { targetGroupFilter });
+
+  return { filter };
 };
 
 const toggleCategoryFilter = (state, category, deactivate = false) => {
@@ -191,6 +258,22 @@ const toggleSubCategoryFilter = (state, category, subcategory) => {
   return { filter };
 }
 
+const toggleTargetGroupTagFilter = (state, type, targetGroup) => {
+  let { targetGroupTagsFilter } = state.filter;
+  let targetGroupTags = targetGroupTagsFilter[type];
+
+  if (targetGroupTags.includes(targetGroup)) {
+    targetGroupTagsFilter[type] = targetGroupTags.filter(item => {
+      return item !== targetGroup
+    });
+  } else {
+    targetGroupTagsFilter[type].push(targetGroup)
+  }
+
+  const filter = Object.assign({}, state.filter, { targetGroupTagsFilter });
+  return { filter };
+}
+
 export default (Store) => ({
   loadDataApi: loadDataApi(Store),
   setTooltipData,
@@ -200,8 +283,12 @@ export default (Store) => ({
   toggleFav,
   setSelectedData,
   setDetailRoute,
+  setDetailRouteWithListPath,
   setHighlightData,
   toggleCategoryFilter,
   toggleSubCategoryFilter,
+  toggleTargetGroupTagFilter,
+  toggleTargetGroupTypeFilter,
+  setMapCenter,
   loadEntryData: loadEntryData(Store)
 });

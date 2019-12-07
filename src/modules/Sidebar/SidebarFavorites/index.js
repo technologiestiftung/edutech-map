@@ -16,9 +16,14 @@ const DetailTitle = styled(SidebarTitle)`
 
 const ListItems = styled.div``;
 
+const StyledEmptyFavorites = styled.div`
+  margin-left: ${props => props.theme.margin[0]}
+`;
+
 const EmptyFavorites = () => (
-  <div>Noch keine Favoriten vorhanden.</div>
+  <StyledEmptyFavorites>Noch keine Favoriten vorhanden.</StyledEmptyFavorites>
 );
+
 
 class SidebarList extends PureComponent {
 

@@ -8,7 +8,9 @@
     "username": "mail@fabiandinklage.com",
     "password": "amd3200+",
     "url": "https://edutech.fabiandinklage.com/rest/pages/institutions",
+    "urlLocal": "./public/data/offline/institutions.json",
     "urlInfo": "https://edutech.fabiandinklage.com/rest/pages/info",
+    "urlInfoLocal": "./public/data/offline/info.json",
     "urlStrapi": "http://localhost:1337/institutions/"
   },
   "map": {
@@ -19,15 +21,15 @@
     "favKey": "tsb:favs"
   },
   "colorsLight": [
-    "#F8F4D5",
     "#D2D7E9",
-    "#FACCD6",
-    "#D9F0EA"
+    "#D9F0EA",
+    "#F8F4D5",
+    "#FACCD6"
   ],
   "colors": [
-    "#DCC82D",
     "#1E3791",
-    "#E60032",
-    "#41B496"
+    "#41B496",
+    "#DCC82D",
+    "#E60032"
   ]
 }

@@ -1,50 +1,12 @@
 import createStore from 'unistore';
 
-import { getFavs } from './dataUtils';
-
-export const subCategories = {
-  'service': [
-    "coachingService",
-    "blendedLearningService",
-    "campsService",
-    "codingService",
-    "courseService",
-    "educationService",
-    "workshopService",
-    "otherService"
-  ],
-  'hardware': [
-    "controllerHardware",
-    "productHardware",
-    "materialHardware",
-    "deviceHardware",
-    "kitsHardware",
-    "otherhardware",
-  ],
-  'media': [
-    "cmsMedia",
-    "oerMedia",
-    "videosMedia",
-    "audioMedia",
-    "socialMedia",
-    "vrMedia",
-    "otherMedia",
-  ],
-  'app': [
-    "adaptiveLearningApp",
-    "orgaApp",
-    "backMiddleTechApp",
-    "inclContentApp",
-    "analyticsApp",
-    "cmsApp",
-    "oerApp",
-    "otherApp",
-  ]
-}
+import { getFavs, subCategories, targetGroups, targetGroupTypes } from './dataUtils';
 
 export const filterSection = {
   categoryFilter: ['service', 'hardware', 'media', 'app'],
   subCategoryFilter: Object.assign({}, subCategories),
+  targetGroupFilter: ['private', 'institution'],
+  targetGroupTagsFilter: Object.assign({}, targetGroups)
 };
 
 const Store = createStore({
@@ -53,8 +15,10 @@ const Store = createStore({
     districts: []
   },
   categories: ['app', 'service', 'media', 'hardware'],
+  targetGroupTypes: ['institution', 'private'],
   data: null,
   info: null,
+  local: false,
   detailData: false,
   selectedData: false,
   mapCenter: [13.4124999, 52.5040961],

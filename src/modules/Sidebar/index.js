@@ -11,7 +11,7 @@ import SidebarFilter from './SidebarFilter';
 
 const SidebarWrapper = styled.div`
   display: block;
-  background: #fefefe;
+  background: #ffffff;
   display: flex;
   box-shadow: ${props => (props.isVisible ? props.theme.boxShadow : 'none')};
   z-index: 1000;
@@ -24,6 +24,7 @@ const SidebarWrapper = styled.div`
   margin: 12px;
   max-width: 370px;
   -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 `;
 
 const SidebarContent = styled.div`

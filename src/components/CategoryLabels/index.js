@@ -37,8 +37,6 @@ class CategoryLabels extends PureComponent {
       categories, colorizer, colorizerLight, type, className, category/*, hasBorder*/
     } = this.props;
 
-    console.log(type)
-
     if (category === 'targetGroup') {
       return (
         <CategoryLabelWrapper className={className}>

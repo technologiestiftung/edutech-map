@@ -4,7 +4,7 @@ import { connect } from 'unistore/react';
 
 import Actions from '~/state/Actions';
 
-import { getSubCategoryLabel } from '~/state/dataUtils';
+import { getTargetGroupLabel } from '~/state/dataUtils';
 
 const CategoryLabelWrapper = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const CategoryLabel = styled.div`
     position: absolute;
     height: 8px;
     width: 8px;
-    background: ${props => props.color};
+    background: ${ props => props.active ? `${props.color}` : `${props.colorLight}` };
     border-radius: 100%;
     border: 2px solid ${props => props.type == 'black' ? 'black' : 'white'};
     left: ${props => (props.hasBorder ? '3px' : "7px")};
@@ -43,37 +43,38 @@ const CategoryLabel = styled.div`
   }
 `;
 
-class SubCategoryTags extends PureComponent {
+class TargetGroupTags extends PureComponent {
 
-  onChange(subCat) {
-    const { category, toggleSubCategoryFilter, subCategoryFilter } = this.props;
-    toggleSubCategoryFilter(category, subCat);
+  onChange(groupTag) {
+    const { targetGroupType, toggleTargetGroupTagFilter } = this.props;
+    toggleTargetGroupTagFilter(targetGroupType, groupTag);
   }
 
   render() {
     const {
-      categories, 
-      colorizer, 
-      colorizerLight, 
-      type, 
-      className, 
-      category, 
+      targetGroupTypes,
+      colorizer,
+      targetGroups,
+      colorizerLight,
+      type,
+      className,
+      targetGroupType,
       filter,
     } = this.props;
 
-    const { subCategoryFilter } = filter;
+    const { targetGroupTagsFilter } = filter;
 
     return (
         <CategoryLabelWrapper className={className}>
-          {categories.map(subCategory => (
+          {targetGroups.map(type => (
             <CategoryLabel
-              key={`CategoryLabel__${subCategory}`}
-              color={colorizer(category)}
-              active={subCategoryFilter[category].includes(subCategory)}
-              onClick={() => this.onChange(subCategory)}
-              colorLight={colorizerLight(category)}
+              key={`CategoryLabel__${type}`}
+              color={'#000000'}
+              active={targetGroupTagsFilter[targetGroupType].includes(type)}
+              onClick={() => this.onChange(type)}
+              colorLight={'#E3E3E3'}
             >
-              {getSubCategoryLabel(category, subCategory)}
+              {getTargetGroupLabel(targetGroupType, type)}
             </CategoryLabel>
           ))}
         </CategoryLabelWrapper>
@@ -82,7 +83,8 @@ class SubCategoryTags extends PureComponent {
 }
 
 export default connect(state => ({
+  targetGroupTypes: state.targetGroupTypes,
   colorizer: state.colorizer,
   colorizerLight: state.colorizerLight,
   filter: state.filter
-}), Actions)(SubCategoryTags);
+}), Actions)(TargetGroupTags);

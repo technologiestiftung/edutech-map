@@ -51,10 +51,13 @@ const navConfig = [
 class Nav extends PureComponent {
 
   handleClick(path) { 
-    console.log(path)
+
     if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' ) {
       this.props.setSelectedData(false);
+      this.props.setDetailData(false)
+      this.props.setMapCenter([13.4124999, 52.5040961])
     }
+
   }
 
   render() {

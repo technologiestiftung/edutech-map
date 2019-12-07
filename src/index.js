@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'unistore/react';
 
@@ -10,10 +10,10 @@ const root = document.createElement('div');
 
 ReactDOM.render(
   <Provider store={Store}>
-    <>
+    <Fragment>
       <GlobalStyles />
       <App />
-    </>
+    </Fragment>
   </Provider>,
   root
 );
