@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink, withRouter, matchPath } from 'react-router-dom';
 
 import Actions from '~/state/Actions';
+import { unfilteredFilterSelector, initialFilterSelector } from '~/state/Selectors';
 
 import { connect } from 'unistore/react';
 
@@ -52,10 +53,17 @@ class Nav extends PureComponent {
 
   handleClick(path) { 
 
+    const { initialFilter, unfiltered } = this.props;
+
     if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' ) {
       this.props.setSelectedData(false);
       this.props.setDetailData(false)
       this.props.setMapCenter([13.4124999, 52.5040961])
+      this.props.setFilter(unfiltered)
+    }
+
+    if (path === 'Suche und Filter') {
+      this.props.setFilter(initialFilter)
     }
 
   }
@@ -87,5 +95,7 @@ class Nav extends PureComponent {
 }
 
 export default withRouter(connect(state => ({
-  detailData: state.detailData
+  detailData: state.detailData,
+  unfiltered: unfilteredFilterSelector(state),
+  initialFilter: initialFilterSelector(state)
 }), Actions)(Nav));

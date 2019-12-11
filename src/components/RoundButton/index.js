@@ -21,6 +21,6 @@ export default styled.button`
   box-sizing: border-box;
 
   &:hover {
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${props => props.theme.colors.textgrey};
   }
 `;

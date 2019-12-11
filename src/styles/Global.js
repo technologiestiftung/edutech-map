@@ -25,6 +25,10 @@ export default createGlobalStyle`
       font-style: normal;
   }
 
+  .mapbox-improve-map {
+      display: none;
+  }
+
   * {
     box-sizing: border-box;
   }

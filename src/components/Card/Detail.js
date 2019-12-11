@@ -113,7 +113,7 @@ class DetailCard extends PureComponent {
         <DetailHeader>
           <DetailTitle>{data.name}</DetailTitle>
           <FavButton
-            onClick={() => toggleFav(data.name)}
+            onClick={() => toggleFav(data.autoid)}
             active={isFav}
           >
             {isFav ? <UnFavIcon /> : <FavIcon />}

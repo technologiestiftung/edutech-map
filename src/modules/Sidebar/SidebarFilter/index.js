@@ -45,6 +45,7 @@ class SidebarFilter extends PureComponent {
           <TargetGroupFilter />
         </Fragment>
         )}
+        { (!detailData && selectedData) && (null) }
       </Fragment>
     );
   }

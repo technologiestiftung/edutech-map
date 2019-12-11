@@ -102,6 +102,13 @@ export const subCategories = {
   ]
 }
 
+export const subCategoriesEmpty = {
+  'service': [],
+  'hardware': [],
+  'media': [],
+  'app': []
+}
+
 export const targetGroupTypes = [
   'private', 'institution'
 ];
@@ -283,5 +290,6 @@ export default {
   filterTargetGroupTypes,
   filterTargetGroupTags,
   createMarkup,
-  objectSize
+  objectSize,
+  subCategoriesEmpty
 };

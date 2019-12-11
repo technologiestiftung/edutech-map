@@ -1,6 +1,6 @@
 import createStore from 'unistore';
 
-import { getFavs, subCategories, targetGroups, targetGroupTypes } from './dataUtils';
+import { getFavs, subCategories, subCategoriesEmpty, targetGroups, targetGroupTypes } from './dataUtils';
 import config from '../../config';
 
 export const filterSection = {

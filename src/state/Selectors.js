@@ -11,6 +11,7 @@ import {
   filterTargetGroupTypes,
   filterTargetGroupTags,
   sortData,
+  subCategoriesEmpty,
   objectSize
 } from './dataUtils';
 
@@ -21,6 +22,7 @@ const filterSelector = state => state.filter;
 const listSortingSelector = state => state.listSorting;
 const colorizerSelector = state => state.colorizer;
 const subCategoryListSelector = state => state.subCategoryList;
+const categoriesSelector = state => state.categories;
 const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
@@ -41,7 +43,19 @@ export const initialFilterSelector = createSelector(
   [filterSelector],
   (filter) => {
     return Object.assign({}, {
-    categoryFilter: cloneDeep(filterSection.categoryFilter),
+    categoryFilter: [],
+    subCategoryFilter: cloneDeep(subCategoriesEmpty),
+    targetGroupFilter: cloneDeep(targetGroupTypes),
+    targetGroupTagsFilter: cloneDeep(targetGroups)
+  })
+  }
+);
+
+export const unfilteredFilterSelector = createSelector(
+  [categoriesSelector, filterSelector],
+  (categories, filter) => {
+    return Object.assign({}, {
+    categoryFilter: cloneDeep(categories),
     subCategoryFilter: cloneDeep(subCategories),
     targetGroupFilter: cloneDeep(targetGroupTypes),
     targetGroupTagsFilter: cloneDeep(targetGroups)
@@ -153,9 +167,7 @@ export const filteredListDataSelector = createSelector(
         .map(feat => feat.properties)
         .sort(sortData(sortBy));
 
-      console.log(features);
       return features;
-
     }
   }
 );

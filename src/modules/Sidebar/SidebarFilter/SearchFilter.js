@@ -26,6 +26,8 @@ class SearchFilter extends PureComponent {
 
   onChange(item) {
     this.props.setDetailRoute(item ? item.autoid : false);
+    this.props.setDetailRouteWithListPath(item.autoid);
+    this.props.setSelectedData(true);
   }
 
   render() {
@@ -34,8 +36,8 @@ class SearchFilter extends PureComponent {
         <Select
           ref={(ref) => { this.select = ref; }}
           options={this.props.options}
-          getOptionValue={option => (option.location[0].address)} // set option.standort.initialAddress here later
-          getOptionLabel={option => (option.location[0].address)} // set option.name here later
+          getOptionValue={option => (option.name)} // set option.standort.initialAddress here later
+          getOptionLabel={option => (`${option.name} | ${option.location[0].address}`)} // set option.name here later
           onChange={item => this.onChange(item)}
           placeholder="Nach einer Einrichtung suchen..."
           classNamePrefix="rs"

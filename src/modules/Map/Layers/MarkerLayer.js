@@ -114,21 +114,26 @@ class MarkerLayer extends PureComponent {
   render() {
     const { data, detailData, highlightData } = this.props;
     const paintProps = getPaintProps(this.props);
-    const highlightFeat = data.features.find(
-      feat => highlightData && (feat.properties.name === highlightData.name)
-    );
+    let highlightFeat = false;
+    if (data) {
+      highlightFeat = data.features.find(
+        feat => highlightData && (feat.properties.name === highlightData.name)
+      );
+    }
 
     return (
       <Fragment>
-        <Layer
-          id="MarkerLayer"
-          type="circle"
-          paint={paintProps}
-          onMouseMove={evt => this.handleMouseMove(evt)}
-        >
-          {data.features.map((feat,i) => this.renderFeat(feat, i))}
-        </Layer>
-        {highlightFeat && (
+        { data && (
+          <Layer
+            id="MarkerLayer"
+            type="circle"
+            paint={paintProps}
+            onMouseMove={evt => this.handleMouseMove(evt)}
+          >
+            {data.features.map((feat,i) => this.renderFeat(feat, i))}
+          </Layer>
+        ) }
+        {data && highlightFeat && (
           <Layer
             id="HighlightLayer"
             type="circle"
