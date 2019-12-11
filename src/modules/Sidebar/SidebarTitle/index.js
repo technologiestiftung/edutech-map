@@ -7,6 +7,6 @@ export default styled.div`
   margin-bottom: ${props => props.theme.margin[2]};
   padding-left: ${props => props.theme.padding[1]};
   padding-top: ${props => props.theme.padding[0]};
-  line-height: 1;
+  line-height: 130%;
   padding-right: 45px;
 `;

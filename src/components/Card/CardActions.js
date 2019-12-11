@@ -33,13 +33,13 @@ const StyledUnFavIcon = styled(UnFavIcon)`
 class CardActions extends PureComponent {
   render() {
     const { data, toggleFav, favs } = this.props;
-    const isFav = favs.includes(data.name);
+    const isFav = favs.includes(data.autoid);
     const favButtonLabel = isFav ? 'aus den Favoriten entfernen' : 'zu den Favoriten';
 
     return (
       <CardActionsWrapper>
         <Button
-          onClick={() => toggleFav(data.name)}
+          onClick={() => toggleFav(data.autoid)}
           active={isFav}
         >
           {isFav ? <StyledUnFavIcon /> : <StyledFavIcon />}

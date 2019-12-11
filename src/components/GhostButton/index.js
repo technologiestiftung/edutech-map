@@ -7,6 +7,7 @@ export default styled.button`
   cursor: pointer;
   font-size: ${props => props.theme.fontSizes[0]};
   padding: 0;
+  padding-top: 8px;
   line-height: 1;
 
   &:hover {

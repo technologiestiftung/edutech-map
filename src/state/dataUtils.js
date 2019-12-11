@@ -2,6 +2,7 @@ import turfBbox from '@turf/bbox';
 import { scaleOrdinal } from 'd3-scale';
 const config = require('../../config.json');
 import Store from 'store';
+import idx from 'idx';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
@@ -15,6 +16,50 @@ export const getCategoryLabel = (value) => {
     "hardware": "Hardware"
   };
   return categoryDict[value];
+}
+
+export const sortData = (sortBy, direction = 'asc') => (aObj, bObj) => {
+  const a = idx(aObj, _ => _[sortBy]);
+  const b = idx(bObj, _ => _[sortBy]);
+  const type = typeof a;
+
+  if (type === 'string' && direction === 'asc') {
+    return a.localeCompare(b);
+  }
+
+  if (type === 'string' && direction === 'dec') {
+    return b.localeCompare(a);
+  }
+
+  if (type === 'boolean' && direction === 'asc') {
+    return (a === b) ? 0 : a ? -1 : 1; // eslint-disable-line
+  }
+
+  if (type === 'boolean' && direction === 'dec') {
+    return (a === b) ? 0 : a ? 1 : -1; // eslint-disable-line
+  }
+
+  return direction === 'asc' ? a - b : b - a;
+};
+
+export const createMarkup = (content) => {
+  return {__html: content};
+}
+
+export const objectSize = (obj) => {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+const replaceAll = (str, find, replace) => {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+
+export const addLineBreaks = (content) => {
+  return replaceAll(content, ',', ',</br>');
 }
 
 export const subCategories = {
@@ -236,5 +281,7 @@ export default {
   getTargetGroupLabel,
   getTargetGroupType,
   filterTargetGroupTypes,
-  filterTargetGroupTags
+  filterTargetGroupTags,
+  createMarkup,
+  objectSize
 };

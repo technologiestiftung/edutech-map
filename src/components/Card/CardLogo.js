@@ -13,7 +13,7 @@ const CardLogoWrapper = styled.div`
 
 const CardImage = styled.div`
   display: block;
-  width: 90px;
+  width: 120px;
   height: 70px;
   background-image: ${props => `url(${props.src.replace(/\s/g, '%20')})`};
   background-position: center;

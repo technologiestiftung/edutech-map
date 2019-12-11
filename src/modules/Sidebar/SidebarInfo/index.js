@@ -3,6 +3,7 @@ import { connect } from 'unistore/react';
 import styled from 'styled-components';
 
 import Actions from '~/state/Actions';
+import { createMarkup } from '~/state/dataUtils';
 import { dataAsArraySelector } from '~/state/Selectors'
 
 import CardCompact from '~/components/Card/CardCompact';
@@ -23,10 +24,6 @@ const ListItems = styled.div``;
 
 class SidebarInfo extends PureComponent {
 
-  createMarkup(content) {
-    return {__html: content};
-  }
-
   render() {
     const { content } = this.props;
 
@@ -34,9 +31,9 @@ class SidebarInfo extends PureComponent {
       return (
         <Fragment>
           <SidebarTitle>Über das Projekt</SidebarTitle>
-          <StyledParagraph dangerouslySetInnerHTML={this.createMarkup(content.introtext)}></StyledParagraph>
+          <StyledParagraph dangerouslySetInnerHTML={createMarkup(content.introtext)}></StyledParagraph>
           <Logo/>
-          <StyledParagraph dangerouslySetInnerHTML={this.createMarkup(content.contacttext)}></StyledParagraph>
+          <StyledParagraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></StyledParagraph>
           <SidebarLinks data={content.links}/>
         </Fragment>
       )

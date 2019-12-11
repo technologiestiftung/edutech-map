@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import { createMarkup, addLineBreaks } from '~/state/dataUtils';
+
 const CardParagraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,14 +23,19 @@ const CardParagraphWrapper = styled.div`
 `;
 
 class CardParagraph extends PureComponent {
+
   render() {
-    const { label, data, type } = this.props;
-    
+    let { label, data, type } = this.props;
+
+    if (label == 'Adresse:') {
+      data = addLineBreaks(data);
+    }
+
     if (data.length > 0) {
       return (
         <CardParagraphWrapper type={type}>
           <span>{label}</span>
-          <h3>{data}</h3>
+          <h3 dangerouslySetInnerHTML={createMarkup(data)}></h3>
         </CardParagraphWrapper>
       )
     } else {

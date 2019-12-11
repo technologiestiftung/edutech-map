@@ -73,6 +73,11 @@ class CardBody extends PureComponent {
   render() {
     const { data, targetGroups } = this.props;
     const logoUrl = idx(data, _ => _.logo[0].url);
+    const website = idx(data, _ => _.contact[0].website);
+    const address = idx(data, _ => _.contact[0].address);
+    const email = idx(data, _ => _.contact[0].email);
+    const phone = idx(data, _ => _.contact[0].address);
+    const openingHours = idx(data, _ => _.contact[0].openingHours);
     // const openingHours = detailData.openingHours && new SimpleOpeningHours(detailData.openingHours);
     // const hasSocial = (
     //   detailData.twitter
@@ -83,62 +88,15 @@ class CardBody extends PureComponent {
 
     return (
       <CardBodyWrapper className={this.props.className}>
-
+        { logoUrl && <CardLogo label='Logo:' data={logoUrl}></CardLogo> }
         <CardParagraph type="bold" label='Adresse:' data={data.location[0].address}></CardParagraph>
-        <CardLink label='Webseite:' data={data.contact[0].website}></CardLink>
+        { website && <CardLink label='Webseite:' data={website}></CardLink> }
+        { email && <CardLink type="mailto:" label='E-Mail:' data={email}></CardLink> }
+        { phone && <CardParagraph label='Telefon:' data={phone}></CardParagraph> }
+        { phone && <CardParagraph label='Telefon:' data={phone}></CardParagraph> }
+        { openingHours && <CardParagraph label='Öffnungszeiten:' data={openingHours}></CardParagraph> }
         <CardParagraph label='Beschreibung:' data={data.description}></CardParagraph>
-        { (logoUrl) && <CardLogo label='Logo:' data={logoUrl}></CardLogo> }
         <CardTags label="Zielgruppen:"></CardTags>
-{/* 
-        {detailData.description && (
-          <CardBodySection>
-            <Description>{detailData.description}</Description>
-          </CardBodySection>
-        )}
-
-        {detailData.website && (
-          <CardBodySection>
-            <CardSectionLeft>Website</CardSectionLeft>
-            <WebsiteLinkContainer>
-              <WebsiteLink href={detailData.website} target="_blank" rel="noopener noreferrer">
-                {formatWebsite(detailData.website)}
-              </WebsiteLink>
-            </WebsiteLinkContainer>
-          </CardBodySection>
-        )}
-
-        {hasSocial && (
-          <CardBodySection>
-            <CardSectionLeft>Socialmedia</CardSectionLeft>
-            <CardSectionRight>
-              <SocialMedia data={detailData} />
-            </CardSectionRight>
-          </CardBodySection>
-        )}
-
-        <CardBodySection>
-          <CardSectionLeft>Öffnungszeiten</CardSectionLeft>
-          <CardSectionRight>
-            <OpeningHours data={detailData.openingHours ? openingHours.getTable() : null} />
-          </CardSectionRight>
-        </CardBodySection>
-
-        {detailData.transportation && (
-          <CardBodySection>
-            <CardSectionLeft>ÖPNV</CardSectionLeft>
-            <CardSectionRight>
-              <Transportation data={detailData.transportation} />
-            </CardSectionRight>
-          </CardBodySection>
-        )}
-
-        <CardBodySection>
-          <CardSectionLeft>Barrierefreiheit</CardSectionLeft>
-          <CardSectionRight>
-            <Accessibility data={detailData} />
-          </CardSectionRight>
-        </CardBodySection> */}
-
       </CardBodyWrapper>
     );
   }

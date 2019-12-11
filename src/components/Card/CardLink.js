@@ -37,12 +37,12 @@ function formatWebsite(str) {
 
 class CardParagraph extends PureComponent {
   render() {
-    const { label, data } = this.props;
+    const { label, data, type } = this.props;
     if (data.length > 0) {
       return (
         <CardParagraphWrapper>
           <span>{label}</span>
-          <WebsiteLink href={data} target="_blank" rel="noopener noreferrer">
+          <WebsiteLink href={`${type}${data}`} target="_blank" rel="noopener noreferrer">
             <h3>{formatWebsite(data)}</h3>
           </WebsiteLink>
         </CardParagraphWrapper>

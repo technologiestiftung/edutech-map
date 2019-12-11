@@ -55,6 +55,7 @@ const CardImage = styled.div`
 
 const DetailHeader = styled.div`
   display: flex;
+  width: 250px;
   flex-direction: row;
 `;
 
@@ -101,7 +102,7 @@ class DetailCard extends PureComponent {
   render() {
     const { data, favs, toggleFav } = this.props;
 
-    const isFav = favs.includes(data.name);
+    const isFav = favs.includes(data.autoid);
 
     if (!data) {
       return null;

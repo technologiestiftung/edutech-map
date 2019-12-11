@@ -243,6 +243,10 @@ const setFilter = (state, filter) => ({
   filter
 });
 
+const setListSorting = (state, listSorting) => ({
+  listSorting
+});
+
 const setZoom = (state, mapZoom) => ({
   mapZoom
 });
@@ -296,5 +300,6 @@ export default (Store) => ({
   toggleTargetGroupTagFilter,
   toggleTargetGroupTypeFilter,
   setMapCenter,
+  setListSorting,
   loadEntryData: loadEntryData(Store)
 });

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import FavIcon from '@material-ui/icons/FavoriteBorder';
 import UnFavIcon from '@material-ui/icons/Favorite';
 
+import { createMarkup } from '~/state/dataUtils';
 import CategoryLabels from '~/components/CategoryLabels';
 import Button from '~/components/GhostButton';
 import Actions from '~/state/Actions';
@@ -99,12 +100,12 @@ class CardHeader extends PureComponent {
           <CardHeaderLeft onClick={() => this.handleClick(data)} >
             <CardTitle type={type}>{data.name}</CardTitle>
             <StyledCategoryLabels categories={data.categoriesSelected} type={type} category={data.category} /*hasBorder={teaserUrl}*/ />
-            <CardAddress type={type}>{data.location[0].address}</CardAddress>
+            <CardAddress dangerouslySetInnerHTML={createMarkup(data.location[0].address)} type={type}></CardAddress>
           </CardHeaderLeft>
           <CardHeaderRight>
             {isListMode && (
               <FavButton
-                onClick={() => toggleFav(data.name)}
+                onClick={() => toggleFav(data.autoid)}
                 active={isFav}
               >
                 {isFav ? <UnFavIcon /> : <FavIcon />}

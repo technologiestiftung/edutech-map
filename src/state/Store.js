@@ -24,6 +24,7 @@ const Store = createStore({
   selectedData: false,
   mapCenter: config.position,
   mapZoom: config.zoom,
+  listSorting: 'name',
   subCategoryList: Object.assign({}, subCategories),
   subCategories: [],
   highlightData: false,

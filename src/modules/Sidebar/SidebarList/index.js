@@ -3,14 +3,14 @@ import { connect } from 'unistore/react';
 import styled from 'styled-components';
 
 import Actions from '~/state/Actions';
-import { dataAsArraySelector } from '~/state/Selectors'
+import { filteredListDataSelector, dataAsArraySelector } from '~/state/Selectors'
 
 import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
 import Button from '~/components/GhostButton';
 import SidebarTitle from '../SidebarTitle';
 
-// import Sorter from './Sorter';
+import Sorter from './Sorter';
 // import ResetFilter from '../SidebarFilter/ResetFilter';
 
 const DetailTitle = styled(SidebarTitle)`
@@ -54,6 +54,7 @@ class SidebarList extends PureComponent {
         { !selectedData && (
           <Fragment>
             <SidebarTitle><strong>{data.length}</strong> Institutionen gefunden.</SidebarTitle>
+            <Sorter />
             <ListItems>
               {data.map((d,i) => (
                 <CardCompact
@@ -74,7 +75,8 @@ class SidebarList extends PureComponent {
 };
 
 export default connect(state => ({
-  data: dataAsArraySelector(state),
+  data: filteredListDataSelector(state),
+  // data: dataAsArraySelector(state),
   selectedData: state.selectedData,
   detailData: state.detailData
 }), Actions)(SidebarList);

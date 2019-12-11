@@ -19,8 +19,6 @@ const loadEntryDataAction = Store.action(loadEntryData(Store));
 function syncLocation(state, location) {
   const parsedQuery = queryString.parse(location.search);
 
-  console.log(location)
-
   if (!parsedQuery.location) {
     return {
       detailData: false,

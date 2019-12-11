@@ -9,13 +9,16 @@ import {
   targetGroupTypes,
   targetGroups,
   filterTargetGroupTypes,
-  filterTargetGroupTags
+  filterTargetGroupTags,
+  sortData,
+  objectSize
 } from './dataUtils';
 
 const dataSelector = state => state.data;
 const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
 const filterSelector = state => state.filter;
+const listSortingSelector = state => state.listSorting;
 const colorizerSelector = state => state.colorizer;
 const subCategoryListSelector = state => state.subCategoryList;
 const colorizerLightSelector = state => state.colorizerLight;
@@ -95,7 +98,7 @@ export const enrichedDataSelector = createSelector(
           properties.targetGroupTypesFilter = filterTargetGroupTypes(properties, filter.targetGroupFilter)
           properties.targetGroupTagsPrivateFilter = filterTargetGroupTags(properties, filter.targetGroupTagsFilter, 'private')
           properties.targetGroupTagsInstitutionFilter = filterTargetGroupTags(properties, filter.targetGroupTagsFilter, 'institution')
-          properties.isFav = favs.includes(properties.name);
+          properties.isFav = favs.includes(properties.autoid);
           properties.color = colorizer(properties.category);
           properties.colorLight = colorizerLight(properties.category);
           properties.isFiltered = false;
@@ -127,6 +130,32 @@ export const filteredDataSelector = createSelector(
         })
         // .sort(sortData('properties.isFiltered', 'dec'));
       return Object.assign({}, data, { features });
+    } else {
+      return {};
+    }
+  }
+);
+
+export const filteredListDataSelector = createSelector(
+  [filteredDataSelector, listSortingSelector],
+  (data, sortBy) => {
+    if (!data) {
+      return [];
+    }
+
+    if (objectSize(data) > 0) {
+
+      let features = data.features.filter(feat => (
+        !feat.properties.isFiltered)
+      );
+
+      features = features
+        .map(feat => feat.properties)
+        .sort(sortData(sortBy));
+
+      console.log(features);
+      return features;
+
     }
   }
 );
@@ -166,6 +195,7 @@ export const favoritesSelector = createSelector(
 export default {
   dataAsArraySelector,
   targetGroupsArraySelector,
+  filteredListDataSelector,
   favoritesSelector,
   enrichedDataSelector,
   tagsCountSelector
