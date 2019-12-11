@@ -73,7 +73,9 @@ export const loadEntryData = Store => async (state, detailId) => {
         }
       })
 
-      const filtered = all.filter(i => i.name === detailId)[0];
+      const filtered = all.filter(i => i.autoid === detailId)[0];
+
+      console.log(detailId)
 
       const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
 

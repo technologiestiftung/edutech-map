@@ -103,7 +103,7 @@ class MarkerLayer extends PureComponent {
     evt.originalEvent.preventDefault();
     evt.originalEvent.stopPropagation();
 
-    this.props.setDetailRouteWithListPath(properties.name);
+    this.props.setDetailRouteWithListPath(properties.autoid);
     this.props.setSelectedData(true);
   }
 

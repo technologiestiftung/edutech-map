@@ -77,7 +77,7 @@ class CardHeader extends PureComponent {
 
   handleClick = (d) => {
     const { setDetailRoute, setSelectedData } = this.props;
-    setDetailRoute(d.name);
+    setDetailRoute(d.autoid);
     setSelectedData(true);
   }
 
@@ -90,7 +90,7 @@ class CardHeader extends PureComponent {
       isListMode
     } = this.props;
 
-    const isFav = favs.includes(data.name);
+    const isFav = favs.includes(data.autoid);
 
 
     return (

@@ -46,6 +46,29 @@ export const initialFilterSelector = createSelector(
   }
 );
 
+export const tagsCountSelector = createSelector(
+  [dataSelector],
+  (data) => {
+    if (data) {
+      const features = data.features;
+      const obj = {};
+      features.map(feat => {
+        const { properties } = feat;
+        const { subCategoriesSelected, category, name } = properties;
+
+        subCategoriesSelected.forEach(item => {
+          if (subCategories[category].includes(item)) {
+            !obj[item] ? obj[item] = 1 : obj[item] += 1
+          }
+        })
+      })
+      return obj
+    } else {
+      return false;
+    }
+  }
+)
+
 export const enrichedDataSelector = createSelector(
   [
     dataSelector,
@@ -78,7 +101,6 @@ export const enrichedDataSelector = createSelector(
           properties.isFiltered = false;
           return feat;
       });
-      console.log(features)
       return Object.assign({}, data, { features });
     }
     }
@@ -145,5 +167,6 @@ export default {
   dataAsArraySelector,
   targetGroupsArraySelector,
   favoritesSelector,
-  enrichedDataSelector
+  enrichedDataSelector,
+  tagsCountSelector
 };

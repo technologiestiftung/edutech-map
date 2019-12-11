@@ -5,6 +5,7 @@ import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
 
 import { getSubCategoryLabel } from '~/state/dataUtils';
+import { tagsCountSelector } from '~/state/Selectors';
 
 const CategoryLabelWrapper = styled.div`
   display: flex;
@@ -57,8 +58,9 @@ class SubCategoryTags extends PureComponent {
       colorizerLight, 
       type, 
       className, 
-      category, 
+      category,
       filter,
+      tagsCount
     } = this.props;
 
     const { subCategoryFilter } = filter;
@@ -73,7 +75,8 @@ class SubCategoryTags extends PureComponent {
               onClick={() => this.onChange(subCategory)}
               colorLight={colorizerLight(category)}
             >
-              {getSubCategoryLabel(category, subCategory)}
+              { getSubCategoryLabel(category, subCategory) }
+              { tagsCount && (` (${tagsCount[subCategory]})`) }
             </CategoryLabel>
           ))}
         </CategoryLabelWrapper>
@@ -83,6 +86,7 @@ class SubCategoryTags extends PureComponent {
 
 export default connect(state => ({
   colorizer: state.colorizer,
+  tagsCount: tagsCountSelector(state),
   colorizerLight: state.colorizerLight,
   filter: state.filter
 }), Actions)(SubCategoryTags);

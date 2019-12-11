@@ -29,7 +29,7 @@ class SidebarList extends PureComponent {
 
   handleClick = (d) => {
     const { setDetailRoute, setSelectedData } = this.props;
-    setDetailRoute(d.name);
+    setDetailRoute(d.autoid);
     setSelectedData(true);
   }
 
