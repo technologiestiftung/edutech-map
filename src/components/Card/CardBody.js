@@ -76,15 +76,8 @@ class CardBody extends PureComponent {
     const website = idx(data, _ => _.contact[0].website);
     const address = idx(data, _ => _.contact[0].address);
     const email = idx(data, _ => _.contact[0].email);
-    const phone = idx(data, _ => _.contact[0].address);
-    const openingHours = idx(data, _ => _.contact[0].openingHours);
-    // const openingHours = detailData.openingHours && new SimpleOpeningHours(detailData.openingHours);
-    // const hasSocial = (
-    //   detailData.twitter
-    //   || detailData.facebook
-    //   || detailData.instagram
-    //   || detailData.youtube
-    // );
+    const phone = idx(data, _ => _.contact[0].phone);
+    const openingHours = idx(data, _ => _.contact[0].openinghours);
 
     return (
       <CardBodyWrapper className={this.props.className}>
@@ -92,9 +85,8 @@ class CardBody extends PureComponent {
         <CardParagraph type="bold" label='Adresse:' data={data.location[0].address}></CardParagraph>
         { website && <CardLink label='Webseite:' data={website}></CardLink> }
         { email && <CardLink type="mailto:" label='E-Mail:' data={email}></CardLink> }
-        { phone && <CardParagraph label='Telefon:' data={phone}></CardParagraph> }
-        { phone && <CardParagraph label='Telefon:' data={phone}></CardParagraph> }
-        { openingHours && <CardParagraph label='Öffnungszeiten:' data={openingHours}></CardParagraph> }
+        { phone && <CardParagraph type="bold" label='Telefon:' data={phone}></CardParagraph> }
+        { openingHours && <CardParagraph type="bold" label='Öffnungszeiten:' data={openingHours}></CardParagraph> }
         <CardParagraph label='Beschreibung:' data={data.description}></CardParagraph>
         <CardTags label="Zielgruppen:"></CardTags>
       </CardBodyWrapper>

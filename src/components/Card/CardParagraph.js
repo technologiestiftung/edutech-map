@@ -6,7 +6,7 @@ import { createMarkup, addLineBreaks } from '~/state/dataUtils';
 const CardParagraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${props => props.theme.margin[2]};
+  margin-bottom: ${props => props.theme.margin[1]};
   
   span {
     font-size: ${props => props.theme.fontSizes[0]};

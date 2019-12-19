@@ -25,6 +25,11 @@ export default createGlobalStyle`
       font-style: normal;
   }
 
+
+  mapboxgl-ctrl-logo {
+    display: none;
+  }
+
   .mapbox-improve-map {
       display: none;
   }

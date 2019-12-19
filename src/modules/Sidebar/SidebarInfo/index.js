@@ -8,17 +8,12 @@ import { dataAsArraySelector } from '~/state/Selectors'
 
 import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
-import Logo from '~/components/TSBLogo';
+import Logo from '~/components/beBerlinLogo';
+import LogoIBB from '~/components/IBBLogo';
+import Paragraph from '~/components/Paragraph';
 import SidebarTitle from '../SidebarTitle';
 import SidebarLinks from './SidebarInfoLinks';
 
-const StyledParagraph = styled.p`
-  padding-left: ${props => props.theme.padding[1]};
-  line-height: ${props => props.theme.lineHeight};
-  font-size: ${props => props.theme.fontSizes[1]};
-  color: ${props => props.theme.colors.textgrey};
-  margin-bottom: ${props => props.theme.margin[3]};
-`;
 
 const ListItems = styled.div``;
 
@@ -31,9 +26,10 @@ class SidebarInfo extends PureComponent {
       return (
         <Fragment>
           <SidebarTitle>Über das Projekt</SidebarTitle>
-          <StyledParagraph dangerouslySetInnerHTML={createMarkup(content.introtext)}></StyledParagraph>
+          <Paragraph dangerouslySetInnerHTML={createMarkup(content.introtext)}></Paragraph>
           <Logo/>
-          <StyledParagraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></StyledParagraph>
+          <LogoIBB/>
+          <Paragraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></Paragraph>
           <SidebarLinks data={content.links}/>
         </Fragment>
       )
@@ -41,7 +37,7 @@ class SidebarInfo extends PureComponent {
       return (
         <Fragment>
           <SidebarTitle>Über das Projekt</SidebarTitle>
-          <StyledParagraph>Lade Inhalte ...</StyledParagraph>
+          <Paragraph>Lade Inhalte ...</Paragraph>
         </Fragment>
       )
     }

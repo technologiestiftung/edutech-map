@@ -7,6 +7,7 @@ import { favoritesSelector } from '~/state/Selectors';
 
 import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
+import Paragraph from '~/components/Paragraph';
 
 import SidebarTitle from '../SidebarTitle';
 
@@ -38,12 +39,15 @@ class SidebarList extends PureComponent {
 
     return (
       <Fragment>
-        { (selectedData && detailData) && (
+        { (data && selectedData && detailData) && (
           <DetailCard data={detailData}/>
         ) }
-        { !selectedData && (
+        { data && !selectedData && (
           <Fragment>
             <SidebarTitle>Favoriten</SidebarTitle>
+            <Paragraph>
+              Bitte beachten Sie, dass wir aus Datenschutzgründen keine Daten speichern, sobald Sie die Website verlassen werden Ihre Favoriten gelöscht.
+            </Paragraph>
             <ListItems>
               {!data.length && <EmptyFavorites />}
               {data.map(d => (

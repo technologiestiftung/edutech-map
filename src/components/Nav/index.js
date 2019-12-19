@@ -7,6 +7,8 @@ import { unfilteredFilterSelector, initialFilterSelector } from '~/state/Selecto
 
 import { connect } from 'unistore/react';
 
+import config from '../../../config';
+
 import ListIcon from '@material-ui/icons/List';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import FavIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -51,20 +53,35 @@ const navConfig = [
 
 class Nav extends PureComponent {
 
-  handleClick(path) { 
+  handleClick(path) {
 
-    const { initialFilter, unfiltered } = this.props;
+    const {
+      initialFilter,
+      unfiltered,
+      setFilter,
+      setMapCenter,
+      resetDetailRoute,
+      setDetailData,
+      setSelectedData,
+      setHighlightData,
+      mapCenter
+    } = this.props;
 
     if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' ) {
-      this.props.setSelectedData(false);
-      this.props.setDetailData(false)
-      this.props.setMapCenter([13.4124999, 52.5040961])
-      this.props.setFilter(unfiltered)
+      setFilter(unfiltered)
     }
 
     if (path === 'Suche und Filter') {
-      this.props.setFilter(initialFilter)
+      setFilter(initialFilter)
     }
+
+    setMapCenter(config.position);
+    setDetailData(false)
+    setSelectedData(false);
+    setHighlightData(false);
+    resetDetailRoute();
+
+    console.log(mapCenter)
 
   }
 
@@ -96,6 +113,7 @@ class Nav extends PureComponent {
 
 export default withRouter(connect(state => ({
   detailData: state.detailData,
+  mapCenter: state.mapCenter,
   unfiltered: unfilteredFilterSelector(state),
   initialFilter: initialFilterSelector(state)
 }), Actions)(Nav));

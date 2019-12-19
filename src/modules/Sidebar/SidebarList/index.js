@@ -51,7 +51,7 @@ class SidebarList extends PureComponent {
         { (selectedData && detailData) && (
           <DetailCard data={detailData} />
         ) }
-        { !selectedData && (
+        { data && !selectedData && (
           <Fragment>
             <SidebarTitle><strong>{data.length}</strong> Institutionen gefunden.</SidebarTitle>
             <Sorter />

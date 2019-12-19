@@ -15,7 +15,7 @@ const CardParagraphWrapper = styled.div`
 
   h3 {
     font-size: ${props => props.theme.fontSizes[1]};
-    padding: ${props => props.theme.padding[1]} 0 0 0;
+    padding: ${props => props.theme.padding[0]} 0 0 0;
     margin: 0 15px 0 0;
     line-height: ${props => props.theme.lineHeight};
     font-family: ${props => props.theme.fonts.sansBold};
@@ -42,7 +42,7 @@ class CardParagraph extends PureComponent {
       return (
         <CardParagraphWrapper>
           <span>{label}</span>
-          <WebsiteLink href={`${type}${data}`} target="_blank" rel="noopener noreferrer">
+          <WebsiteLink href={`${data}`} target="_blank" rel="noopener noreferrer">
             <h3>{formatWebsite(data)}</h3>
           </WebsiteLink>
         </CardParagraphWrapper>

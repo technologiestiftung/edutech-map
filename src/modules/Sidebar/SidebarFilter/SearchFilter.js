@@ -11,6 +11,7 @@ const SearchFilterWrapper = styled.div`
   font-size: ${props => props.theme.fontSizes[1]};
   padding-left: ${props => props.theme.padding[1]};
   padding-right: ${props => props.theme.margin[1]};
+  font-family: ${props => props.theme.fonts.sans};
 
   .rs__clear-indicator {
     cursor: pointer;

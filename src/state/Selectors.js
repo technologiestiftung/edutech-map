@@ -106,6 +106,7 @@ export const enrichedDataSelector = createSelector(
         .map((feat) => {
           const { properties } = feat;
           feat.properties = properties;
+          console.log(properties);
           properties.nameStr = properties.name.replace(' ', '').replace('-', '')
           properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
           properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
@@ -135,14 +136,9 @@ export const filteredDataSelector = createSelector(
             feat.properties.targetGroupTypesFilter ||
             feat.properties.targetGroupTagsPrivateFilter &&
             feat.properties.targetGroupTagsInstitutionFilter
-            /* || feat.properties.districtFilter
-            || feat.properties.locationFilter 
-            || feat.properties.a11yFilter
-            || feat.properties.fundedFilter */
           );
           return feat;
         })
-        // .sort(sortData('properties.isFiltered', 'dec'));
       return Object.assign({}, data, { features });
     } else {
       return {};
@@ -180,7 +176,11 @@ export const targetGroupsArraySelector = createSelector(
       const keysOther = ['targetgroupinstituionother', 'targetgroupprivateother'];
 
       let arr = keys.map(key => {
-        return data[key].map(val => (val.text));
+        return data[key].map(val => {
+          if (val.text != 'Keine' || val.text != 'Andere') {
+            return val.text
+          }
+        });
       })
 
       keysOther.forEach(key => {

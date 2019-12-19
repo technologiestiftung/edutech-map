@@ -6,7 +6,7 @@ const TSBLogo = styled.a.attrs({
     href: 'https://technologiestiftung-berlin.de',
     target: '_blank'
   })`
-  padding-left: ${props => props.theme.padding[1]};
+  padding-top: ${props => props.theme.padding[1]};
 
   img {
     width: 150px;

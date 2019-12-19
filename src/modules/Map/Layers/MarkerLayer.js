@@ -68,7 +68,7 @@ class MarkerLayer extends PureComponent {
       <Feature
         coordinates={feat.geometry.coordinates}
         key={`feat-${i}`}
-        onClick={evt => (isMobile ? noop() : this.timeoutClick(evt, feat))}
+        onClick={evt => (this.timeoutClick(evt, feat))} // isMobile ? noop() : 
         onMouseEnter={evt => this.handleMouseEnter(evt, feat)}
         onMouseLeave={evt => this.handleMouseLeave(evt)}
         onTouchStart={evt => this.handleClick(evt)}

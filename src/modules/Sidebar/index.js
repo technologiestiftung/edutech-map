@@ -25,6 +25,10 @@ const SidebarWrapper = styled.div`
   max-width: 370px;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
+
+  @media screen and (max-width: 600px) {
+    z-index: 10000;
+  }
 `;
 
 const SidebarContent = styled.div`

@@ -16,27 +16,33 @@ const createArray = (d, type) => {
 }
 
 const createTargetGroupTags = (d) => {
-  let arr = ['private', 'institution', 'institutionother', 'privateother'];
+  let arr = ['private', 'instituion', 'instituionother', 'privateother'];
   arr = arr.map(key => {
     const concattedKey = `targetgroup${key}`;
     if (d[concattedKey]) {
-      return d[concattedKey].map(d => (d['value']))
-    } else {
-      return [];
+      if (typeof d[concattedKey] === 'object') {
+        return d[concattedKey].map(d => (d['value']))
+      } else if (typeof d[concattedKey] === String && d[concattedKey] != undefined) {
+        return d[concattedKey];
+      } else {
+        return [];
+      }
     }
   })
-
   return arr.flat()
 }
 
 const checkTargetGroups = (d) => {
   let arr = [];
-  if (d['targetgroupinstituion'].length > 0) {
-     arr.push('institution')
-  }
+  if (d) {
+    if (d['targetgroupinstituion'] && d['targetgroupinstituion'].length > 0) {
+      arr.push('institution')
+    }
 
-  if (d['targetgroupprivate'].length > 0) {
-    arr.push('private');
+    if (d['targetgroupprivate'] && d['targetgroupprivate'].length > 0) {
+      arr.push('private');
+    }
+
   }
   return arr;
 }
@@ -74,9 +80,6 @@ export const loadEntryData = Store => async (state, detailId) => {
       })
 
       const filtered = all.filter(i => i.autoid === detailId)[0];
-
-      console.log(detailId)
-
       const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
 
       if (isNaN(coordinates[1])) {
@@ -162,6 +165,17 @@ const setDetailRoute = (state, id = false) => {
     detailData: false,
   };
 };
+
+const resetDetailRoute = (state, id = false) => {
+
+  history.push('');
+
+  return {
+    detailData: false,
+  };
+};
+
+
 
 const setDetailRouteWithListPath = (state, id = false) => {
   if (id) {
@@ -291,6 +305,7 @@ export default (Store) => ({
   setTooltipPos,
   toggleFav,
   setZoom,
+  resetDetailRoute,
   setSelectedData,
   setDetailRoute,
   setDetailRouteWithListPath,

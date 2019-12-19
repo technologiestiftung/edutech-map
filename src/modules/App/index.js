@@ -26,8 +26,6 @@ function syncLocation(state, location) {
     };
   }
 
-  console.log(parsedQuery.location)
-
   loadEntryDataAction(parsedQuery.location);
 
   return {};

@@ -6,6 +6,7 @@ import ReactMapboxGl from 'react-mapbox-gl';
 
 import FilterView from './MapViews/FilterView';
 import Tooltip from '../Tooltip';
+import LogoTile from './Other/LogoTile';
 
 import Actions from '~/state/Actions';
 const config = require('../../../config.json');
@@ -67,19 +68,15 @@ class Map extends PureComponent {
                 <MapGL
                     zoom={mapZoom}
                     center={mapCenter}
-                    // bearing={mapConfig.bearing}
                     style={config.map.style} // eslint-disable-line
                     containerStyle={{ height: '100%', width: '100%' }}
                     onStyleLoad={map => this.onStyleLoad(map)}
                     flyToOptions={config.map.flyToOptions}
-                    // onData={map => this.onData(map)}
-                    // fitBounds={districtBounds}
-                    // maxBounds={mapConfig.maxBounds}
-                    // onMoveEnd={() => this.onMoveEnd()}
                 >
                     <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
                     <Tooltip />
                 </MapGL>
+                <LogoTile/>
             </MapWrapper>
         )
     }

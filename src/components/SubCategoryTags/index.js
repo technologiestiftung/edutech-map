@@ -53,11 +53,11 @@ class SubCategoryTags extends PureComponent {
 
   render() {
     const {
-      categories, 
-      colorizer, 
-      colorizerLight, 
-      type, 
-      className, 
+      categories,
+      colorizer,
+      colorizerLight,
+      type,
+      className,
       category,
       filter,
       tagsCount
@@ -69,18 +69,20 @@ class SubCategoryTags extends PureComponent {
         <CategoryLabelWrapper className={className}>
           {categories.map(subCategory => {
             const count = tagsCount[subCategory] === undefined ? '0' : tagsCount[subCategory];
-            return (
-              <CategoryLabel
-                key={`CategoryLabel__${subCategory}`}
-                color={colorizer(category)}
-                active={subCategoryFilter[category].includes(subCategory)}
-                onClick={() => this.onChange(subCategory)}
-                colorLight={colorizerLight(category)}
-              >
-                { getSubCategoryLabel(category, subCategory) }
-                { tagsCount && (` (${count})`) }
-              </CategoryLabel>
-            )
+            if ( count > 0 ) {
+              return (
+                <CategoryLabel
+                  key={`CategoryLabel__${subCategory}`}
+                  color={colorizer(category)}
+                  active={subCategoryFilter[category].includes(subCategory)}
+                  onClick={() => this.onChange(subCategory)}
+                  colorLight={colorizerLight(category)}
+                >
+                  { getSubCategoryLabel(category, subCategory) }
+                  { tagsCount && (` (${count})`) }
+                </CategoryLabel>
+              )
+            }
           })}
         </CategoryLabelWrapper>
     );
