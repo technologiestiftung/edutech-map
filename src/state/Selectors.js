@@ -12,6 +12,7 @@ import {
   filterTargetGroupTags,
   sortData,
   subCategoriesEmpty,
+  filterDistricts,
   objectSize
 } from './dataUtils';
 
@@ -19,6 +20,7 @@ const dataSelector = state => state.data;
 const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
 const filterSelector = state => state.filter;
+const additionalDataSelector = state => state.additionalData;
 const listSortingSelector = state => state.listSorting;
 const colorizerSelector = state => state.colorizer;
 const subCategoryListSelector = state => state.subCategoryList;
@@ -93,20 +95,28 @@ export const enrichedDataSelector = createSelector(
     filterSelector,
     colorizerSelector,
     colorizerLightSelector,
+    additionalDataSelector
   ],
   (
     data,
     favs,
     filter,
     colorizer,
-    colorizerLight
+    colorizerLight,
+    additionalData
   ) => {
     if (data) {
       const features = data.features
         .map((feat) => {
           const { properties } = feat;
           feat.properties = properties;
-          console.log(properties);
+
+          properties.districtFilter = filterDistricts(
+            feat,
+            filter.districtFilter,
+            additionalData.districts
+          );
+
           properties.nameStr = properties.name.replace(' ', '').replace('-', '')
           properties.categoryFilter = filterCategories(properties, filter.categoryFilter);
           properties.subCategoryFilter = filterSubCategories(properties, filter.subCategoryFilter);
@@ -117,6 +127,9 @@ export const enrichedDataSelector = createSelector(
           properties.color = colorizer(properties.category);
           properties.colorLight = colorizerLight(properties.category);
           properties.isFiltered = false;
+
+          console.log(properties);
+
           return feat;
       });
       return Object.assign({}, data, { features });

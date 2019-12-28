@@ -3,7 +3,7 @@ import config from "../../config";
 import base64 from "base-64";
 import history from '~/history';
 import xor from 'lodash.xor';
-import { isMobile } from '~/utils';
+import { isMobile, fetchTopoJSON } from '~/utils';
 import { getUniqueSubCategories, getColorizer, setFavs, targetGroups } from './dataUtils';
 
 const createArray = (d, type) => {
@@ -153,6 +153,26 @@ export const setHighlightData = (state, highlightData) => {
   return { highlightData };
 };
 
+const loadFilterData = Store => async () => {
+  Store.setState({ isLoading: true });
+
+  try {
+    const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
+    console.log('inside load filter data')
+    console.log(districts)
+
+    return {
+      additionalData: {
+        ...Store.getState().additionalData,
+        districts
+      },
+      isLoading: false
+    };
+  } catch (err) {
+    return { isLoading: false };
+  }
+};
+
 const setDetailRoute = (state, id = false) => {
   if (id) {
     const nextLocation = isMobile ? `/?location=${id}` : `?location=${id}`;
@@ -200,6 +220,13 @@ const setTooltipData = (state, tooltipData) => (
 
 const setTooltipPos = (state, tooltipPos) => (
   { tooltipPos }
+);
+
+const setDistrictFilter = (state, districtFilter) => (
+  {
+    filter: Object.assign({}, state.filter, { districtFilter }),
+    detailData: false
+  }
 );
 
 const toggleFav = (state, favId) => {
@@ -305,6 +332,7 @@ export default (Store) => ({
   setTooltipPos,
   toggleFav,
   setZoom,
+  setDistrictFilter,
   resetDetailRoute,
   setSelectedData,
   setDetailRoute,
@@ -316,5 +344,6 @@ export default (Store) => ({
   toggleTargetGroupTypeFilter,
   setMapCenter,
   setListSorting,
-  loadEntryData: loadEntryData(Store)
+  loadEntryData: loadEntryData(Store),
+  loadFilterData: loadFilterData(Store)
 });

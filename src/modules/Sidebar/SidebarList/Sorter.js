@@ -16,6 +16,11 @@ const SorterWrapper = styled.div`
 
 const StyledSelect = styled(Select)`
   margin-bottom: ${props => props.theme.margin[0]};
+
+  option {
+    font-family: 'Verdana';
+    font-size: 12px;
+  }
 `;
 
 class Sorter extends PureComponent {

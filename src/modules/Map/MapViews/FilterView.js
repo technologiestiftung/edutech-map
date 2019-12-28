@@ -11,6 +11,10 @@ import MarkerLayer from '../Layers/MarkerLayer';
 
 class FilterView extends PureComponent {
 
+  componentDidMount() {
+    this.props.loadFilterData();
+  }
+
   render() {
     const { data, detailData, isLoading } = this.props;
 

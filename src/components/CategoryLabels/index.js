@@ -5,6 +5,7 @@ import { connect } from 'unistore/react';
 const CategoryLabelWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 15px;
 `;
 
 const CategoryLabel = styled.div`

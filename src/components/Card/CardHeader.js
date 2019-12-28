@@ -93,7 +93,6 @@ class CardHeader extends PureComponent {
 
     const isFav = favs.includes(data.autoid);
 
-
     return (
       <Fragment>
         <CardHeaderWrapper>

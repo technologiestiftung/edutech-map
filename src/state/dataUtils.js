@@ -3,6 +3,7 @@ import { scaleOrdinal } from 'd3-scale';
 const config = require('../../config.json');
 import Store from 'store';
 import idx from 'idx';
+import pointInPolygon from '@turf/boolean-point-in-polygon';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
@@ -259,7 +260,6 @@ export const filterTargetGroupTypes = (props, targetGroupFilter) => {
   return !targetGroupFilter.some(cat => props.targetGroupsSelected.includes(cat));
 };
 
-
 export const filterTargetGroupTags = (props, targetGroupTagsFilter, type) => {
   if (!targetGroupTagsFilter[type] || !props) {
     return false;
@@ -268,12 +268,38 @@ export const filterTargetGroupTags = (props, targetGroupTagsFilter, type) => {
   return !targetGroupTagsFilter[type].some(cat => props.targetGroupTagsSelectedArr.includes(cat));
 }
 
+export const mailTo = (name) => {
+  return `mailto:bildung@technologiestiftung-berlin.de?subject=Edutech Änderungswunsch: ${name}`
+}
 
+export const piwik = (_paq) => {
+  const u="https://piwik.technologiestiftung-berlin.de/";
+  _paq.push(['setTrackerUrl', u+'matomo.php']);
+  _paq.push(['setSiteId', '11']);
+  let d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; 
+  g.async=true; 
+  g.defer=true; 
+  g.src=u+'matomo.js'; 
+  s.parentNode.insertBefore(g,s);
 
+  return _paq;
+}
 
 export const getFavs = () => Store.get(config.localStorage.favKey) || [];
 
 export const setFavs = favs => Store.set(config.localStorage.favKey, favs);
+
+export const filterDistricts = (feature, districtFilter, districts) => {
+  if (!districts || !districtFilter) {
+    return false;
+  }
+
+  const polygon = districts.features
+    .find(feat => feat.properties.spatial_name === districtFilter);
+
+  return !pointInPolygon(feature, polygon);
+};
 
 export default {
   getColorizer,
@@ -287,9 +313,12 @@ export default {
   targetGroups,
   getTargetGroupLabel,
   getTargetGroupType,
+  piwik,
+  filterDistricts,
   filterTargetGroupTypes,
   filterTargetGroupTags,
   createMarkup,
   objectSize,
+  mailTo,
   subCategoriesEmpty
 };

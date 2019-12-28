@@ -3,6 +3,7 @@ import { connect } from 'unistore/react';
 import styled, { ThemeProvider } from 'styled-components';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { withRouter } from 'react-router-dom';
+import { piwik } from '~/state/dataUtils';
 
 import Theme from '~/styles/DefaultTheme';
 
@@ -26,6 +27,15 @@ const muiTheme = createMuiTheme({
 });
 
 class AppWrapper extends PureComponent {
+  componentDidMount() {
+    var _paq = [];
+    _paq.push(["setCookieDomain", "*.edutech.technologiestiftung-berlin.de"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    piwik(_paq)
+    window._paq = _paq;
+  }
+
   render() {
     return (
       <MuiThemeProvider theme={muiTheme}>

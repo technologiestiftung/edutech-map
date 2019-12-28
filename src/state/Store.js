@@ -5,6 +5,7 @@ import config from '../../config';
 
 export const filterSection = {
   categoryFilter: ['service', 'hardware', 'media', 'app'],
+  districtFilter: false,
   subCategoryFilter: Object.assign({}, subCategories),
   targetGroupFilter: ['private', 'institution'],
   targetGroupTagsFilter: Object.assign({}, targetGroups)
@@ -13,7 +14,7 @@ export const filterSection = {
 const Store = createStore({
   isLoading: true,
   additionalData: {
-    districts: []
+    districts: null
   },
   categories: ['app', 'service', 'media', 'hardware'],
   targetGroupTypes: ['institution', 'private'],

@@ -2,19 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 import idx from 'idx';
+import Actions from '~/state/Actions';
 
 import CardParagraph from './CardParagraph';
 import CardTags from './CardTags';
 import CardLink from './CardLink';
 import CardLogo from './CardLogo';
-
-// import { SimpleOpeningHours } from 'simple-opening-hours';
-
-// import OpeningHours from '~/components/OpeningHours';
-// import WebsiteLink from '~/components/Link';
-// import Accessibility from '~/components/Accessibility';
-// import Transportation from '~/components/Transportation';
-// import SocialMedia from '~/components/SocialMedia';
 
 const CardParagraphAddress = styled(CardParagraph)``;
 const CardParagraphWebsite = styled(CardParagraph)``;
@@ -71,13 +64,15 @@ function formatWebsite(str) {
 
 class CardBody extends PureComponent {
   render() {
-    const { data, targetGroups } = this.props;
+    const { data, targetGroups, favs, toggleFav } = this.props;
     const logoUrl = idx(data, _ => _.logo[0].url);
     const website = idx(data, _ => _.contact[0].website);
     const address = idx(data, _ => _.contact[0].address);
     const email = idx(data, _ => _.contact[0].email);
     const phone = idx(data, _ => _.contact[0].phone);
     const openingHours = idx(data, _ => _.contact[0].openinghours);
+
+    const isFav = favs.includes(data.autoid);
 
     return (
       <CardBodyWrapper className={this.props.className}>
@@ -95,5 +90,6 @@ class CardBody extends PureComponent {
 }
 
 export default connect(state => ({
-  detailData: state.detailData
-}))(CardBody);
+  detailData: state.detailData,
+  favs: state.favs
+}), Actions)(CardBody);

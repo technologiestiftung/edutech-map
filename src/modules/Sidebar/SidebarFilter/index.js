@@ -11,7 +11,7 @@ import TargetGroupFilter from './TargetGroupFilter';
 import DetailCard from '~/components/Card/Detail';
 import CardDivider from '~/components/Card/CardDivider';
 import SidebarSubtitle from '~/modules/Sidebar/SidebarSubtitle';
-// import DistrictFilter from './DistrictFilter';
+import DistrictFilter from './DistrictFilter';
 // import LocationFilter from './LocationFilter';
 
 const StyledDivider = styled(CardDivider)`
@@ -40,6 +40,9 @@ class SidebarFilter extends PureComponent {
           <StyledDivider />
           <SidebarSubtitle>Leistungsangebot</SidebarSubtitle>
           <CategoryFilter />
+          <StyledDivider />
+          <SidebarSubtitle>Bezirk</SidebarSubtitle>
+          <DistrictFilter />
           <StyledDivider />
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
           <TargetGroupFilter />
