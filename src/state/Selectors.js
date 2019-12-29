@@ -144,10 +144,11 @@ export const filteredDataSelector = createSelector(
       const features = data.features
         .map((feat) => {
           feat.properties.isFiltered = (
-            feat.properties.categoryFilter ||
-            feat.properties.subCategoryFilter ||
-            feat.properties.targetGroupTypesFilter ||
-            feat.properties.targetGroupTagsPrivateFilter &&
+            // feat.properties.categoryFilter ||
+            // feat.properties.subCategoryFilter ||
+            feat.properties.districtFilter ||
+            // feat.properties.targetGroupTypesFilter ||
+            feat.properties.targetGroupTagsPrivateFilter ||
             feat.properties.targetGroupTagsInstitutionFilter
           );
           return feat;

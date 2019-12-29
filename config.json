@@ -4,18 +4,7 @@
     "viewport": "width=device-width, initial-scale=1",
     "robots": "noindex,nofollow"
   },
-  "api": {
-    "username": "mail@fabiandinklage.com",
-    "password": "amd3200+",
-    "url": "https://edutech.fabiandinklage.com/rest/pages/institutions",
-    "urlLocal": "./public/data/offline/institutions.json",
-    "urlInfo": "https://edutech.fabiandinklage.com/rest/pages/info",
-    "urlInfoLocal": "./public/data/offline/info.json",
-    "urlStrapi": "http://localhost:1337/institutions/"
-  },
   "map": {
-    "token": "pk.eyJ1IjoiZmRua2xnIiwiYSI6ImNqeXptazB6czAzM3QzY215bG4xZ242dHEifQ.5ovP53lbKKEVb0OghgtQig",
-    "style": "mapbox://styles/fdnklg/ck2z00nir0hft1cphm2dvt6ol",
     "flyToOptions": {
       "speed": 2
     }

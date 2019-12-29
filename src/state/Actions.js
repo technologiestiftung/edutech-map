@@ -109,17 +109,17 @@ export const loadDataApi = (Store) => async () => {
 
   const credentials = {
     headers: new Headers({
-    "Authorization": `Basic ${base64.encode(`${config.api.username}:${config.api.password}`)}`
+    "Authorization": `Basic ${base64.encode(`${process.env.API_USER}:${process.env.API_PW}`)}`
     })
   }
 
   try {
 
-    const data = await fetch(config.api.url, credentials)
+    const data = await fetch(process.env.API_URL, credentials)
       .then(json => json.json())
       .then(d => { return d.data.content.institution })
 
-    const content = await fetch(config.api.urlInfo, credentials)
+    const content = await fetch(process.env.API_URL_INFO, credentials)
       .then(json => json.json())
       .then(d => { return d.data.content })
 

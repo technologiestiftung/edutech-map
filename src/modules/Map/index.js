@@ -20,7 +20,7 @@ const mapConfig = {
       [10, 50],
       [15, 54]
     ],
-    accessToken: config.map.token
+    accessToken: process.env.MAP_TOKEN
   };
 
   const MapGL = ReactMapboxGl({ ...mapConfig });
@@ -68,7 +68,7 @@ class Map extends PureComponent {
                 <MapGL
                     zoom={mapZoom}
                     center={mapCenter}
-                    style={config.map.style} // eslint-disable-line
+                    style={process.env.MAP_STYLE} // eslint-disable-line
                     containerStyle={{ height: '100%', width: '100%' }}
                     onStyleLoad={map => this.onStyleLoad(map)}
                     flyToOptions={config.map.flyToOptions}
