@@ -47,8 +47,9 @@ const CategoryLabel = styled.div`
 class SubCategoryTags extends PureComponent {
 
   onChange(subCat) {
-    const { category, toggleSubCategoryFilter, subCategoryFilter } = this.props;
+    const { category, toggleSubCategoryFilter, setActiveFilter, subCategoryFilter } = this.props;
     toggleSubCategoryFilter(category, subCat);
+    setActiveFilter('category');
   }
 
   render() {
@@ -58,6 +59,8 @@ class SubCategoryTags extends PureComponent {
       colorizerLight,
       type,
       className,
+      activeFilter,
+      setActiveFilter,
       category,
       filter,
       tagsCount,
@@ -93,5 +96,6 @@ export default connect(state => ({
   colorizer: state.colorizer,
   tagsCount: tagsCountSelector(state),
   colorizerLight: state.colorizerLight,
-  filter: state.filter
+  filter: state.filter,
+  activeFilter: state.activeFilter,
 }), Actions)(SubCategoryTags);

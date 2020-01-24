@@ -16,18 +16,20 @@ let geojson = {
 
 const layoutDistrictText = {
   'text-field': ['get', 'alias'],
-  'text-offset': [0, 5.5],
-  'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-  'text-radial-offset': 0.5,
+  'text-offset': [0, 0],
+  'text-font': ['Clan Book','Clan Bold'],
+  // 'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+  // 'text-radial-offset': 0.5,
   'text-justify': 'auto',
   // 'icon-image': ['concat', ['get', 'icon'], '-15']
 }
 
 const layoutCountText = {
   'text-field': ['get', 'count'],
-  'text-offset': [0, 0.5],
+  'text-offset': [0, 2],
+  'text-font': ['Clan Book','Clan Bold'],
   'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-  'text-radial-offset': 0.5,
+  // 'text-radial-offset': 0.5,
   'text-justify': 'auto',
   // 'icon-image': ['concat', ['get', 'icon'], '-15']
 }
@@ -41,9 +43,8 @@ const paintProps = {
 }
 
 const symbolPaint = {
-  'text-color': 'red'
+  'text-color': 'black'
 }
-
 
 class LabelLayer extends PureComponent {
 
@@ -87,7 +88,7 @@ class LabelLayer extends PureComponent {
             data={geojson}
             id="LabelLayer"
             paint={paintProps}
-            minZoom={0}
+            minZoom={9}
             maxZoom={10}
             symbolLayout={layoutDistrictText}
             symbolPaint={symbolPaint}
@@ -97,7 +98,7 @@ class LabelLayer extends PureComponent {
             data={geojson}
             id="LabelCountLayer"
             paint={paintProps}
-            minZoom={0}
+            minZoom={9}
             maxZoom={10}
             symbolLayout={layoutCountText}
             symbolPaint={symbolPaint}

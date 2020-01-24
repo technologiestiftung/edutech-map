@@ -11,7 +11,6 @@ import Button from '~/components/GhostButton';
 import SidebarTitle from '../SidebarTitle';
 
 import Sorter from './Sorter';
-// import ResetFilter from '../SidebarFilter/ResetFilter';
 
 const DetailTitle = styled(SidebarTitle)`
   margin-bottom: ${props => props.theme.padding[0]};
@@ -76,7 +75,6 @@ class SidebarList extends PureComponent {
 
 export default connect(state => ({
   data: filteredListDataSelector(state),
-  // data: dataAsArraySelector(state),
   selectedData: state.selectedData,
   detailData: state.detailData
 }), Actions)(SidebarList);

@@ -9,9 +9,10 @@ import Theme from '~/styles/DefaultTheme';
 
 import Map from '~/modules/Map';
 import Spinner from '~/components/Spinner';
-import MapTitle from '~/components/MapTitle';
+// import MapTitle from '~/components/MapTitle';
 import Nav from '~/components/Nav';
 import Sidebar from '~/modules/Sidebar';
+import UIMap from '../../components/UIMap/';
 
 const StyledAppWrapper = styled.div`
   width: 100vw;
@@ -43,10 +44,11 @@ class AppWrapper extends PureComponent {
         <ThemeProvider theme={Theme}>
           <StyledAppWrapper>
             <Spinner loading={this.props.isLoading}/>
+            {/* <UIMap /> */}
             <Nav />
             <Sidebar />
             <Map />
-            <MapTitle>EduTechMap Berlin</MapTitle>
+            {/* <MapTitle>EduTechMap Berlin</MapTitle> */}
           </StyledAppWrapper>
         </ThemeProvider>
       </MuiThemeProvider>

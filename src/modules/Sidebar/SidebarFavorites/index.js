@@ -46,7 +46,7 @@ class SidebarList extends PureComponent {
           <Fragment>
             <SidebarTitle>Favoriten</SidebarTitle>
             <Paragraph>
-              Bitte beachten Sie, dass wir aus Datenschutzgründen keine Daten speichern. Gespeicherte Favoriten werden lediglich lokal im Cahce ihres Browsers hinterlegt. Sobald Sie diesen leeren werden Ihre Favoriten gelöscht.
+              Bitte beachten Sie, dass wir aus Datenschutzgründen keine Daten speichern. Gespeicherte Favoriten werden lediglich lokal im Cache ihres Browsers hinterlegt. Sobald Sie diesen leeren werden Ihre Favoriten gelöscht.
             </Paragraph>
             <ListItems>
               {!data.length && <EmptyFavorites />}

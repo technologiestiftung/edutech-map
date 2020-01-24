@@ -19,6 +19,7 @@ import {
 } from './dataUtils';
 
 const dataSelector = state => state.data;
+const activeFilterSelector = state => state.activeFilter;
 const detailDataSelector = state => state.detailData;
 const favsSelector = state => state.favs;
 const filterSelector = state => state.filter;
@@ -91,8 +92,8 @@ export const tagsCountTargetGroupSelector = createSelector(
           })
         }
 
-        delete objPrivate.none;
-        delete objInstitution.none;
+        // delete objPrivate.none;
+        // delete objInstitution.none;
 
       })
       return { private: objPrivate, institution: objInstitution }
@@ -172,19 +173,30 @@ export const enrichedDataSelector = createSelector(
 )
 
 export const filteredDataSelector = createSelector(
-  [enrichedDataSelector],
-  (data) => {
+  [enrichedDataSelector, activeFilterSelector],
+  (data, activeFilter) => {
     if (data) {
       const features = data.features
         .map((feat) => {
-          feat.properties.isFiltered = (
-            feat.properties.districtFilter
-            // feat.properties.categoryFilter
-            // || feat.properties.subCategoryFilter
-            // || feat.properties.tar/getGroupTypesFilter
-            // feat.properties.targetGroupTagsPrivateFilter
-            // feat.properties.targetGroupTagsInstitutionFilter
-          );
+
+            let filter = 'category';
+
+            switch(activeFilter) {
+              case 'category':
+                filter = feat.properties.categoryFilter || feat.properties.subCategoryFilter;
+                break;
+              case 'district':
+                filter = feat.properties.districtFilter;
+                break;
+              case 'target':
+                filter = feat.properties.targetGroupTypesFilter || feat.properties.targetGroupTagsPrivateFilter && feat.properties.targetGroupTagsInstitutionFilter
+                break;
+              default:
+                filter = 'category';
+                break;
+            }
+
+            feat.properties.isFiltered = (filter);
           return feat;
         })
       return Object.assign({}, data, { features });
@@ -225,9 +237,7 @@ export const targetGroupsArraySelector = createSelector(
 
       let arr = keys.map(key => {
         return data[key].map(val => {
-          if (val.text != 'Keine' || val.text != 'Andere') {
             return val.text
-          }
         });
       })
 

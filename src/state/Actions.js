@@ -289,6 +289,10 @@ const toggleCategoryFilter = (state, category, deactivate = false) => {
   return { filter };
 };
 
+const setActiveFilter = (state, activeFilter) => ({
+  activeFilter
+});
+
 const setFilter = (state, filter) => ({
   filter
 });
@@ -348,6 +352,7 @@ export default (Store) => ({
   setDetailRouteWithListPath,
   setHighlightData,
   toggleCategoryFilter,
+  setActiveFilter,
   toggleSubCategoryFilter,
   toggleTargetGroupTagFilter,
   toggleTargetGroupTypeFilter,

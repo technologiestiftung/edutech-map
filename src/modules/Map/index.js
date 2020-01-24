@@ -16,7 +16,7 @@ import Actions from '~/state/Actions';
 const config = require('../../../config.json');
 
 const mapConfig = {
-    minZoom: 8,
+    minZoom: 9.5,
     maxZoom: 17,
     dragRotate: false,
     bearing: 0,

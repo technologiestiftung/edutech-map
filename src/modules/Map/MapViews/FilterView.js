@@ -16,8 +16,6 @@ class FilterView extends PureComponent {
   render() {
     const { data, detailData, isLoading, labels } = this.props;
 
-    console.log(labels, 'asldkjaslkdj')
-
     if (data) {
       return (
         <Fragment>

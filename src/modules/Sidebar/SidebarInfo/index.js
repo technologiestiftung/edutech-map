@@ -27,7 +27,15 @@ const SidebarInfo = (p) => {
   if (content) {
     return (
       <Fragment>
-        <SidebarTitle>Über das Projekt</SidebarTitle>
+        <SidebarTitle>EduTechMap Berlin</SidebarTitle>
+        
+        <SidebarInfoParagraph 
+          title={content.abouttitle}
+          text={content.about}
+          intro={content.aboutintro}
+          active={activeP}
+          id={1}
+        ></SidebarInfoParagraph>
 
         <SidebarInfoParagraph 
           title={content.worktitle}
@@ -38,9 +46,9 @@ const SidebarInfo = (p) => {
         ></SidebarInfoParagraph>
         
         <SidebarInfoParagraph 
-          title={content.abouttitle}
-          text={content.about}
-          intro={content.aboutintro}
+          title={content.systitle}
+          text={content.sys}
+          intro={content.sysintro}
           active={activeP}
           id={1}
         ></SidebarInfoParagraph>

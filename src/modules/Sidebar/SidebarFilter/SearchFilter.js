@@ -20,9 +20,6 @@ const SearchFilterWrapper = styled.div`
 
 class SearchFilter extends PureComponent {
   componentDidUpdate(prevProps) {
-    // if (!this.props.detailData && prevProps.detailData) {
-    //   this.select.select.clearValue();
-    // }
   }
 
   onChange(item) {

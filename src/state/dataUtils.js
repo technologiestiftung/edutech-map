@@ -12,9 +12,9 @@ export const getDistrictBounds = districtFeature => (
 
 export const getCategoryLabel = (value) => {
   const categoryDict = {
-    "service": "Services / Plattformen / Dienstleistungen",
-    "app": "Lehr- & Lernmaterial – Software / Apps",
-    "media": "Lehr- & Lernmaterial – Audiovisuelle Medien",
+    "service": "Service / Plattform / Dienstleistung",
+    "app": "Lehr- & Lernmaterial – Software/Apps",
+    "media": "Lehr- & Lernmaterial – Audiovis. Medien",
     "hardware": "Hardware"
   };
   return categoryDict[value];
@@ -122,15 +122,22 @@ export const targetGroups = {
     "lifelong",
     "pupils",
     "students",
-    "elementaryPupils",
     "other",
     "none",
+    "pupilsgs",
+    "pupilsgstwo",
+    "pupilsgssec",
+    "pupilsgssectwo",
+    "afternoon",
   ],
   'institution': [
     "eduAdministration",
     "eduInstitution",
     "coworking",
     "uni",
+    "kita",
+    "schoolinst",
+    "uniinst",
     "incubator",
     "network",
     "company",
@@ -150,25 +157,31 @@ export const getTargetGroupType = (value) => {
 export const getTargetGroupLabel = (type, group) => {
   const dict = {
     'institution': {
-      eduAdministration: "Bildungsadministration",
-      eduInstitution: "Bildungsinstitution",
-      coworking: "Coworking Space",
-      uni: "Hochschule",
-      incubator: "Inkubator",
-      network: "Netzwerk",
-      company: "Unternehmen",
+      administration: "Administration",
+      libraries: "Bibliotheken",
+      eduInstitutions: "Bildungsinstitutionen",
+      museum: "Museen",
+      educators: "Pädagog*innen",
+      companies: "Unternehmen",
+      inititatives: "Vereine / Initiativen",
       other: "Andere",
-      none: "Nein"
+      kita: "Kita/Vorschule",
+      schoolinst: "Schule",
+      uniinst: "Hochschule",
     },
     'private': {
       family: "Familie",
       preschool: "Kita/Vorschule",
       lifelong: "Lifelong Learning",
       pupils: "Schüler",
+      pupilsgs: "Schüler GS 1-3",
+      pupilsgstwo: "Schüler GS 4-6",
+      pupilsgssec: "Schüler SEK I",
+      pupilsgssectwo: "Schüler SEK II",
+      afternoon: "Nachmittagsbereich",
       students: "Studierende",
-      elementaryPupils: "Grundschule 1-3",
       other: "Andere",
-      none: "Keine"
+      none: "Keine",
     }
   }
   return dict[type][group];

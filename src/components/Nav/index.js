@@ -75,14 +75,10 @@ class Nav extends PureComponent {
       setFilter(initialFilter)
     }
 
-    setMapCenter(config.position);
     setDetailData(false)
     setSelectedData(false);
     setHighlightData(false);
     resetDetailRoute();
-
-    console.log(mapCenter)
-
   }
 
   render() {

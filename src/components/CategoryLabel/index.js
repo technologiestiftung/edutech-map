@@ -7,7 +7,7 @@ import { getCategoryLabel } from '~/state/dataUtils'
 const CardParagraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${props => props.theme.margin[2]};
+  margin-bottom: 10px;
 
   span {
     font-size: ${props => props.theme.fontSizes[0]};

@@ -46,6 +46,10 @@ const NotFoundRoute = () => (
 );
 
 class App extends Component {
+  componentWillMount() {
+    history.push('/info');
+  }
+
   render() {
     return (
       <Router history={history}>

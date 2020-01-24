@@ -12,8 +12,14 @@ import SubCategoryTags from '~/components/SubCategoryTags'
 
 import Actions from '~/state/Actions';
 
+import CategoryLabel from '~/components/CategoryLabel';
+
 const CategoryFilterWrapper = styled.div`
   margin-left: ${props => props.theme.margin[0]};
+`;
+
+const StyledFormGroup = styled(FormGroup)`
+  opacity: ${p => p.active === 'category' ? 1 : .5};
 `;
 
 const StyledCheckbox = withStyles({
@@ -26,15 +32,11 @@ const StyledCheckbox = withStyles({
 })(Checkbox);
 
 const StyledFormControlLabel = withStyles({
-  root: {
-    marginBottom: '10px'
-  },
   label: {
     fontSize: '13px',
-    fontFamily: 'Clan Book'
+    fontFamily: 'Clan Book',
   },
 })(FormControlLabel);
-
 
 
 class CategoryFilter extends Component {
@@ -50,26 +52,33 @@ class CategoryFilter extends Component {
   }
 
   onChange(category) {
+    const { setActiveFilter } = this.props;
     this.props.toggleCategoryFilter(category);
     this.setState({
       [category]: !this.state[category]
     })
+    setActiveFilter('category')
+  }
+
+  handleClick() {
+    setActiveFilter('category')
   }
 
   render() {
-    const { categories, subCategoryList, filter } = this.props;
+    const { categories, subCategoryList, filter, activeFilter, setActiveFilter } = this.props;
 
     return (
-      <FormGroup aria-label="position" row>
+      <StyledFormGroup active={activeFilter} aria-label="position" row>
       { categories.map((category,i) => {
         return (
           <CategoryFilterWrapper key={`CategoryFilter__${i}__${category}`}>
             <StyledFormControlLabel
               value={category}
+              color="green"
               checked={filter.categoryFilter.includes(category)}
               onClick={() => {this.onChange(category)}}
               control={<StyledCheckbox color="default"/>}
-              label={getCategoryLabel(category)}
+              label={<CategoryLabel label={() => { getCategoryLabel(category) }} category={category} color="default"/>} // getCategoryLabel(category)
               labelPlacement="end"
             />
             { filter.categoryFilter.includes(category) &&
@@ -82,7 +91,7 @@ class CategoryFilter extends Component {
           </CategoryFilterWrapper>
         )
       }) }
-      </FormGroup>
+      </StyledFormGroup>
     )
   }
 }
@@ -92,4 +101,5 @@ export default connect(state => ({
   subCategoryList: state.subCategoryList,
   colorizer: state.colorizer,
   filter: state.filter,
+  activeFilter: state.activeFilter,
 }), Actions)(CategoryFilter);

@@ -12,8 +12,9 @@ import TargetGroupTags from '~/components/TargetGroupTags'
 
 import Actions from '~/state/Actions';
 
-const CategoryFilterWrapper = styled.div`
+const TargetGroupFilterWrapper = styled.div`
   margin-left: ${props => props.theme.margin[0]};
+  opacity: ${p => p.active === 'target' ? 1 : .5};
 `;
 
 const StyledCheckbox = withStyles({
@@ -43,17 +44,19 @@ class CategoryFilter extends Component {
   }
 
   onChange(type) {
+    const { setActiveFilter } = this.props;
     this.props.toggleTargetGroupTypeFilter(type);
+    setActiveFilter('target');
   }
 
   render() {
-    const { targetGroupTypes, filter } = this.props
+    const { targetGroupTypes, filter, activeFilter, setActiveFilter } = this.props
 
     return (
       <FormGroup aria-label="position" row>
       { targetGroupTypes.map((type,i) => {
         return (
-          <CategoryFilterWrapper key={`TargetGroupFilter__${i}__${type}`}>
+          <TargetGroupFilterWrapper active={activeFilter} key={`TargetGroupFilter__${i}__${type}`}>
             <StyledFormControlLabel
               value={type}
               checked={filter.targetGroupFilter.includes(type)}
@@ -69,7 +72,7 @@ class CategoryFilter extends Component {
                 targetGroupType={type}
               />
             }
-          </CategoryFilterWrapper>
+          </TargetGroupFilterWrapper>
         )
       }) }
       </FormGroup>
@@ -80,4 +83,5 @@ class CategoryFilter extends Component {
 export default connect(state => ({
   targetGroupTypes: state.targetGroupTypes,
   filter: state.filter,
+  activeFilter: state.activeFilter,
 }), Actions)(CategoryFilter);

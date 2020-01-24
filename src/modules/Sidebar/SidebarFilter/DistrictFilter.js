@@ -8,6 +8,7 @@ import Select from '~/components/Select';
 
 const DistrictFilterWrapper = styled.div`
   margin-bottom: ${props => props.theme.margin[2]};
+  opacity: ${p => p.active === 'district' ? 1 : .5};
 `;
 
 const StyledOption = styled.option`
@@ -32,13 +33,21 @@ const Option = (props) => {
 
 class DistrictFilter extends PureComponent {
   onChange(evt) {
+    const { setActiveFilter } = this.props;
+    setActiveFilter('district');
     let { value } = evt.target;
     if (evt.target.value === 'none') value = false;
     this.props.setDistrictFilter(value);
   }
 
+  handleClick() {
+    const { setActiveFilter } = this.props;
+    console.log('click!!')
+    setActiveFilter('district')
+  }
+
   render() {
-    const { districts, selectedDistrict, data } = this.props;
+    const { districts, selectedDistrict, data, activeFilter, setActiveFilter } = this.props;
 
     if (!districts || !data) {
       return null;
@@ -47,7 +56,7 @@ class DistrictFilter extends PureComponent {
     const selectValue = !selectedDistrict ? 'none' : selectedDistrict;
 
     return (
-      <DistrictFilterWrapper>
+      <DistrictFilterWrapper onClick={() => { this.handleClick() }} active={activeFilter}>
         <Select value={selectValue} onChange={evt => this.onChange(evt)}>
           <option key="DistrictOption__All" value="none">
             Alle Bezirke
@@ -65,5 +74,6 @@ class DistrictFilter extends PureComponent {
 
 export default connect(state => ({
   districts: state.additionalData.districts,
+  activeFilter: state.activeFilter,
   selectedDistrict: state.filter.districtFilter,
 }), Actions)(DistrictFilter);

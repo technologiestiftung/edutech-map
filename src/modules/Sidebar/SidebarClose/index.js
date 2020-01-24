@@ -21,8 +21,6 @@ const StyledLink = styled(Link)`
 class SidebarClose extends PureComponent {
   handleClick() {
     const { setDetailData, unfiltered, setFilter, setMapCenter, setZoom, setHighlightData } = this.props;
-    setZoom(config.zoom);
-    setMapCenter(config.position);
     setDetailData(false);
     setHighlightData(false);
     setFilter(unfiltered);

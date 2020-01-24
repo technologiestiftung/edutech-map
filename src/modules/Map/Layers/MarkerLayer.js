@@ -130,7 +130,7 @@ class MarkerLayer extends PureComponent {
             id="MarkerLayer"
             type="circle"
             paint={paintProps}
-            minZoom={10}
+            // minZoom={10}
             onMouseMove={evt => this.handleMouseMove(evt)}
           >
             {data.features.filter(d => !d.properties.isFiltered).map(feat => this.renderFeat(feat))}

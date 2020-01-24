@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment, useState } from 'react';
 import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
 import styled from 'styled-components';
@@ -22,10 +22,11 @@ const StyledDivider = styled(CardDivider)`
 `;
 
 
-class SidebarFilter extends PureComponent {
+const SidebarFilter = p => {
 
-  render() {
-    const { selectedData, detailData, instPerDistrict, isLoading } = this.props;
+    const { selectedData, detailData, instPerDistrict, isLoading } = p;
+    const [active, setActive] = useState(0)
+
     return (
       <Fragment>
         { (selectedData && detailData && instPerDistrict) && (
@@ -40,19 +41,18 @@ class SidebarFilter extends PureComponent {
           <SearchFilter />
           <StyledDivider />
           <SidebarSubtitle>Leistungsangebot</SidebarSubtitle>
-          <CategoryFilter />
+          <CategoryFilter active={active} />
           <StyledDivider />
           <SidebarSubtitle>Bezirk</SidebarSubtitle>
-          <DistrictFilter data={instPerDistrict}/>
+          <DistrictFilter active={active} data={instPerDistrict}/>
           <StyledDivider />
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
-          <TargetGroupFilter />
+          <TargetGroupFilter active={active} />
         </Fragment>
         )}
         { (!detailData && selectedData) && (null) }
       </Fragment>
     );
-  }
 }
 
 export default connect(state => ({

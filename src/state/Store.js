@@ -20,6 +20,7 @@ const Store = createStore({
   targetGroupTypes: ['institution', 'private'],
   data: null,
   info: null,
+  activeFilter: 'category',
   activeP: false,
   local: false,
   instPerDistrict: null,

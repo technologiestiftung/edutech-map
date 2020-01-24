@@ -10,6 +10,7 @@ import { tagsCountTargetGroupSelector } from '~/state/Selectors';
 const CategoryLabelWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  opacity: ${p => p.active === 'target' ? 1 : .5};
   margin-bottom: ${ props => props.theme.margin[2]};
 
   &::last-of-type {
@@ -47,8 +48,9 @@ const CategoryLabel = styled.div`
 class TargetGroupTags extends PureComponent {
 
   onChange(groupTag) {
-    const { targetGroupType, toggleTargetGroupTagFilter } = this.props;
+    const { targetGroupType, toggleTargetGroupTagFilter, activeFilter, setActiveFilter } = this.props;
     toggleTargetGroupTagFilter(targetGroupType, groupTag);
+    setActiveFilter('target');
   }
 
   render() {
@@ -61,13 +63,14 @@ class TargetGroupTags extends PureComponent {
       className,
       targetGroupType,
       filter,
+      activeFilter,
       tagsCountTargetGroup
     } = this.props;
 
     const { targetGroupTagsFilter } = filter;
 
     return (
-        <CategoryLabelWrapper className={className}>
+        <CategoryLabelWrapper active={activeFilter} className={className}>
           {targetGroups.map(t => {
 
             if (tagsCountTargetGroup) {
@@ -102,5 +105,6 @@ export default connect(state => ({
   colorizer: state.colorizer,
   colorizerLight: state.colorizerLight,
   filter: state.filter,
+  activeFilter: state.activeFilter,
   tagsCountTargetGroup: tagsCountTargetGroupSelector(state),
 }), Actions)(TargetGroupTags);
