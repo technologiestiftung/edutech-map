@@ -9,6 +9,7 @@ import Theme from '~/styles/DefaultTheme';
 
 import Map from '~/modules/Map';
 import Spinner from '~/components/Spinner';
+import MapTitle from '~/components/MapTitle';
 import Nav from '~/components/Nav';
 import Sidebar from '~/modules/Sidebar';
 
@@ -42,13 +43,10 @@ class AppWrapper extends PureComponent {
         <ThemeProvider theme={Theme}>
           <StyledAppWrapper>
             <Spinner loading={this.props.isLoading}/>
-
-          {/*  />
-            <Logo />
-            */}
             <Nav />
             <Sidebar />
             <Map />
+            <MapTitle>EduTechMap Berlin</MapTitle>
           </StyledAppWrapper>
         </ThemeProvider>
       </MuiThemeProvider>

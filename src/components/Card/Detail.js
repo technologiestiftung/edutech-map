@@ -60,7 +60,7 @@ const DetailHeader = styled.div`
 `;
 
 const DetailCardWrapper = styled(CardWrapper)`
-  display: flex;
+  display: block;
   flex-direction: column;
   padding-top: ${props => props.theme.padding[0]};
   padding-left: ${props => props.theme.padding[1]};

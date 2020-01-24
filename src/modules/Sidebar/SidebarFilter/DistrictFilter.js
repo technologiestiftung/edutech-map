@@ -10,17 +10,23 @@ const DistrictFilterWrapper = styled.div`
   margin-bottom: ${props => props.theme.margin[2]};
 `;
 
+const StyledOption = styled.option`
+  font-family: 'Verdana';
+  font-size: 12px;
+`;
+
 const Option = (props) => {
-  const label = props.spatial_alias;
-  const value = props.spatial_name;
+  const label = props.properties.alias;
+  const value = props.properties.id;
+  const count = props.properties.count;
 
   return (
-    <option
+    <StyledOption
       key={`DistrictOption__${value}`}
       value={value}
     >
-      {label}
-    </option>
+      {label} ({count})
+    </StyledOption>
   );
 };
 
@@ -32,9 +38,9 @@ class DistrictFilter extends PureComponent {
   }
 
   render() {
-    const { districts, selectedDistrict } = this.props;
+    const { districts, selectedDistrict, data } = this.props;
 
-    if (!districts) {
+    if (!districts || !data) {
       return null;
     }
 
@@ -46,9 +52,11 @@ class DistrictFilter extends PureComponent {
           <option key="DistrictOption__All" value="none">
             Alle Bezirke
           </option>
-          {districts.features.map(feat => (
-            <Option key={`DistrictOption__${feat.properties.spatial_alias}`} {...feat.properties} />
-          ))}
+          {data.map((feat, i) => {
+            return (
+              <Option key={`DistrictOption__${feat.properties.alias}`} {...feat} />
+            )
+            })}
         </Select>
       </DistrictFilterWrapper>
     );
@@ -57,5 +65,5 @@ class DistrictFilter extends PureComponent {
 
 export default connect(state => ({
   districts: state.additionalData.districts,
-  selectedDistrict: state.filter.districtFilter
+  selectedDistrict: state.filter.districtFilter,
 }), Actions)(DistrictFilter);

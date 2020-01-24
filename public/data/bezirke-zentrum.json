@@ -1,0 +1,64 @@
+{
+  "bezirke": [
+    {
+      "pos": [13.37148680997359,52.531165302281465],
+      "alias": "Mitte",
+      "id": "01"
+    },
+    {
+      "pos": [13.43659336733208,52.50578374818258],
+      "alias": "Friedrichshain-Kreuzberg",
+      "id": "02"
+    },
+    {
+      "pos": [13.434564, 52.595534],
+      "alias": "Pankow",
+      "id": "03"
+    },
+    {
+      "pos": [13.269062, 52.500762],
+      "alias": "Charlottenburg-Wilmersdorf",
+      "id": "04"
+    },
+    {
+      "pos": [13.189204, 52.541314],
+      "alias": "Spandau",
+      "id": "05"
+    },
+    {
+      "pos": [13.231952958804186,52.45262718180746],
+      "alias": "Steglitz-Zehlendorf",
+      "id": "06"
+    },
+    {
+      "pos": [13.386801, 52.448058],
+      "alias": "Tempelhof-Schöneberg",
+      "id": "07"
+    },
+    {
+      "pos": [13.441876, 52.445473],
+      "alias": "Neukölln",
+      "id": "08"
+    },
+    {
+      "pos": [13.588698, 52.437071],
+      "alias": "Treptow-Köpenick",
+      "id": "09"
+    },
+    {
+      "pos": [52.519429, 13.577873],
+      "alias": "Marzahn-Hellersdorf",
+      "id": "10"
+    },
+    {
+      "pos": [52.527965, 13.495480],
+      "alias": "Lichtenberg",
+      "id": "11"
+    },
+    {
+      "pos": [13.288315, 52.592611],
+      "alias": "Reinickendorf",
+      "id": "12"
+    }
+  ]
+}

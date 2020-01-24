@@ -46,12 +46,12 @@ class SidebarList extends PureComponent {
           <Fragment>
             <SidebarTitle>Favoriten</SidebarTitle>
             <Paragraph>
-              Bitte beachten Sie, dass wir aus Datenschutzgründen keine Daten speichern, sobald Sie die Website verlassen werden Ihre Favoriten gelöscht.
+              Bitte beachten Sie, dass wir aus Datenschutzgründen keine Daten speichern. Gespeicherte Favoriten werden lediglich lokal im Cahce ihres Browsers hinterlegt. Sobald Sie diesen leeren werden Ihre Favoriten gelöscht.
             </Paragraph>
             <ListItems>
               {!data.length && <EmptyFavorites />}
-              {data.map(d => (
-                <CardCompact onClick={() => this.handleClick(d)} key={d.id} data={d} />
+              {data.map((d,i) => (
+                <CardCompact onClick={() => this.handleClick(d)} key={`card-compact-key-${i}`} data={d} />
               ))}
             </ListItems>
           </Fragment>

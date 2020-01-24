@@ -4,6 +4,7 @@ const config = require('../../config.json');
 import Store from 'store';
 import idx from 'idx';
 import pointInPolygon from '@turf/boolean-point-in-polygon';
+import { fetchTopoJSON } from '~/utils';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
@@ -12,8 +13,8 @@ export const getDistrictBounds = districtFeature => (
 export const getCategoryLabel = (value) => {
   const categoryDict = {
     "service": "Services / Plattformen / Dienstleistungen",
-    "app": "Lehr- & Lernmaterial – Software / Apps (abgeschlossene Anwendung)",
-    "media": "Lehr- & Lernmaterial – Audiovisuelle Medien (Einzelprodukte)",
+    "app": "Lehr- & Lernmaterial – Software / Apps",
+    "media": "Lehr- & Lernmaterial – Audiovisuelle Medien",
     "hardware": "Hardware"
   };
   return categoryDict[value];
@@ -301,8 +302,36 @@ export const filterDistricts = (feature, districtFilter, districts) => {
   return !pointInPolygon(feature, polygon);
 };
 
+export const countInstPerDistrict = (districts, parsedData, districtsCenter) => {
+    let arr = [];
+    districts.features.forEach(district => {
+      const match = districtsCenter.bezirke.find(d => (d.id === district.properties.spatial_name));
+      const obj = {
+        id: district.properties.spatial_name,
+        coordinates: match.pos,
+        properties: {
+          id: district.properties.spatial_name,
+          alias: district.properties.spatial_alias,
+          count: 0,
+        }
+      }
+      arr.push(obj)
+    })
+
+    districts.features.forEach((district, i) => {
+      parsedData.features.forEach(feat => {
+        if (pointInPolygon(feat, district)) {
+          arr[i].properties.count += 1
+        }
+      })
+    })
+
+    return arr;
+}
+
 export default {
   getColorizer,
+  countInstPerDistrict,
   filterCategories,
   filterSubCategories,
   getUniqueSubCategories,

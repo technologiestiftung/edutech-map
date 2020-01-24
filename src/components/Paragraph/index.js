@@ -5,5 +5,5 @@ export default styled.p`
   line-height: ${props => props.theme.lineHeight};
   font-size: ${props => props.theme.fontSizes[1]};
   color: ${props => props.theme.colors.primary};
-  margin-bottom: ${props => props.theme.margin[3]};
+  margin-bottom: ${props => props.theme.margin[1]};
 `;

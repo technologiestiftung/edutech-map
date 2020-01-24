@@ -2,12 +2,10 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'unistore/react';
 
 import Actions from '~/state/Actions';
-import { filteredDataSelector } from '~/state/Selectors';
+import { filteredDataSelector, instPerDistrictSelector } from '~/state/Selectors';
 
-// import DistrictLayer from '../Layers/DistrictsLayer';
 import MarkerLayer from '../Layers/MarkerLayer';
-// import LocationFilterLayer from '../Layers/LocationFilterLayer';
-// import IsolineLayer from '../Layers/IsolineLayer';
+import LabelLayer from '../Layers/LabelLayer';
 
 class FilterView extends PureComponent {
 
@@ -16,15 +14,15 @@ class FilterView extends PureComponent {
   }
 
   render() {
-    const { data, detailData, isLoading } = this.props;
+    const { data, detailData, isLoading, labels } = this.props;
+
+    console.log(labels, 'asldkjaslkdj')
 
     if (data) {
       return (
         <Fragment>
-          {/* <DistrictLayer /> */}
           <MarkerLayer if={data && !isLoading} data={data} />
-          {/* {detailData && <IsolineLayer detailData={detailData} />} */}
-          {/* <LocationFilterLayer /> */}
+          <LabelLayer if={labels && !isLoading} data={labels} />
         </Fragment>
       );
     } else {
@@ -39,5 +37,6 @@ class FilterView extends PureComponent {
 
 export default connect(state => ({
   data: filteredDataSelector(state),
+  labels: instPerDistrictSelector(state),
   isLoading: state.isLoading
 }), Actions)(FilterView);

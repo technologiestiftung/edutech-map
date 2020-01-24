@@ -23,14 +23,15 @@ const StyledDivider = styled(CardDivider)`
 
 
 class SidebarFilter extends PureComponent {
+
   render() {
-    const { selectedData, detailData } = this.props;
+    const { selectedData, detailData, instPerDistrict, isLoading } = this.props;
     return (
       <Fragment>
-        { (selectedData && detailData) && (
+        { (selectedData && detailData && instPerDistrict) && (
           <DetailCard data={detailData}/>
         )}
-        { !selectedData && (
+        { !selectedData && !isLoading && (
         <Fragment>
           <SidebarTitle>
             Suche
@@ -42,7 +43,7 @@ class SidebarFilter extends PureComponent {
           <CategoryFilter />
           <StyledDivider />
           <SidebarSubtitle>Bezirk</SidebarSubtitle>
-          <DistrictFilter />
+          <DistrictFilter data={instPerDistrict}/>
           <StyledDivider />
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
           <TargetGroupFilter />
@@ -56,5 +57,6 @@ class SidebarFilter extends PureComponent {
 
 export default connect(state => ({
   selectedData: state.selectedData,
-  detailData: state.detailData
+  detailData: state.detailData,
+  instPerDistrict: state.instPerDistrict,
 }), Actions)(SidebarFilter);

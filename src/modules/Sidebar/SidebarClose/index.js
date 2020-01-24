@@ -5,6 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Actions from '~/state/Actions';
 import history from '~/history';
 import config from '../../../../config';
+import { unfilteredFilterSelector } from '~/state/Selectors';
 
 import { connect } from 'unistore/react';
 
@@ -19,11 +20,12 @@ const StyledLink = styled(Link)`
 
 class SidebarClose extends PureComponent {
   handleClick() {
-    const { setDetailData, setMapCenter, setZoom, setHighlightData } = this.props;
+    const { setDetailData, unfiltered, setFilter, setMapCenter, setZoom, setHighlightData } = this.props;
     setZoom(config.zoom);
     setMapCenter(config.position);
     setDetailData(false);
     setHighlightData(false);
+    setFilter(unfiltered);
   }
 
   render() {
@@ -40,5 +42,6 @@ class SidebarClose extends PureComponent {
 // export default withRouter(SidebarClose);
 
 export default withRouter(connect(state => ({
-  detailData: state.detailData
+  detailData: state.detailData,
+  unfiltered: unfilteredFilterSelector(state),
 }), Actions)(SidebarClose));

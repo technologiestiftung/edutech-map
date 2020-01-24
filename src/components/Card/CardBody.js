@@ -8,6 +8,7 @@ import CardParagraph from './CardParagraph';
 import CardTags from './CardTags';
 import CardLink from './CardLink';
 import CardLogo from './CardLogo';
+import CategoryLabel from '../CategoryLabel';
 
 const CardParagraphAddress = styled(CardParagraph)``;
 const CardParagraphWebsite = styled(CardParagraph)``;
@@ -71,11 +72,13 @@ class CardBody extends PureComponent {
     const email = idx(data, _ => _.contact[0].email);
     const phone = idx(data, _ => _.contact[0].phone);
     const openingHours = idx(data, _ => _.contact[0].openinghours);
+    const category = idx(data, _ => _.category);
 
     const isFav = favs.includes(data.autoid);
 
     return (
       <CardBodyWrapper className={this.props.className}>
+        { category && <CategoryLabel label='Leistungsangebot:' category={category}></CategoryLabel> }
         { logoUrl && <CardLogo label='Logo:' data={logoUrl}></CardLogo> }
         <CardParagraph type="bold" label='Adresse:' data={data.location[0].address}></CardParagraph>
         { website && <CardLink label='Webseite:' data={website}></CardLink> }

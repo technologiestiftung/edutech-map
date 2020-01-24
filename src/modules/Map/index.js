@@ -3,6 +3,10 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 import ReactMapboxGl from 'react-mapbox-gl';
+import { MapProvider } from './hoc/MapContext';
+import MapUtils from './MapUtils';
+
+const LayerOrder = ['DistrictsLayer', 'FilteredMarkerLayer', 'MarkerLayer', 'HighlightLayer'];
 
 import FilterView from './MapViews/FilterView';
 import Tooltip from '../Tooltip';
@@ -40,8 +44,26 @@ class Map extends PureComponent {
         map: false,
     };
 
+    posArray(e) {
+        const obj = e.lngLat.wrap();
+        const lat = obj.lat;
+        const lng = obj.lng;
+        console.log(`[${lng},${lat}]`)
+    }
+
     componentDidMount() {
         this.props.loadDataApi();
+    }
+
+    onData(map) {
+        const { data } = this.props;
+        const layerIds = Object.keys(map.style._layers).join(''); // eslint-disable-line
+
+        if (layerIds !== this.lastLayerIds) {
+        MapUtils.orderLayers(map, LayerOrder);
+        }
+
+        this.lastLayerIds = layerIds;
     }
 
     onStyleLoad = (map) => {
@@ -64,18 +86,21 @@ class Map extends PureComponent {
 
         return (
             <MapWrapper isLoading={isLoading}>
-
-                <MapGL
-                    zoom={mapZoom}
-                    center={mapCenter}
-                    style={process.env.MAP_STYLE} // eslint-disable-line
-                    containerStyle={{ height: '100%', width: '100%' }}
-                    onStyleLoad={map => this.onStyleLoad(map)}
-                    flyToOptions={config.map.flyToOptions}
-                >
-                    <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
-                    <Tooltip />
-                </MapGL>
+                <MapProvider value={this.state.map}>
+                    <MapGL
+                        zoom={mapZoom}
+                        center={mapCenter}
+                        style={process.env.MAP_STYLE} // eslint-disable-line
+                        containerStyle={{ height: '100%', width: '100%' }}
+                        onStyleLoad={map => this.onStyleLoad(map)}
+                        onData={map => this.onData(map)}
+                        onClick={(map, e) => {this.posArray(e)}}
+                        flyToOptions={config.map.flyToOptions}
+                    >
+                        <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
+                        <Tooltip />
+                    </MapGL>
+                </MapProvider>
                 <LogoTile/>
             </MapWrapper>
         )
@@ -84,5 +109,6 @@ class Map extends PureComponent {
 
 export default withRouter(connect(state => ({
     mapZoom: state.mapZoom,
-    mapCenter: state.mapCenter
+    mapCenter: state.mapCenter,
+    data: state.data
   }), Actions)(Map));

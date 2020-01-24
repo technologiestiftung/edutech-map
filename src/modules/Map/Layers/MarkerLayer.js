@@ -30,13 +30,15 @@ function getPaintProps(props) {
     ],
     'circle-color': [
       'case',
-      ['==', ['string', ['get', 'name']], detailId], ['get', 'color'],
+      ['==', ['string', ['get', 'name']], detailId], 
+      ['get', 'color'],
       ['get', 'isFiltered'], '#B8B8B8',
       ['get', 'color']
     ],
     'circle-stroke-color': [
       'case',
-      ['==', ['string', ['get', 'name']], detailId], ['get', 'color'],
+      ['==', ['string', ['get', 'name']], detailId], 
+      ['get', 'color'],
       ['get', 'isFiltered'], '#E8E8E8',
       ['get', 'colorLight']
     ],
@@ -60,7 +62,7 @@ class MarkerLayer extends PureComponent {
 
     clickTimeout = setTimeout(() => {
       this.handleClick(evt, feat);
-    }, 10);
+    }, 50);
   }
 
   renderFeat(feat,i) {
@@ -128,11 +130,21 @@ class MarkerLayer extends PureComponent {
             id="MarkerLayer"
             type="circle"
             paint={paintProps}
+            minZoom={10}
             onMouseMove={evt => this.handleMouseMove(evt)}
           >
-            {data.features.map((feat,i) => this.renderFeat(feat, i))}
+            {data.features.filter(d => !d.properties.isFiltered).map(feat => this.renderFeat(feat))}
           </Layer>
         ) }
+        {data && (
+          <Layer
+            id="FilteredMarkerLayer"
+            type="circle"
+            paint={paintProps}
+          >
+            {data.features.filter(d => d.properties.isFiltered).map(feat => this.renderFeat(feat))}
+          </Layer>
+        )}
         {data && highlightFeat && (
           <Layer
             id="HighlightLayer"

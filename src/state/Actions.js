@@ -3,8 +3,10 @@ import config from "../../config";
 import base64 from "base-64";
 import history from '~/history';
 import xor from 'lodash.xor';
-import { isMobile, fetchTopoJSON } from '~/utils';
-import { getUniqueSubCategories, getColorizer, setFavs, targetGroups } from './dataUtils';
+import { isMobile, fetchTopoJSON, fetchJSON } from '~/utils';
+import { getUniqueSubCategories, getColorizer, setFavs, targetGroups, countInstPerDistrict } from './dataUtils';
+import pointInPolygon from '@turf/boolean-point-in-polygon';
+
 
 const createArray = (d, type) => {
   const key = `categories${d['category']}`;
@@ -52,7 +54,7 @@ const createPoint = d => {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [parseFloat(d['location'][0]['lng'].replace(',','.')), parseFloat(d['location'][0]['lat'].replace(',','.'))],
+      coordinates: [randomizeCoord(parseFloat(d['location'][0]['lng'].replace(',','.'))), randomizeCoord(parseFloat(d['location'][0]['lat'].replace(',','.')))],
     },
     properties: {
       ...d,
@@ -62,6 +64,11 @@ const createPoint = d => {
       targetGroupTagsSelectedArr: createTargetGroupTags(d),
     }
   };
+};
+
+const randomizeCoord = (coord) => {
+  const randomValue = Math.random() / 20000 + 0.0003;
+  return Math.random() < .5 ? coord + randomValue : coord - randomValue;
 };
 
 export const loadEntryData = Store => async (state, detailId) => {
@@ -80,7 +87,7 @@ export const loadEntryData = Store => async (state, detailId) => {
       })
 
       const filtered = all.filter(i => i.autoid === detailId)[0];
-      const coordinates = [parseFloat(filtered.location[0].lng.replace(',', '.')), parseFloat(filtered.location[0].lat.replace(',', '.'))];
+      const coordinates = [parseFloat(randomizeCoord(filtered.location[0].lng.replace(',', '.'))), parseFloat(randomizeCoord(filtered.location[0].lat.replace(',', '.')))];
 
       if (isNaN(coordinates[1])) {
         return {
@@ -126,10 +133,14 @@ export const loadDataApi = (Store) => async () => {
     const features = data
       .map(createPoint);
 
+    const districtsCenter = await fetchJSON('/public/data/bezirke-zentrum.json');
+    const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
     const parsedData = {
       type: 'FeatureCollection',
       features
     };
+
+    const institutionsPerDistrict = countInstPerDistrict(districts, parsedData, districtsCenter);
 
     const colorizer = getColorizer(Store.getState().categories, 'dark');
     const colorizerLight = getColorizer(Store.getState().categories, 'light');
@@ -139,6 +150,7 @@ export const loadDataApi = (Store) => async () => {
       content: content,
       isLoading: false,
       subCategories: getUniqueSubCategories(parsedData),
+      instPerDistrict: institutionsPerDistrict,
       colorizer,
       colorizerLight
     }
@@ -158,8 +170,6 @@ const loadFilterData = Store => async () => {
 
   try {
     const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
-    console.log('inside load filter data')
-    console.log(districts)
 
     return {
       additionalData: {
@@ -222,12 +232,12 @@ const setTooltipPos = (state, tooltipPos) => (
   { tooltipPos }
 );
 
-const setDistrictFilter = (state, districtFilter) => (
-  {
+const setDistrictFilter = (state, districtFilter) => {
+  return {
     filter: Object.assign({}, state.filter, { districtFilter }),
     detailData: false
   }
-);
+};
 
 const toggleFav = (state, favId) => {
   let { favs } = state;
@@ -238,7 +248,6 @@ const toggleFav = (state, favId) => {
 
   return { favs };
 };
-
 
 const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
   let { targetGroupFilter, targetGroupTagsFilter } = state.filter;

@@ -60,7 +60,7 @@ class SubCategoryTags extends PureComponent {
       className,
       category,
       filter,
-      tagsCount
+      tagsCount,
     } = this.props;
 
     const { subCategoryFilter } = filter;

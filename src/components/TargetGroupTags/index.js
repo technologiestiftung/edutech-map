@@ -5,6 +5,7 @@ import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
 
 import { getTargetGroupLabel } from '~/state/dataUtils';
+import { tagsCountTargetGroupSelector } from '~/state/Selectors';
 
 const CategoryLabelWrapper = styled.div`
   display: flex;
@@ -60,23 +61,37 @@ class TargetGroupTags extends PureComponent {
       className,
       targetGroupType,
       filter,
+      tagsCountTargetGroup
     } = this.props;
 
     const { targetGroupTagsFilter } = filter;
 
     return (
         <CategoryLabelWrapper className={className}>
-          {targetGroups.map(type => (
-            <CategoryLabel
-              key={`CategoryLabel__${type}`}
-              color={'#000000'}
-              active={targetGroupTagsFilter[targetGroupType].includes(type)}
-              onClick={() => this.onChange(type)}
-              colorLight={'#E3E3E3'}
-            >
-              {getTargetGroupLabel(targetGroupType, type)}
-            </CategoryLabel>
-          ))}
+          {targetGroups.map(t => {
+
+            if (tagsCountTargetGroup) {
+
+              if (tagsCountTargetGroup[targetGroupType]) {
+
+                if (tagsCountTargetGroup[targetGroupType][t] > 0) {
+                  return (
+                    <CategoryLabel
+                    key={`CategoryLabel__${t}`}
+                    color={'#000000'}
+                    active={targetGroupTagsFilter[targetGroupType].includes(t)}
+                    onClick={() => this.onChange(t)}
+                    colorLight={'#E3E3E3'}
+                  >
+                    { getTargetGroupLabel(targetGroupType, t) + ` (${tagsCountTargetGroup[targetGroupType][t]})` }
+                  </CategoryLabel>
+                  )
+                }
+              }
+
+            }
+
+          })}
         </CategoryLabelWrapper>
     );
   }
@@ -86,5 +101,6 @@ export default connect(state => ({
   targetGroupTypes: state.targetGroupTypes,
   colorizer: state.colorizer,
   colorizerLight: state.colorizerLight,
-  filter: state.filter
+  filter: state.filter,
+  tagsCountTargetGroup: tagsCountTargetGroupSelector(state),
 }), Actions)(TargetGroupTags);

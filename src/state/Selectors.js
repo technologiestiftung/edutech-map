@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 import { cloneDeep } from 'lodash';
+import { fetchTopoJSON } from '../utils';
+import pointInPolygon from '@turf/boolean-point-in-polygon';
 
 import {
   filterCategories,
@@ -24,6 +26,7 @@ const additionalDataSelector = state => state.additionalData;
 const listSortingSelector = state => state.listSorting;
 const colorizerSelector = state => state.colorizer;
 const subCategoryListSelector = state => state.subCategoryList;
+export const instPerDistrictSelector = state => state.instPerDistrict;
 const categoriesSelector = state => state.categories;
 const colorizerLightSelector = state => state.colorizerLight;
 
@@ -65,6 +68,38 @@ export const unfilteredFilterSelector = createSelector(
   }
 );
 
+export const tagsCountTargetGroupSelector = createSelector(
+  [dataSelector],
+  (data) => {
+    if (data) {
+      const features = data.features;
+      const objPrivate = {};
+      const objInstitution = {};
+      features.map(feat => {
+        const { properties } = feat;
+        const { targetgroupprivate, targetgroupinstituion } = properties;
+
+        if (targetgroupprivate.length > 0) {
+          targetgroupprivate.forEach(item => {
+            !objPrivate[item.value] ? objPrivate[item.value] = 1 : objPrivate[item.value] += 1;
+          })
+        }
+
+        if (targetgroupinstituion.length > 0) {
+          targetgroupinstituion.forEach(item => {
+            !objInstitution[item.value] ? objInstitution[item.value] = 1 : objInstitution[item.value] += 1;
+          })
+        }
+
+        delete objPrivate.none;
+        delete objInstitution.none;
+
+      })
+      return { private: objPrivate, institution: objInstitution }
+    }
+  }
+)
+
 export const tagsCountSelector = createSelector(
   [dataSelector],
   (data) => {
@@ -76,6 +111,7 @@ export const tagsCountSelector = createSelector(
         const { subCategoriesSelected, category, name } = properties;
 
         subCategoriesSelected.forEach(item => {
+
           if (subCategories[category].includes(item)) {
             !obj[item] ? obj[item] = 1 : obj[item] += 1
           }
@@ -126,9 +162,7 @@ export const enrichedDataSelector = createSelector(
           properties.isFav = favs.includes(properties.autoid);
           properties.color = colorizer(properties.category);
           properties.colorLight = colorizerLight(properties.category);
-          properties.isFiltered = false;
-
-          console.log(properties);
+          properties.isFiltered = true;
 
           return feat;
       });
@@ -144,12 +178,12 @@ export const filteredDataSelector = createSelector(
       const features = data.features
         .map((feat) => {
           feat.properties.isFiltered = (
-            // feat.properties.categoryFilter ||
-            // feat.properties.subCategoryFilter ||
-            feat.properties.districtFilter ||
-            // feat.properties.targetGroupTypesFilter ||
-            feat.properties.targetGroupTagsPrivateFilter ||
-            feat.properties.targetGroupTagsInstitutionFilter
+            feat.properties.districtFilter
+            // feat.properties.categoryFilter
+            // || feat.properties.subCategoryFilter
+            // || feat.properties.tar/getGroupTypesFilter
+            // feat.properties.targetGroupTagsPrivateFilter
+            // feat.properties.targetGroupTagsInstitutionFilter
           );
           return feat;
         })
@@ -224,5 +258,7 @@ export default {
   filteredListDataSelector,
   favoritesSelector,
   enrichedDataSelector,
-  tagsCountSelector
+  instPerDistrictSelector,
+  tagsCountSelector,
+  tagsCountTargetGroupSelector
 };

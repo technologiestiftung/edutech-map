@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 
@@ -12,40 +12,57 @@ import Logo from '~/components/beBerlinLogo';
 import LogoIBB from '~/components/IBBLogo';
 import Paragraph from '~/components/Paragraph';
 import SidebarTitle from '../SidebarTitle';
+import SidebarSubtitle from '../SidebarSubtitle';
 import SidebarLinks from './SidebarInfoLinks';
 
+import SidebarInfoParagraph from './SidebarInfoParagraph';
 
 const ListItems = styled.div``;
 
-class SidebarInfo extends PureComponent {
+const SidebarInfo = (p) => {
+  const [view, setView] = useState(false);
 
-  render() {
-    const { content } = this.props;
+  const { content, activeP } = p;
 
-    if (content) {
-      return (
-        <Fragment>
-          <SidebarTitle>Über das Projekt</SidebarTitle>
-          <Paragraph dangerouslySetInnerHTML={createMarkup(content.introtext)}></Paragraph>
-          <Logo/>
-          <LogoIBB/>
-          <Paragraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></Paragraph>
-          <SidebarLinks data={content.links}/>
-        </Fragment>
-      )
-    } else {
-      return (
-        <Fragment>
-          <SidebarTitle>Über das Projekt</SidebarTitle>
-          <Paragraph>Lade Inhalte ...</Paragraph>
-        </Fragment>
-      )
-    }
+  if (content) {
+    return (
+      <Fragment>
+        <SidebarTitle>Über das Projekt</SidebarTitle>
 
+        <SidebarInfoParagraph 
+          title={content.worktitle}
+          text={content.work}
+          intro={content.workintro}
+          active={activeP}
+          id={0}
+        ></SidebarInfoParagraph>
+        
+        <SidebarInfoParagraph 
+          title={content.abouttitle}
+          text={content.about}
+          intro={content.aboutintro}
+          active={activeP}
+          id={1}
+        ></SidebarInfoParagraph>
+      
+        <Logo/>
+        <LogoIBB/>
+        <Paragraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></Paragraph>
+        <SidebarLinks data={content.links}/>
+      </Fragment>
+    )
+  } else {
+    return (
+      <Fragment>
+        <SidebarTitle>Über das Projekt</SidebarTitle>
+        <Paragraph>Lade Inhalte ...</Paragraph>
+      </Fragment>
+    )
   }
 
 };
 
 export default connect(state => ({
-  content: state.content
+  content: state.content,
+  activeP: state.activeP,
 }), Actions)(SidebarInfo);
