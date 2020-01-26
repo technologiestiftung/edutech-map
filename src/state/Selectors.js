@@ -63,7 +63,7 @@ export const unfilteredFilterSelector = createSelector(
     return Object.assign({}, {
     categoryFilter: cloneDeep(categories),
     subCategoryFilter: cloneDeep(subCategories),
-    targetGroupFilter: [],
+    targetGroupFilter: cloneDeep(targetGroupTypes),
     targetGroupTagsFilter: cloneDeep(targetGroups)
   })
   }

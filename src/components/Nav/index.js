@@ -67,7 +67,7 @@ class Nav extends PureComponent {
       mapCenter
     } = this.props;
 
-    if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' ) {
+    if (path === 'Listenansicht' || path === 'Favoriten' || path == 'Suche und Filter' || path == 'Info' ) {
       setFilter(unfiltered)
     }
 
@@ -79,6 +79,14 @@ class Nav extends PureComponent {
     setSelectedData(false);
     setHighlightData(false);
     resetDetailRoute();
+  }
+
+  componentDidMount() {
+    const {
+      unfiltered,
+      setFilter,
+    } = this.props;
+    setFilter(unfiltered)
   }
 
   render() {

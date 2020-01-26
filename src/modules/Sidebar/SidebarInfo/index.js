@@ -62,7 +62,7 @@ const SidebarInfo = (p) => {
   } else {
     return (
       <Fragment>
-        <SidebarTitle>Über das Projekt</SidebarTitle>
+        <SidebarTitle>EduTechMap Berlin</SidebarTitle>
         <Paragraph>Lade Inhalte ...</Paragraph>
       </Fragment>
     )
