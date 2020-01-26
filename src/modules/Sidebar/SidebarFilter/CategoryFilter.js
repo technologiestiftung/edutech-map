@@ -16,6 +16,7 @@ import CategoryLabel from '~/components/CategoryLabel';
 
 const CategoryFilterWrapper = styled.div`
   margin-left: ${props => props.theme.margin[0]};
+  height: fit-content;
 `;
 
 const StyledFormGroup = styled(FormGroup)`

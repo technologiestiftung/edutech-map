@@ -1,14 +1,14 @@
 import createStore from 'unistore';
 
-import { getFavs, subCategories, subCategoriesEmpty, targetGroups, targetGroupTypes } from './dataUtils';
+import { getFavs, subCategories, subCategoriesEmpty, targetGroups, targetGroupTypes, targetGroupsEmpty } from './dataUtils';
 import config from '../../config';
 
 export const filterSection = {
-  categoryFilter: ['service', 'hardware', 'media', 'app'],
+  categoryFilter: [],
   districtFilter: false,
-  subCategoryFilter: Object.assign({}, subCategories),
-  targetGroupFilter: ['private', 'institution'],
-  targetGroupTagsFilter: Object.assign({}, targetGroups)
+  subCategoryFilter: Object.assign({}, subCategoriesEmpty),
+  targetGroupFilter: [],
+  targetGroupTagsFilter: Object.assign({}, targetGroupsEmpty)
 };
 
 const Store = createStore({
@@ -17,7 +17,7 @@ const Store = createStore({
     districts: null
   },
   categories: ['app', 'service', 'media', 'hardware'],
-  targetGroupTypes: ['institution', 'private'],
+  targetGroupTypes: ['private', 'institution'],
   data: null,
   info: null,
   activeFilter: 'category',

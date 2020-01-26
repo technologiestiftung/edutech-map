@@ -17,6 +17,13 @@ const TargetGroupFilterWrapper = styled.div`
   opacity: ${p => p.active === 'target' ? 1 : .5};
 `;
 
+const StyledFormGroup = withStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column'
+  }
+})(FormGroup)
+
 const StyledCheckbox = withStyles({
   root: {
     color: 'black',
@@ -27,9 +34,6 @@ const StyledCheckbox = withStyles({
 })(Checkbox);
 
 const StyledFormControlLabel = withStyles({
-  root: {
-    marginBottom: '10px'
-  },
   label: {
     fontSize: '13px',
     fontFamily: 'Clan Book'
@@ -52,8 +56,10 @@ class CategoryFilter extends Component {
   render() {
     const { targetGroupTypes, filter, activeFilter, setActiveFilter } = this.props
 
+    console.log(filter.targetGroupFilter, 'fiiilter')
+
     return (
-      <FormGroup aria-label="position" row>
+      <StyledFormGroup aria-label="position" row>
       { targetGroupTypes.map((type,i) => {
         return (
           <TargetGroupFilterWrapper active={activeFilter} key={`TargetGroupFilter__${i}__${type}`}>
@@ -75,7 +81,7 @@ class CategoryFilter extends Component {
           </TargetGroupFilterWrapper>
         )
       }) }
-      </FormGroup>
+      </StyledFormGroup>
     )
   }
 }

@@ -51,7 +51,7 @@ export const initialFilterSelector = createSelector(
     return Object.assign({}, {
     categoryFilter: [],
     subCategoryFilter: cloneDeep(subCategoriesEmpty),
-    targetGroupFilter: cloneDeep(targetGroupTypes),
+    targetGroupFilter: [],
     targetGroupTagsFilter: cloneDeep(targetGroups)
   })
   }
@@ -63,7 +63,7 @@ export const unfilteredFilterSelector = createSelector(
     return Object.assign({}, {
     categoryFilter: cloneDeep(categories),
     subCategoryFilter: cloneDeep(subCategories),
-    targetGroupFilter: cloneDeep(targetGroupTypes),
+    targetGroupFilter: [],
     targetGroupTagsFilter: cloneDeep(targetGroups)
   })
   }

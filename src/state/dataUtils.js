@@ -146,6 +146,11 @@ export const targetGroups = {
   ]
 };
 
+export const targetGroupsEmpty = {
+  'private': [],
+  'institution': []
+};
+
 export const getTargetGroupType = (value) => {
   const dict = {
     'private': 'Privat',
@@ -358,6 +363,7 @@ export default {
   piwik,
   filterDistricts,
   filterTargetGroupTypes,
+  targetGroupsEmpty,
   filterTargetGroupTags,
   createMarkup,
   objectSize,

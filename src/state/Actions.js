@@ -264,6 +264,7 @@ const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
   } else {
     targetGroupFilter.push(type);
     targetGroupTagsFilter[type] = targetGroups[type];
+    targetGroupTagsFilter[type] = [];
   }
 
   const filter = Object.assign({}, state.filter, { targetGroupFilter });

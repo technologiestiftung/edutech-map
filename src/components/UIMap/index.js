@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { NavLink, withRouter, matchPath } from 'react-router-dom';
+import { NavLink, withRouter, matchPath, useLocation } from 'react-router-dom';
 
 import { withMap } from '~/modules/Map/hoc/withMap';
 
@@ -16,7 +16,7 @@ const StyledRoundButton = styled(RoundButton)`
   margin-top: 5px;
   font-weight: 700;
   font-family: ${props => props.theme.fonts.sans};
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
 
   div {
@@ -40,7 +40,7 @@ const NavWrapper = styled.div`
   flex-grow: 0;
   position: absolute;
   background: none;
-  bottom: 55px;
+  bottom: 15px;
   left: 15px;
   z-index: 1000;
 
@@ -61,12 +61,6 @@ const NavItem = styled(NavLink)`
 
 const UIMap = p => {
 
-  // zoomIn() {
-  //   if (this.props.map) {
-  //     this.props.map.zoomIn();
-  //   }
-  // }
-
   const {
     initialFilter,
     unfiltered,
@@ -77,37 +71,48 @@ const UIMap = p => {
     setDetailData,
     setSelectedData,
     setHighlightData,
-    mapCenter
+    mapCenter,
+    map
   } = p;
 
+  const zoomIn = () => {
+    if (map) {
+      map.zoomIn();
+    }
+  }
+
   const zoomOut = () => {
-    setZoom(config.zoom);
-    setMapCenter(config.position);
+    if (map) {
+      map.zoomOut();
+    }
   }
 
   const navConfig = [
-    { title: 'Zoom reset', label: '-', func: () => zoomOut() },
+    { path: '/suche', title: 'Suche und Filter' },
+    { path: '/liste', title: 'Listenansicht' },
+    { path: '/favoriten', title: 'Favoriten' },
+    { path: '/info', title: 'Info' },
   ];
 
-  const handleClick = () => {
-    console.log(p.state)
+  const uiConfig = [
+    { title: 'Hereinzoomen', label: '+', func: () => {zoomIn()} },
+    { title: 'Herauszoomen', label: '-', func: () => {zoomOut()} },
+  ];
 
-    // setMapCenter(config.position);
-    // setZoom(config.zoom);
-    // setHighlightData(false);
+  const location = useLocation();
+  const { pathname } = location;
 
-    // console.log(p.state)
-
-  }
+  const isNavOpen = matchPath(pathname, {
+    path: navConfig.map(m => m.path),
+  }) !== null;
 
   return (
-    <NavWrapper>
-      {navConfig.map(m => (
-        <StyledRoundButton onClick={() => { handleClick() }}></StyledRoundButton>
+    <NavWrapper isNavOpen={isNavOpen}>
+      {uiConfig.map(m => (
+        <StyledRoundButton onClick={m.func}>{m.label}</StyledRoundButton>
       ))}
     </NavWrapper>
   );
-
 }
 
 export default connect(state => ({
@@ -117,5 +122,3 @@ export default connect(state => ({
   initialFilter: initialFilterSelector(state),
   state: state
 }), Actions)(UIMap);
-
-// export default UIMap;

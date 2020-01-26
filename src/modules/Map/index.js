@@ -10,6 +10,7 @@ const LayerOrder = ['DistrictsLayer', 'FilteredMarkerLayer', 'MarkerLayer', 'Hig
 
 import FilterView from './MapViews/FilterView';
 import Tooltip from '../Tooltip';
+import UIMap from '../../components/UIMap';
 import LogoTile from './Other/LogoTile';
 
 import Actions from '~/state/Actions';
@@ -68,7 +69,7 @@ class Map extends PureComponent {
 
     onStyleLoad = (map) => {
         map.resize();
-        this.setState({ isLoading: false});
+        this.setState({ isLoading: false, map});
 
         map.jumpTo({
             center: this.props.mapCenter,
@@ -99,6 +100,7 @@ class Map extends PureComponent {
                     >
                         <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
                         <Tooltip />
+                        <UIMap map={this.state.map}/>
                     </MapGL>
                 </MapProvider>
                 <LogoTile/>
