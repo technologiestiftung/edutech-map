@@ -55,9 +55,6 @@ class CategoryFilter extends Component {
 
   render() {
     const { targetGroupTypes, filter, activeFilter, setActiveFilter } = this.props
-
-    console.log(filter.targetGroupFilter, 'fiiilter')
-
     return (
       <StyledFormGroup aria-label="position" row>
       { targetGroupTypes.map((type,i) => {

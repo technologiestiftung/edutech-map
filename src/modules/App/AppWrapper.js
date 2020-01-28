@@ -37,14 +37,15 @@ class AppWrapper extends PureComponent {
   }
 
   render() {
+    const { isLoading } = this.props;
     return (
       <MuiThemeProvider theme={muiTheme}>
         <ThemeProvider theme={Theme}>
           <StyledAppWrapper>
-            <Spinner loading={this.props.isLoading}/>
             <Nav />
             <Sidebar />
             <Map />
+            <Spinner loading={isLoading}/>
             {/* <MapTitle>EduTechMap Berlin</MapTitle> */}
           </StyledAppWrapper>
         </ThemeProvider>

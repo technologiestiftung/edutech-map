@@ -49,7 +49,7 @@ class Map extends PureComponent {
         const obj = e.lngLat.wrap();
         const lat = obj.lat;
         const lng = obj.lng;
-        console.log(`[${lng},${lat}]`)
+        // console.log(`[${lng},${lat}]`)
     }
 
     componentDidMount() {
@@ -69,7 +69,7 @@ class Map extends PureComponent {
 
     onStyleLoad = (map) => {
         map.resize();
-        this.setState({ isLoading: false, map});
+        this.setState({map});
 
         map.jumpTo({
             center: this.props.mapCenter,

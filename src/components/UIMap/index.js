@@ -108,8 +108,8 @@ const UIMap = p => {
 
   return (
     <NavWrapper isNavOpen={isNavOpen}>
-      {uiConfig.map(m => (
-        <StyledRoundButton onClick={m.func}>{m.label}</StyledRoundButton>
+      {uiConfig.map((m,i) => (
+        <StyledRoundButton key={`ui-key-${i}`} onClick={m.func}>{m.label}</StyledRoundButton>
       ))}
     </NavWrapper>
   );

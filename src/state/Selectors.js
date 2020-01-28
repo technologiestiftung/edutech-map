@@ -52,7 +52,7 @@ export const initialFilterSelector = createSelector(
     categoryFilter: [],
     subCategoryFilter: cloneDeep(subCategoriesEmpty),
     targetGroupFilter: [],
-    targetGroupTagsFilter: cloneDeep(targetGroups)
+    targetGroupTagsFilter: { private: [], institution: [] }
   })
   }
 );
@@ -237,6 +237,15 @@ export const targetGroupsArraySelector = createSelector(
 
       let arr = keys.map(key => {
         return data[key].map(val => {
+
+            if (val.text === 'none') {
+              return 'Keine';
+            }
+
+            if (val.text === 'other') {
+              return 'Andere';
+            }
+
             return val.text
         });
       })

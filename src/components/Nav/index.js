@@ -101,7 +101,7 @@ class Nav extends PureComponent {
         {navConfig.map(m => (
           <NavItem
             exact
-            to={{ pathname: m.path, search: this.props.location.search }}
+            to={{ pathname: m.path, search: '' }}
             onClick={() => (this.handleClick(m.title))}
             key={m.path}
           >

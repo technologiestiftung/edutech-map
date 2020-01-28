@@ -42,7 +42,6 @@ class DistrictFilter extends PureComponent {
 
   handleClick() {
     const { setActiveFilter } = this.props;
-    console.log('click!!')
     setActiveFilter('district')
   }
 
@@ -53,14 +52,18 @@ class DistrictFilter extends PureComponent {
       return null;
     }
 
-    const selectValue = !selectedDistrict ? 'none' : selectedDistrict;
+    let selectValue = !selectedDistrict ? 'none' : selectedDistrict;
+
+    if (activeFilter != 'district') {
+      selectValue = 'none';
+    }
 
     return (
       <DistrictFilterWrapper onClick={() => { this.handleClick() }} active={activeFilter}>
         <Select value={selectValue} onChange={evt => this.onChange(evt)}>
-          <option key="DistrictOption__All" value="none">
+          <StyledOption key="DistrictOption__All" value="none">
             Alle Bezirke
-          </option>
+          </StyledOption>
           {data.map((feat, i) => {
             return (
               <Option key={`DistrictOption__${feat.properties.alias}`} {...feat} />

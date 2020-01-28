@@ -4,7 +4,7 @@ import base64 from "base-64";
 import history from '~/history';
 import xor from 'lodash.xor';
 import { isMobile, fetchTopoJSON, fetchJSON } from '~/utils';
-import { getUniqueSubCategories, getColorizer, setFavs, targetGroups, countInstPerDistrict } from './dataUtils';
+import { getUniqueSubCategories, getColorizer, setFavs, targetGroups, featOutOfBounds, countInstPerDistrict } from './dataUtils';
 import pointInPolygon from '@turf/boolean-point-in-polygon';
 
 
@@ -62,6 +62,7 @@ const createPoint = d => {
       subCategoriesSelected: createArray(d, 'value'),
       targetGroupsSelected: checkTargetGroups(d),
       targetGroupTagsSelectedArr: createTargetGroupTags(d),
+      outOfBounds: true
     }
   };
 };
@@ -135,10 +136,12 @@ export const loadDataApi = (Store) => async () => {
 
     const districtsCenter = await fetchJSON('/public/data/bezirke-zentrum.json');
     const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
-    const parsedData = {
+    let parsedData = {
       type: 'FeatureCollection',
       features
     };
+
+    parsedData = featOutOfBounds(districts, parsedData);
 
     const institutionsPerDistrict = countInstPerDistrict(districts, parsedData, districtsCenter);
 
@@ -148,16 +151,16 @@ export const loadDataApi = (Store) => async () => {
     return {
       data: parsedData,
       content: content,
-      isLoading: false,
       subCategories: getUniqueSubCategories(parsedData),
       instPerDistrict: institutionsPerDistrict,
       colorizer,
-      colorizerLight
+      colorizerLight,
+      isLoading: false
     }
 
   } catch (err) {
     console.log(err);
-    return { isLoading: false };
+    return { isLoading: true };
   }
 };
 
@@ -175,8 +178,7 @@ const loadFilterData = Store => async () => {
       additionalData: {
         ...Store.getState().additionalData,
         districts
-      },
-      isLoading: false
+      }
     };
   } catch (err) {
     return { isLoading: false };
@@ -252,6 +254,9 @@ const toggleFav = (state, favId) => {
 const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
   let { targetGroupFilter, targetGroupTagsFilter } = state.filter;
   const { categories } = state;
+
+
+  console.log(state,type)
 
   if (targetGroupFilter.includes(type) || deactivate) {
 

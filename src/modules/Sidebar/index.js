@@ -14,7 +14,7 @@ const SidebarWrapper = styled.div`
   background: #ffffff;
   display: flex;
   box-shadow: ${props => (props.isVisible ? props.theme.boxShadow : 'none')};
-  z-index: 1000;
+  z-index: 1;
   flex-direction: column;
   position: absolute;
   transform: ${props => (props.isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(calc(-100% - 15px), 0, 0)')};

@@ -173,6 +173,7 @@ export const getTargetGroupLabel = (type, group) => {
       kita: "Kita/Vorschule",
       schoolinst: "Schule",
       uniinst: "Hochschule",
+      none: "Unbestimmt",
     },
     'private': {
       family: "Familie",
@@ -186,9 +187,14 @@ export const getTargetGroupLabel = (type, group) => {
       afternoon: "Nachmittagsbereich",
       students: "Studierende",
       other: "Andere",
-      none: "Keine",
+      none: "Unbestimmt",
     }
   }
+
+  if (!dict[type][group]) {
+    return 'Unbestimmt';
+  }
+
   return dict[type][group];
 }
 
@@ -314,14 +320,38 @@ export const filterDistricts = (feature, districtFilter, districts) => {
     return false;
   }
 
+  if (districtFilter == '13') {
+    return !feature.properties.outOfBounds;
+  }
+
   const polygon = districts.features
     .find(feat => feat.properties.spatial_name === districtFilter);
 
   return !pointInPolygon(feature, polygon);
 };
 
+export const featOutOfBounds = (districts, parsedData) => {
+  districts.features.forEach(district => {
+    parsedData.features.forEach(feat => {
+      if (pointInPolygon(feat, district)) {
+        feat.properties.outOfBounds = false;
+      }
+    })
+  })
+  return parsedData;
+}
+
 export const countInstPerDistrict = (districts, parsedData, districtsCenter) => {
     let arr = [];
+
+    let otherFeat = {
+      properties: {
+        alias: 'Brandenburg',
+        count: 0,
+        id: 13
+      }
+    }
+
     districts.features.forEach(district => {
       const match = districtsCenter.bezirke.find(d => (d.id === district.properties.spatial_name));
       const obj = {
@@ -336,12 +366,20 @@ export const countInstPerDistrict = (districts, parsedData, districtsCenter) => 
       arr.push(obj)
     })
 
+    arr.push(otherFeat);
+
     districts.features.forEach((district, i) => {
       parsedData.features.forEach(feat => {
         if (pointInPolygon(feat, district)) {
-          arr[i].properties.count += 1
+          arr[i].properties.count += 1;
         }
       })
+    })
+
+    parsedData.features.forEach(feat => {
+      if (feat.properties.outOfBounds) {
+        arr[arr.length - 1].properties.count += 1;
+      }
     })
 
     return arr;
@@ -350,6 +388,7 @@ export const countInstPerDistrict = (districts, parsedData, districtsCenter) => 
 export default {
   getColorizer,
   countInstPerDistrict,
+  featOutOfBounds,
   filterCategories,
   filterSubCategories,
   getUniqueSubCategories,
