@@ -5,7 +5,6 @@ import Actions from '~/state/Actions';
 import { filteredDataSelector, instPerDistrictSelector } from '~/state/Selectors';
 
 import MarkerLayer from '../Layers/MarkerLayer';
-import LabelLayer from '../Layers/LabelLayer';
 
 class FilterView extends PureComponent {
 
@@ -20,7 +19,6 @@ class FilterView extends PureComponent {
       return (
         <Fragment>
           <MarkerLayer if={data && !isLoading} data={data} />
-          <LabelLayer if={labels && !isLoading} data={labels} />
         </Fragment>
       );
     } else {

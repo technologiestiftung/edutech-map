@@ -3,7 +3,6 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 import ReactMapboxGl from 'react-mapbox-gl';
-import { MapProvider } from './hoc/MapContext';
 import MapUtils from './MapUtils';
 
 const LayerOrder = ['DistrictsLayer', 'FilteredMarkerLayer', 'MarkerLayer', 'HighlightLayer'];
@@ -15,6 +14,8 @@ import LogoTile from './Other/LogoTile';
 
 import Actions from '~/state/Actions';
 const config = require('../../../config.json');
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const mapConfig = {
     minZoom: 9.5,
@@ -87,22 +88,20 @@ class Map extends PureComponent {
 
         return (
             <MapWrapper isLoading={isLoading}>
-                <MapProvider value={this.state.map}>
-                    <MapGL
-                        zoom={mapZoom}
-                        center={mapCenter}
-                        style={process.env.MAP_STYLE} // eslint-disable-line
-                        containerStyle={{ height: '100%', width: '100%' }}
-                        onStyleLoad={map => this.onStyleLoad(map)}
-                        onData={map => this.onData(map)}
-                        onClick={(map, e) => {this.posArray(e)}}
-                        flyToOptions={config.map.flyToOptions}
-                    >
-                        <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
-                        <Tooltip />
-                        <UIMap map={this.state.map}/>
-                    </MapGL>
-                </MapProvider>
+                <MapGL
+                    zoom={mapZoom}
+                    center={mapCenter}
+                    style={process.env.MAP_STYLE} // eslint-disable-line
+                    containerStyle={{ height: '100%', width: '100%' }}
+                    onStyleLoad={map => this.onStyleLoad(map)}
+                    onData={map => this.onData(map)}
+                    onClick={(map, e) => {this.posArray(e)}}
+                    flyToOptions={config.map.flyToOptions}
+                >
+                    <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
+                    <Tooltip />
+                    <UIMap map={this.state.map}/>
+                </MapGL>
                 <LogoTile/>
             </MapWrapper>
         )

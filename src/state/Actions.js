@@ -136,6 +136,7 @@ export const loadDataApi = (Store) => async () => {
 
     const districtsCenter = await fetchJSON('/public/data/bezirke-zentrum.json');
     const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
+
     let parsedData = {
       type: 'FeatureCollection',
       features

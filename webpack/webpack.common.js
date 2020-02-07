@@ -47,6 +47,7 @@ module.exports = {
     }
   },
   module: {
+    noParse: /mapbox-gl/,
     rules: [
       {
         test: /\.mjs$/,

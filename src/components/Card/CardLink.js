@@ -42,9 +42,16 @@ class CardParagraph extends PureComponent {
       return (
         <CardParagraphWrapper>
           <span>{label}</span>
-          <WebsiteLink href={`${data}`} target="_blank" rel="noopener noreferrer">
-            <h3>{formatWebsite(data)}</h3>
-          </WebsiteLink>
+          { type == 'mailto:' && 
+            (<WebsiteLink href={`mailto:${data}`} target="_blank" rel="noopener">
+              <h3>{formatWebsite(data)}</h3>
+            </WebsiteLink>)
+          }
+          { type != 'mailto:' && 
+            (<WebsiteLink href={`${data}`} target="_blank" rel="noopener">
+              <h3>{formatWebsite(data)}</h3>
+            </WebsiteLink>)
+          }
         </CardParagraphWrapper>
       )
     } else {

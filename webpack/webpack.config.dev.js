@@ -24,6 +24,7 @@ module.exports = merge(common, {
   ],
 
   module: {
+    noParse: /(mapbox-gl)\.js$/,
     rules: [
       {
         test: /\.(js|jsx)$/,

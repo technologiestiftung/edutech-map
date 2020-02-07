@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { NavLink, withRouter, matchPath, useLocation } from 'react-router-dom';
 
-import { withMap } from '~/modules/Map/hoc/withMap';
-
 import Actions from '~/state/Actions';
 import RoundButton from '~/components/RoundButton';
 import { unfilteredFilterSelector, initialFilterSelector } from '~/state/Selectors';
