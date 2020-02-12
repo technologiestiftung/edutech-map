@@ -74,8 +74,6 @@ const randomizeCoord = (coord) => {
 
 export const loadEntryData = Store => async (state, detailId) => {
   if (!detailId) return { detailData: false };
-  Store.setState({ isLoading: true });
-
 
   try {
     if (state.data) {
@@ -156,6 +154,7 @@ export const loadDataApi = (Store) => async () => {
       instPerDistrict: institutionsPerDistrict,
       colorizer,
       colorizerLight,
+      mapZoom: [11],
       isLoading: false
     }
 
@@ -170,10 +169,9 @@ export const setHighlightData = (state, highlightData) => {
 };
 
 const loadFilterData = Store => async () => {
-  Store.setState({ isLoading: true });
-
   try {
     const districts = await fetchTopoJSON('/public/data/berliner-bezirke.json');
+    Store.setState({ isLoading: false });
 
     return {
       additionalData: {

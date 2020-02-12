@@ -18,7 +18,7 @@ const config = require('../../../config.json');
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const mapConfig = {
-    minZoom: 9.5,
+    minZoom: 6,
     maxZoom: 17,
     dragRotate: false,
     bearing: 0,
