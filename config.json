@@ -16,14 +16,14 @@
   "zoom": [6],
   "colorsLight": [
     "#D2D7E9",
-    "#D9F0EA",
     "#F8F4D5",
+    "#D9F0EA",
     "#FACCD6"
   ],
   "colors": [
     "#1E3791",
-    "#41B496",
     "#DCC82D",
+    "#41B496",
     "#E60032"
   ]
 }

@@ -16,7 +16,7 @@ const Store = createStore({
   additionalData: {
     districts: null
   },
-  categories: ['app', 'service', 'media', 'hardware'],
+  categories: ['app', 'media', 'service', 'hardware'],
   targetGroupTypes: ['private', 'institution'],
   data: null,
   info: null,
