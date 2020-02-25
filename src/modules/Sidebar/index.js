@@ -28,11 +28,12 @@ const SidebarWrapper = styled.div`
 
   @media screen and (max-width: 600px) {
     z-index: 10000;
+    max-width: calc(100% - 24px);
   }
 `;
 
 const SidebarContent = styled.div`
-  min-width: 370px;
+  min-width: 280px;
   max-width: 370px;
   padding: 20px 15px;
 `;

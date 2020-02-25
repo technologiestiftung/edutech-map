@@ -13,8 +13,8 @@ const StyledLogoTile = styled.div`
 
   @media (max-width: 768px) {
     top: auto;
-    bottom: 15px;
-    left: 15px;
+    top: 15px;
+    right: 40px;
     max-width: 120px;
   }
 `;
