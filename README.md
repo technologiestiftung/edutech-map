@@ -1,19 +1,20 @@
-# React Starterkit
-
-[![Dependabot badge](https://flat.badgen.net/dependabot/wbkd/react-starter?icon=dependabot)](https://dependabot.com/)
-
-A lightweight Starterkit including [React](https://facebook.github.io/react/), [unistore](https://www.npmjs.com/package/unistore), [Styled Components](https://www.styled-components.com/) and [webpack v4](https://webpack.js.org/).
-
-## Get the kit
-
-```sh
-$ git clone git@github.com:wbkd/react-starter.git && cd react-starter
-```
+# EduTechMap Berlin
 
 ## Installation
 
 ```sh
 $ npm install
+```
+
+To get the project started you need to add a ```.env``` file inside the root directory and provide the following keys:
+
+```sh
+API_USER=[userOfApiHere]
+API_PW=[pwOfApiHere]
+API_URL=[ApiUrlHere]
+API_URL_INFO=[[ApiUrlHere]]
+MAP_TOKEN=[MapboxTokenHere]
+MAP_STYLE=[MapboxStyleHere]
 ```
 
 ## Development
@@ -32,7 +33,3 @@ Builds a minified version of the application in the build folder.
 ```sh
 $ npm run build
 ```
-
-## Contribute
-
-Feel free to dive in! [Open an issue](https://github.com/wbkd/react-starter/issues/new) or submit PRs.
