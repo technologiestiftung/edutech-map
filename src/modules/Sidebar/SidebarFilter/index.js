@@ -12,6 +12,7 @@ import DetailCard from '~/components/Card/Detail';
 import CardDivider from '~/components/Card/CardDivider';
 import SidebarSubtitle from '~/modules/Sidebar/SidebarSubtitle';
 import DistrictFilter from './DistrictFilter';
+import HomeschoolFilter from './HomeschoolFilter';
 // import LocationFilter from './LocationFilter';
 
 const StyledDivider = styled(CardDivider)`
@@ -48,6 +49,9 @@ const SidebarFilter = p => {
           <StyledDivider />
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
           <TargetGroupFilter active={active} />
+          <StyledDivider />
+          <SidebarSubtitle>Homeschooling Angebote</SidebarSubtitle>
+          <HomeschoolFilter active={active} />
         </Fragment>
         )}
         { (!detailData && selectedData) && (null) }

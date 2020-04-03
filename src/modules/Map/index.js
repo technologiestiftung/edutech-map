@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import ReactMapboxGl from 'react-mapbox-gl';
+import ReactMapboxGl, {Layer, Feature} from 'react-mapbox-gl';
 import MapUtils from './MapUtils';
 
 const LayerOrder = ['DistrictsLayer', 'FilteredMarkerLayer', 'MarkerLayer', 'HighlightLayer'];

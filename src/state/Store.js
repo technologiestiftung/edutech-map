@@ -6,6 +6,7 @@ import config from '../../config';
 export const filterSection = {
   categoryFilter: [],
   districtFilter: false,
+  homeschoolFilter: [],
   subCategoryFilter: Object.assign({}, subCategoriesEmpty),
   targetGroupFilter: [],
   targetGroupTagsFilter: Object.assign({}, targetGroupsEmpty)
@@ -18,6 +19,7 @@ const Store = createStore({
   },
   categories: ['app', 'media', 'service', 'hardware'],
   targetGroupTypes: ['private', 'institution'],
+  homeschoolTypes: [true, false],
   data: null,
   info: null,
   activeFilter: 'category',

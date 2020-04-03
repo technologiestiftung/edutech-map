@@ -12,10 +12,11 @@ import {
   targetGroups,
   filterTargetGroupTypes,
   filterTargetGroupTags,
+  filterHomeschool,
   sortData,
   subCategoriesEmpty,
   filterDistricts,
-  objectSize
+  objectSize,
 } from './dataUtils';
 
 const dataSelector = state => state.data;
@@ -52,6 +53,7 @@ export const initialFilterSelector = createSelector(
     categoryFilter: [],
     subCategoryFilter: cloneDeep(subCategoriesEmpty),
     targetGroupFilter: [],
+    homeschoolFilter: [],
     targetGroupTagsFilter: { private: [], institution: [] }
   })
   }
@@ -163,6 +165,9 @@ export const enrichedDataSelector = createSelector(
           properties.isFav = favs.includes(properties.autoid);
           properties.color = colorizer(properties.category);
           properties.colorLight = colorizerLight(properties.category);
+          properties.icon = `edutech-${properties.category}`;
+          properties.homeschool = feat.properties.homeschooling === '1' ? true : false;
+          properties.homeschoolFilter = filterHomeschool(properties,filter.homeschoolFilter)
           properties.isFiltered = true;
 
           return feat;
@@ -188,6 +193,9 @@ export const filteredDataSelector = createSelector(
               case 'district':
                 filter = feat.properties.districtFilter;
                 break;
+              case 'homeschool':
+                filter = feat.properties.homeschoolFilter;
+                break;
               case 'target':
                 filter = feat.properties.targetGroupTypesFilter || feat.properties.targetGroupTagsPrivateFilter && feat.properties.targetGroupTagsInstitutionFilter
                 break;
@@ -195,6 +203,8 @@ export const filteredDataSelector = createSelector(
                 filter = 'category';
                 break;
             }
+
+            console.log('filteredDataselector', filter)
 
             feat.properties.isFiltered = (filter);
           return feat;

@@ -7,6 +7,7 @@ import Store from '~/state/Store'
 
 import SidebarSubtitle from '../SidebarSubtitle/';
 import Paragraph from '~/components/Paragraph';
+import IconLegend from '~/components/IconLegend';
 
 const StyledSpan = styled.span`
   min-width: 250px;
@@ -25,7 +26,7 @@ const StyledDiv = styled.div`
 `;
 
 const SidebarInfoParagraph = p => {
-  const { title, intro, text, id, active } = p;
+  const { title, intro, text, id, active, iconLegend } = p;
   const boolActive = id === active;
 
   const spanContent = boolActive ? 'weniger' : 'mehr';
@@ -42,6 +43,7 @@ const SidebarInfoParagraph = p => {
   return (
     <>
       <SidebarSubtitle>{title}</SidebarSubtitle>
+      <IconLegend isVisible={iconLegend} />
       <Paragraph dangerouslySetInnerHTML={createMarkup(intro)}></Paragraph>
       { boolActive && (<Paragraph if={boolActive} dangerouslySetInnerHTML={createMarkup(text)}></Paragraph>) }
       <StyledDiv>

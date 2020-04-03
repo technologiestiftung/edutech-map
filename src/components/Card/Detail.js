@@ -15,6 +15,7 @@ import CardBody from './CardBody';
 import CardDivider from './CardDivider';
 import SidebarTitle from '../../modules/Sidebar/SidebarTitle/';
 import CategoryLabels from '~/components/CategoryLabels';
+import Icon from '~/components/Icon';
 import Button from '~/components/GhostButton';
 
 
@@ -37,6 +38,10 @@ const DetailTitle = styled(SidebarTitle)`
   margin-bottom: ${props => props.theme.padding[1]};
   padding-right: ${props => props.theme.padding[0]};
   padding-left: 0;
+
+  svg {
+    margin-right: 10px;
+  }
 `;
 
 const StyledCategoryLabels = styled(CategoryLabels)`
@@ -55,7 +60,7 @@ const CardImage = styled.div`
 
 const DetailHeader = styled.div`
   display: flex;
-  width: 250px;
+  width: 270px;
   flex-direction: row;
 `;
 
@@ -108,10 +113,15 @@ class DetailCard extends PureComponent {
       return null;
     }
 
+    console.log('data', data)
+
     return (
       <DetailCardWrapper>
         <DetailHeader>
-          <DetailTitle>{data.name}</DetailTitle>
+          <DetailTitle>
+          <Icon isHomeschool={data.homeschool} color={data.color}/>
+          {data.name}
+          </DetailTitle>
         </DetailHeader>
         <StyledCategoryLabels categories={data.categoriesSelected} category={data.category} /*hasBorder={teaserUrl}*/ />
         <CardActions data={data} />

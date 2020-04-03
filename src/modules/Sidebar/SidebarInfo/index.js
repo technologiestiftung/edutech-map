@@ -37,7 +37,8 @@ const SidebarInfo = (p) => {
           id={1}
         ></SidebarInfoParagraph>
 
-        <SidebarInfoParagraph 
+        <SidebarInfoParagraph
+          iconLegend={true} 
           title={content.worktitle}
           text={content.work}
           intro={content.workintro}

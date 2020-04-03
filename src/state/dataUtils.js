@@ -163,6 +163,14 @@ export const getTargetGroupType = (value) => {
   return dict[value];
 }
 
+export const getHomeschoolType = (value) => {
+  const dict = {
+    'false': 'Nicht vorhanden',
+    'true': 'Vorhanden'
+  }
+  return dict[value];
+}
+
 export const getTargetGroupLabel = (type, group) => {
   const dict = {
     'institution': {
@@ -280,6 +288,14 @@ export const filterSubCategories = (props, subCategoryFilter) => {
 
   return !subCategoryFilter[props.category].some(cat => props.subCategoriesSelected.includes(cat));
 }
+
+export const filterHomeschool = (props, homeschoolFilter) => {
+  if (!homeschoolFilter || !props) {
+    return false;
+  }
+
+  return !homeschoolFilter.some(cat => props.homeschool === cat);
+};
 
 export const filterTargetGroupTypes = (props, targetGroupFilter) => {
   if (!targetGroupFilter || !props) {
@@ -408,8 +424,10 @@ export default {
   filterTargetGroupTypes,
   targetGroupsEmpty,
   filterTargetGroupTags,
+  filterHomeschool,
   createMarkup,
   objectSize,
   mailTo,
-  subCategoriesEmpty
+  subCategoriesEmpty,
+  getHomeschoolType
 };

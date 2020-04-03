@@ -6,6 +6,7 @@ import UnFavIcon from '@material-ui/icons/Favorite';
 
 import { createMarkup } from '~/state/dataUtils';
 import CategoryLabels from '~/components/CategoryLabels';
+import Icon from '~/components/Icon';
 import Button from '~/components/GhostButton';
 import Actions from '~/state/Actions';
 
@@ -54,6 +55,18 @@ const CardHeaderRight = styled.div`
   margin-left: auto;
 `;
 
+const StyledFlexWrapper = styled.div`
+  display: flex;
+
+  svg {
+    width: 15px;
+    min-width: 15px;
+    transform: translateY(2px);
+    height: 15px;
+    margin-right: 10px;
+  }
+`;
+
 const CardTeaserImage = styled.div`
   background: ${props => `url(${props.src}) no-repeat center center`};
   background-size: cover;
@@ -97,7 +110,10 @@ class CardHeader extends PureComponent {
       <Fragment>
         <CardHeaderWrapper>
           <CardHeaderLeft onClick={() => this.handleClick(data)} >
-            <CardTitle type={type}>{data.name}</CardTitle>
+            <StyledFlexWrapper>
+              {isListMode && (<Icon isHomeschool={data.homeschool} color={data.color}/>)}
+              <CardTitle type={type}>{data.name}</CardTitle>
+            </StyledFlexWrapper>
             <StyledCategoryLabels categories={data.categoriesSelected} type={type} category={data.category} /*hasBorder={teaserUrl}*/ />
             <CardAddress dangerouslySetInnerHTML={createMarkup(data.location[0].address)} type={type}></CardAddress>
           </CardHeaderLeft>

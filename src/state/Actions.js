@@ -62,7 +62,8 @@ const createPoint = d => {
       subCategoriesSelected: createArray(d, 'value'),
       targetGroupsSelected: checkTargetGroups(d),
       targetGroupTagsSelectedArr: createTargetGroupTags(d),
-      outOfBounds: true
+      outOfBounds: true,
+      icon: 'edutech-icon-2' // TODO: add icon logic here!
     }
   };
 };
@@ -254,9 +255,6 @@ const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
   let { targetGroupFilter, targetGroupTagsFilter } = state.filter;
   const { categories } = state;
 
-
-  console.log(state,type)
-
   if (targetGroupFilter.includes(type) || deactivate) {
 
     targetGroupFilter = targetGroupFilter.filter(item => {
@@ -272,6 +270,25 @@ const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
   }
 
   const filter = Object.assign({}, state.filter, { targetGroupFilter });
+
+  return { filter };
+};
+
+const toggleHomeschoolFilter = (state, type, deactivate = false) => {
+  let { homeschoolFilter } = state.filter;
+  const { categories } = state;
+
+  if (homeschoolFilter.includes(type) || deactivate) {
+
+    homeschoolFilter = homeschoolFilter.filter(item => {
+        return item !== type
+    });
+
+  } else {
+    homeschoolFilter.push(type);
+  }
+
+  const filter = Object.assign({}, state.filter, { homeschoolFilter });
 
   return { filter };
 };
@@ -362,6 +379,7 @@ export default (Store) => ({
   toggleTargetGroupTagFilter,
   toggleTargetGroupTypeFilter,
   setMapCenter,
+  toggleHomeschoolFilter,
   setListSorting,
   loadEntryData: loadEntryData(Store),
   loadFilterData: loadFilterData(Store)
