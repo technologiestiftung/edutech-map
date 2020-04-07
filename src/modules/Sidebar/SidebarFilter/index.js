@@ -50,7 +50,7 @@ const SidebarFilter = p => {
           <SidebarSubtitle>Zielgruppe</SidebarSubtitle>
           <TargetGroupFilter active={active} />
           <StyledDivider />
-          <SidebarSubtitle>Homeschooling Angebote</SidebarSubtitle>
+          <SidebarSubtitle>Homeschooling-Angebote</SidebarSubtitle>
           <HomeschoolFilter active={active} />
         </Fragment>
         )}

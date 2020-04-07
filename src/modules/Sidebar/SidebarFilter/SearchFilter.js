@@ -23,6 +23,7 @@ class SearchFilter extends PureComponent {
   }
 
   onChange(item) {
+    this.props.setHighlightData(item);
     this.props.setDetailRoute(item ? item.autoid : false);
     this.props.setDetailRouteWithListPath(item.autoid);
     this.props.setSelectedData(true);

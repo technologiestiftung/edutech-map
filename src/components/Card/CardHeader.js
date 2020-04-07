@@ -61,7 +61,7 @@ const StyledFlexWrapper = styled.div`
   svg {
     width: 15px;
     min-width: 15px;
-    transform: translateY(2px);
+    transform: translateY(3px);
     height: 15px;
     margin-right: 10px;
   }
@@ -93,6 +93,8 @@ class CardHeader extends PureComponent {
     const { setDetailRoute, setSelectedData } = this.props;
     setDetailRoute(d.autoid);
     setSelectedData(true);
+
+    console.log('card clicked', d.autoid);
   }
 
   render() {

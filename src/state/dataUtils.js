@@ -165,8 +165,8 @@ export const getTargetGroupType = (value) => {
 
 export const getHomeschoolType = (value) => {
   const dict = {
-    'false': 'Nicht vorhanden',
-    'true': 'Vorhanden'
+    'false': 'Nicht aktiviert',
+    'true': 'Aktiviert'
   }
   return dict[value];
 }

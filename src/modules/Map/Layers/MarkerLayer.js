@@ -15,26 +15,26 @@ const paintProps = {
   "circle-color": "#223b53",
   "circle-stroke-color": "white",
   "circle-stroke-width": 1,
-  "circle-opacity": 1
+  "circle-opacity": 1,
 };
 
 function getPaintProps(props) {
   const detailId =
-    idx(props, _ => _.detailData.name) ||
-    idx(props, _ => _.highlightData.name) ||
+    idx(props, (_) => _.detailData.name) ||
+    idx(props, (_) => _.highlightData.name) ||
     "";
-  const tooltipId = idx(props, _ => _.tooltipData.name) || "";
+  const tooltipId = idx(props, (_) => _.tooltipData.name) || "";
   const activeExpr = [
     "case",
     ["==", ["string", ["get", "name"]], detailId],
     2,
-    3
+    3,
   ];
   const activeExprZoomedIn = [
     "case",
     ["==", ["string", ["get", "name"]], detailId],
     12,
-    6
+    6,
   ];
 
   return {
@@ -45,7 +45,7 @@ function getPaintProps(props) {
       8,
       activeExpr,
       16,
-      activeExprZoomedIn
+      activeExprZoomedIn,
     ],
     "circle-color": [
       "case",
@@ -53,7 +53,7 @@ function getPaintProps(props) {
       ["get", "color"],
       ["get", "isFiltered"],
       "#B8B8B8",
-      ["get", "color"]
+      ["get", "color"],
     ],
     "circle-stroke-color": [
       "case",
@@ -61,12 +61,9 @@ function getPaintProps(props) {
       ["get", "color"],
       ["get", "isFiltered"],
       "#E8E8E8",
-      ["get", "colorLight"]
+      ["get", "colorLight"],
     ],
-    "circle-stroke-width": 4
-    // 'case',
-    // ['==', ['string', ['get', 'name']], tooltipId], 12,
-    // ['==', ['string', ['get', 'name']], detailId],
+    "circle-stroke-width": 4,
   };
 }
 
@@ -88,10 +85,10 @@ class MarkerLayer extends PureComponent {
       <Feature
         coordinates={feat.geometry.coordinates}
         key={`feat-${i}`}
-        onClick={evt => this.timeoutClick(evt, feat)} // isMobile ? noop() :
-        onMouseEnter={evt => this.handleMouseEnter(evt, feat)}
-        onMouseLeave={evt => this.handleMouseLeave(evt)}
-        onTouchStart={evt => this.handleClick(evt)}
+        onClick={(evt) => this.timeoutClick(evt, feat)} // isMobile ? noop() :
+        onMouseEnter={(evt) => this.handleMouseEnter(evt, feat)}
+        onMouseLeave={(evt) => this.handleMouseLeave(evt)}
+        onTouchStart={(evt) => this.handleClick(evt)}
         properties={feat.properties}
       />
     );
@@ -100,7 +97,7 @@ class MarkerLayer extends PureComponent {
 
   filterCategory(data, category, isFiltered = false) {
     return data.features
-      .filter(d =>
+      .filter((d) =>
         isFiltered
           ? d.properties.isFiltered
           : !d.properties.isFiltered &&
@@ -110,13 +107,13 @@ class MarkerLayer extends PureComponent {
       .map((feat, i) => this.renderFeat(feat, i));
   }
 
-  renderLayer = category => {
+  renderLayer = (category) => {
     return (
       <Layer
         type="symbol"
         id="icon"
         layout={{ "icon-image": "edutech-app", "icon-size": 1.25 }}
-        onMouseMove={evt => this.handleMouseMove(evt)}
+        onMouseMove={(evt) => this.handleMouseMove(evt)}
       >
         {this.filterCategory(data, category)}
       </Layer>
@@ -156,12 +153,12 @@ class MarkerLayer extends PureComponent {
   }
 
   render() {
-    const { data, highlightData } = this.props;
+    const { data, highlightData, detailData } = this.props;
     const paintProps = getPaintProps(this.props);
     let highlightFeat = false;
     if (data) {
       highlightFeat = data.features.find(
-        feat => highlightData && feat.properties.name === highlightData.name
+        (feat) => highlightData && feat.properties.name === highlightData.name
       );
     }
 
@@ -174,27 +171,22 @@ class MarkerLayer extends PureComponent {
             type="circle"
             paint={paintProps}
             // minZoom={10}
-            onMouseMove={evt => this.handleMouseMove(evt)}
+            onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {data.features
-              .filter(d => !d.properties.isFiltered && !d.properties.homeschool)
-              .map(feat => this.renderFeat(feat))}
+              .filter(
+                (d) => !d.properties.isFiltered && !d.properties.homeschool
+              )
+              .map((feat) => this.renderFeat(feat))}
           </Layer>
         )}
         {data && (
           <Layer id="FilteredMarkerLayer" type="circle" paint={paintProps}>
             {data.features
-              .filter(d => d.properties.isFiltered && !d.properties.homeschool)
-              .map(feat => this.renderFeat(feat))}
-          </Layer>
-        )}
-        {data && highlightFeat && (
-          <Layer id="HighlightLayer" type="circle" paint={paintProps}>
-            <Feature
-              coordinates={highlightFeat.geometry.coordinates}
-              key={highlightFeat.properties.name}
-              properties={highlightFeat.properties}
-            />
+              .filter(
+                (d) => d.properties.isFiltered && !d.properties.homeschool
+              )
+              .map((feat) => this.renderFeat(feat))}
           </Layer>
         )}
 
@@ -203,7 +195,7 @@ class MarkerLayer extends PureComponent {
             type="symbol"
             id="IconAppLayer"
             layout={{ "icon-image": "edutech-app", "icon-size": 1.25 }}
-            onMouseMove={evt => this.handleMouseMove(evt)}
+            onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {this.filterCategory(data, "app")}
           </Layer>
@@ -213,7 +205,7 @@ class MarkerLayer extends PureComponent {
             type="symbol"
             id="IconMediaLayer"
             layout={{ "icon-image": "edutech-media", "icon-size": 1.25 }}
-            onMouseMove={evt => this.handleMouseMove(evt)}
+            onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {this.filterCategory(data, "media")}
           </Layer>
@@ -223,7 +215,7 @@ class MarkerLayer extends PureComponent {
             type="symbol"
             id="IconServiceLayer"
             layout={{ "icon-image": "edutech-service", "icon-size": 1.25 }}
-            onMouseMove={evt => this.handleMouseMove(evt)}
+            onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {this.filterCategory(data, "service")}
           </Layer>
@@ -233,7 +225,7 @@ class MarkerLayer extends PureComponent {
             type="symbol"
             id="IconHardwareLayer"
             layout={{ "icon-image": "edutech-hardware", "icon-size": 1.25 }}
-            onMouseMove={evt => this.handleMouseMove(evt)}
+            onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {this.filterCategory(data, "hardware")}
           </Layer>
@@ -245,11 +237,17 @@ class MarkerLayer extends PureComponent {
             layout={{ "icon-image": "edutech-filtered", "icon-size": 1.25 }}
           >
             {data.features
-              .filter(d =>
-                d.properties.isFiltered &&
-                d.properties.homeschool
-              )
+              .filter((d) => d.properties.isFiltered && d.properties.homeschool)
               .map((feat, i) => this.renderFeat(feat, i))}
+          </Layer>
+        )}
+        {data && highlightFeat && (
+          <Layer id="HighlightLayer" type="circle" paint={paintProps}>
+            <Feature
+              coordinates={highlightFeat.geometry.coordinates}
+              key={highlightFeat.properties.name}
+              properties={highlightFeat.properties}
+            />
           </Layer>
         )}
       </Fragment>
@@ -257,4 +255,4 @@ class MarkerLayer extends PureComponent {
   }
 }
 
-export default connect(state => state, Actions)(MarkerLayer);
+export default connect((state) => state, Actions)(MarkerLayer);
