@@ -43,7 +43,7 @@ const IconLegend = p => {
         </LegendWrapper>
         <LegendWrapper>
           <img src={homeschoolIcon} />
-          <span>Homeschooling-Angebote</span>
+          <span>Schulfrei-Angebote</span>
         </LegendWrapper>
         </>
       )}
