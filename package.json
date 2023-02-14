@@ -81,7 +81,7 @@
 		"store": "2.0.12",
 		"styled-components": "4.4.0",
 		"styled-normalize": "8.0.6",
-		"topojson": "3.0.2",
+		"topojson-client": "3.1.0",
 		"unfetch": "4.1.0",
 		"unistore": "3.5.0"
 	}
