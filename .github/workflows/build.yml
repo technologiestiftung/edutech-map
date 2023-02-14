@@ -1,0 +1,22 @@
+# github workflow that builds the project using npm run build
+# and then deploys it to the gh-pages branch
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nmvrc"
+      - run: npm ci
+      - run: npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
