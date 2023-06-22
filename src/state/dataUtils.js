@@ -1,9 +1,9 @@
 import turfBbox from '@turf/bbox';
 import { scaleOrdinal } from 'd3-scale';
-const config = require('../../config.json');
 import Store from 'store';
 import idx from 'idx';
 import pointInPolygon from '@turf/boolean-point-in-polygon';
+import config from '../../config.json';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
