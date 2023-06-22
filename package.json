@@ -1,5 +1,5 @@
 {
-	"name": "react-starter",
+	"name": "edutech-map",
 	"config": {
 		"appname": "edutech-map"
 	},
@@ -12,7 +12,7 @@
 		"lint": "eslint --ext .js --ext .jsx ."
 	},
 	"repository": {
-		"url": "git@github.com:wbkd/react-starter.git",
+		"url": "git@github.com:technologiestiftung/edutech-map.git",
 		"type": "git"
 	},
 	"author": "webkid.io",
