@@ -22,11 +22,6 @@ module.exports = merge(common, {
 		new MiniCssExtractPlugin({ filename: "bundle.css" }),
 		new Webpack.optimize.ModuleConcatenationPlugin(),
 	],
-	resolve: {
-		alias: {
-			"~": Path.resolve(__dirname, "../src"),
-		},
-	},
 	module: {
 		noParse: /(mapbox-gl)\.js$/,
 		rules: [
