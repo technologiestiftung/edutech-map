@@ -1,6 +1,6 @@
 [
     {
-        "autoid": null,
+        "autoid": "lingoset",
         "name": "Lingoset",
         "description": "Wir helfen Sprachschulen und Instituten, das Lernen im Klassenzimmer durch Online-Lernen zu erg\u00e4nzen. Unsere App erm\u00f6glicht es B1-C2-Sprachlernenden, nach Abschluss eines Kurses ihre Verbesserungspotenziale zu identifizieren und anschlie\u00dfend ein personalisiertes Training zu erhalten.",
         "contact": [
@@ -45,7 +45,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "lehrermarktplatz",
         "name": "Lehrermarktplatz",
         "description": "Bei lehrermarktplatz.de k\u00f6nnen Lehrerinnen und Lehrer ihre sorgf\u00e4ltig gestalteten, bew\u00e4hrten Unterrichtsmaterialien online teilen und anbieten \u2013 kostenlos (und sogar mit CC-Lizenz) oder gegen eine angemessene Aufwandsentsch\u00e4digung. Andere Lehrkr\u00e4fte sparen damit Zeit und k\u00f6nnen auf die Erfahrung und Vorarbeit ihrer Kollegen zur\u00fcckgreifen. Und Sch\u00fclerinnen und Sch\u00fcler in ganz Deutschland, \u00d6sterreich und der Schweiz profitieren von kreativen Unterrichtsideen \u2013 genau das ist es, was uns antreibt.  Seit Anfang 2016 arbeiten wir daran, dieses Modell umzusetzen \u2013 seither ist bereits viel geschehen. Weit \u00fcber 100.000 Unterrichtsmaterialien wurden \u00fcber lehrermarktplatz.de verkauft, und knapp eine Million mal wurden kostenlose Materialien heruntergeladen. Mehrere hundert Lehrkr\u00e4fte verdienen sich bei lehrermarktplatz.de die Kosten zur\u00fcck, die im Alltag f\u00fcr Kopien oder Schreibbedarf anfallen. Andere k\u00f6nnen sich von den Autorenhonoraren sogar schon ihren Jahresurlaub leisten. Und neben Lehrerinnen und Lehrer bieten inzwischen auch \u00fcber 30 Verlage hochwertige Unterrichtsinhalte an.",
         "contact": [
@@ -99,7 +99,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "die-zukunftsbauer",
         "name": "Die Zukunftsbauer",
         "description": "Wir bieten Lehrenden und ihren Klassen sofort einsetzbare Lehr- und Lernmaterialien zur Vermittlung von Zukunftsdenken. Diese dienen der pers\u00f6nlichen und beruflichen Weiterentwicklung junger Menschen und ihrer Wegbegleiter. Das Konzept, Die Zukunftsreise, beinhaltet 8 fertige Module a 90 Minuten.",
         "contact": [
@@ -150,7 +150,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "kon-te-xis",
         "name": "KON TE XIS",
         "description": "KON TE XIS ist die tr\u00e4gereigene Fortbildungsst\u00e4tte der Technischen Jugendfreizeit- und Bildungsgesellschaft (tjfbg) gGmbH.  Wir unterst\u00fctzen Schulen und KITAs dabei, die Themenbereiche Natur, Umwelt & Technik im p\u00e4dagogischen Alltag umzusetzen und weiterzuentwickeln.",
         "contact": [{ "email": "k.klaus@tjfbg.de", "website": "www.kontexis.de", "phone": "30", "openinghours": "" }],
@@ -191,7 +191,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "digitales-lernen-berlin",
         "name": "Digitales Lernen Berlin",
         "description": "Koordinierung kultureller Bildungsangebote im Bereich Neue Medien f\u00fcr Grundschulen, Oberschulen, Kindertagesst\u00e4tten und JFE im Gebiet: Veranstaltungen zu Themen der Medien- und Sprachbildung und digitale Techniken f\u00fcr den Schulunterricht z.B. Coding, Apps und Videoerstellung sowie Vermittlung von Angeboten zum Thema Cyber-Mobbing. F\u00f6rderung von Peer-to-Peer-Learning und BYOD-Projekten, Informationen f\u00fcr die Erstellung schulinterner Medienkonzepte hinsichtlich des Digitalpakts.",
         "contact": [
@@ -251,7 +251,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "afterschoolhustle",
         "name": "Afterschoolhustle",
         "description": "Workshops mit Coaches die professionell in dem jeweiligen Bereich arbeiten. Es geht um Skills und Berufsorientierung.",
         "contact": [{ "email": "pawel@afterschoolhustle.org", "website": "", "phone": "", "openinghours": "" }],
@@ -289,7 +289,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "medialpfade",
         "name": "Medialpfade",
         "description": "Zu unseren Aktivit\u00e4ten geh\u00f6ren die Konzeption und Durchf\u00fchrung von Aktionen, Projekten und Fortbildungen in den Bereichen Mobiles Lernen, Web-Video, Online-Journalismus, ePartizipation, Games, Open Education, p\u00e4dagogisches Making sowie Medienkunst. Unser inhaltlicher Schwerpunkt liegt auf der politischen Bildung.",
         "contact": [
@@ -350,7 +350,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "ed-uvation",
         "name": "EDUvation",
         "description": "EDUvation ist der einzige Coach, Business Angle und Eventveranstalter nur f\u00fcr EDU- und EdTech StartUps in Deutschland",
         "contact": [
@@ -400,7 +400,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "duden-learnattack",
         "name": "Duden Learnattack",
         "description": "Duden Learnattack ist der smarte Lernbegleiter und die Online-Nachhilfe f\u00fcr bessere Noten. Wir begleiten Sch\u00fclerinnen und Sch\u00fcler zielgerichtet von der 5. Klasse bis zum Abitur. Wir sind \u00fcberzeugt, dass eine gute School-Life-Balance und geringer Lernstress zu langfristigem Lernerfolg f\u00fchren. Deshalb lernen Sch\u00fcler und Sch\u00fclerinnen mit Duden Learnattack nur jene Inhalte, die f\u00fcr den pers\u00f6nlichen Lernfortschritt Erfolg versprechen. Unser Lernangebot bietet zeiteffiziente Unterst\u00fctzung bei allen Themen rund um die Schule \u2013 von Hausaufgaben \u00fcber Referate und Pr\u00e4sentationen bis hin zu Klassenarbeiten und Abschlusspr\u00fcfungen. Duden Learnattack bietet Lerninhalte in 9 F\u00e4chern (Mathe, Deutsch, Englisch, Franz\u00f6sisch, Latein, Geschichte, Biologie, Physik, Chemie), die sich an den aktuellen Lehr- und Bildungspl\u00e4nen der 16 Bundesl\u00e4nder orientieren. Ein durchdachter Medienmix aus Lernvideos, interaktiven \u00dcbungen, Schritt-f\u00fcr-Schritt-Anleitungen und Originalklassenarbeiten mit passenden Musterl\u00f6sungen garantiert abwechslungsreiches und zielorientiertes Lernen. Die p\u00e4dagogisch fundierte Learnattack-Lernmethode bringt Sch\u00fclerinnen und Sch\u00fcler schnell und sicher zu Lernerfolg und guten Noten. Unsere leicht verst\u00e4ndlichen Lerninhalte werden von Lehrern erstellt und zus\u00e4tzlich von der Duden-Redaktion gepr\u00fcft. Auf diese Weise werden wir unserem Anspruch an qualitativ hochwertige Inhalte gerecht. Um Sch\u00fclern und Sch\u00fclerinnen flexible Unterst\u00fctzung zu garantieren, helfen die Tutoren unserer WhatsApp-Nachhilfe unkompliziert und kompetent weiter. F\u00fcr eine umfassendere und individuelle Lernbegleitung stehen zus\u00e4tzlich Tutoren in unserer Online-Einzelnachhilfe zur Verf\u00fcgung.",
         "contact": [
@@ -461,7 +461,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "techtastisch",
         "name": "Techtastisch",
         "description": "Spannende und unterhaltsame Wissensvideos mit schnellem Tempo und m\u00f6glichsthoher Informationsdichte auf gr\u00f6\u00dftm\u00f6glichem Unterhaltungswert. Videos, die Leute mit Spa\u00df f\u00fcr Wissenschaften und dem Besch\u00e4ftigen mit diesen begeistern.",
         "contact": [
@@ -516,7 +516,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "haba-digitalwerkstatt",
         "name": "HABA Digitalwerkstatt",
         "description": "Die Digitalwerkstatt ist ein kreativer Bildungs- und Erfahrungsraum, in dem Kinder zwischen 6 und 12 Jahren die digitale Welt spielerisch entdecken k\u00f6nnen \u2013 und wichtige Kompetenzen im Umgang mit den neuen Technologien entwickeln.  In unseren Kursen und Workshops lernen Kinder programmieren, bauen Roboter, experimentieren mit 3D-Druck, gestalten Animationsfilme und vieles Spannende mehr!  Wir bieten auch Workshops f\u00fcr Eltern, Lehrkr\u00e4fte und andere Bildungsinteressierte an. Dar\u00fcber hinaus arbeiten wir mit Schulen zusammen und gestalten digitale Projekte in Orientierung an ihren Lehrpl\u00e4nen. Diese digitalen Schulstunden finden vormittags in der Digitalwerkstatt statt.",
         "contact": [
@@ -570,7 +570,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "tutory",
         "name": "tutory",
         "description": "tutory ist ein Online-Editor f\u00fcr offene Unterrichtsmaterialien (OER). Per Drag&Drop k\u00f6nnen Arbeitsbl\u00e4tter und Dokumente im Handumdrehen mit fertig gestalteten Bausteinen (wie diversen Aufgabentypen, QR-Codes, Bildern, Lineatur usw.) versehen, lizenziert und ver\u00f6ffentlicht werden.",
         "contact": [
@@ -620,7 +620,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "stack-fuel",
         "name": "StackFuel",
         "description": "StackFuel ist Deutschlands erster Anbieter f\u00fcr berufsbegleitende Online-Trainings f\u00fcr den Bereich Data Analytics und Data Science. Als erfolgsentscheidender Faktor der Digitalisierung hat Data Science bereits eine essenzielle Rolle in Unternehmen eingenommen. Dennoch fehlen bis heute Fachexperten, die sicher und zielorientiert mit gro\u00dfen Datenmengen umgehen k\u00f6nnen. Die Entwicklung der Datentechnologien verl\u00e4uft schneller, als das Universit\u00e4ten oder andere Bildungsanbieter dem Bedarf nachkommen konnten. Dies f\u00fchrt dazu, dass aktuell viele Stellen im Bereich Data Science nicht besetzt werden k\u00f6nnen, da Fachpersonal fehlt. StackFuel setzt hier an und unterst\u00fctzt mit seinem Weiterbildungsangebot Konzerne, mittelst\u00e4ndische Unternehmen sowie Digital Grown-ups sich f\u00fcr die Chancen und Herausforderungen ihrer Branche aufzustellen und Mitarbeiter und Mitarbeiterinnen in Hinblick auf Datenkompetenz professionell zu qualifizieren.",
         "contact": [{ "email": "", "website": "https://stackfuel.com/", "phone": "", "openinghours": "" }],
@@ -661,7 +661,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "lev-berlin",
         "name": "lev Berlin",
         "description": "lev vermittelt elektronische Musikkultur.  lev ist eine Musikschule, gestaltet Projekte an Bildungs- und Kultureinrichtungen und gibt Fortbildungen f\u00fcr Lehrkr\u00e4fte.  lev ist gemeinn\u00fctzig und kommt aus Berlin.",
         "contact": [
@@ -722,7 +722,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": "_g3n60s5nk",
+        "autoid": "education-360",
         "name": "Education 360",
         "description": "Angebote gegen Unterrichtsausfall",
         "contact": [
@@ -767,7 +767,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "everycademy",
         "name": "Everycademy",
         "description": "Wir haben eine Social Peer Learning Plattform, auf der Menschen mit und voneinander lernen",
         "contact": [
@@ -819,7 +819,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "jugend-hackt",
         "name": "Jugend hackt",
         "description": "Jugend hackt ist ein Programm f\u00fcr junge Menschen, die mit ihren technischen F\u00e4higkeiten die Welt verbessern wollen. Unterst\u00fctzt von ehrenamtlichen Mentorinnen entwickeln unsere Teilnehmerinnen digitale Werkzeuge, Prototypen und Konzepte f\u00fcr eine bessere Zukunft. Unser Angebot umfasst Hackathon-Events in vielen St\u00e4dten, regionale Labs, eine Online Community und internationale Austauschprogramme.",
         "contact": [
@@ -880,7 +880,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "edcosystems",
         "name": "Edcosystems",
         "description": "Wir vernetzen au\u00dferschulische Bildungsanbieter und Lehrkr\u00e4fte.",
         "contact": [
@@ -931,7 +931,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "edulektra",
         "name": "edulektra",
         "description": "edulektra unterst\u00fctzt seit 2013 Schulen und andere Bildungseinrichtungen beim digitalen Wandel. Beratungsworkshops, Fortbildung und Coaching von Lehrkr\u00e4ften und  Begleitung der Change-Prozesse.",
         "contact": [
@@ -991,7 +991,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "technischer-jugendbildungsverein-in-praxis",
         "name": "Technischer Jugendbildungsverein in Praxis e.V. (TJP e.V.)",
         "description": "Wir unterbreiten Projekt- und Werkstattangebote im naturwissenschaftlich-technischen und handwerklichen Bereich. Das sind praxisorientierte Projekte in Tages oder Wochenzeitr\u00e4umen. Diese finden an Schulen oder an einem unserer drei Standorte statt. Fachliche Schwerpunkte sind im METEUM erneuerbare Energie, Energieeffizienz, Bionik und Biochemie. Hinzu kommen Inhalte zur BNE die \u00fcber unsere Koordinierungsstelle f\u00fcr Umweltbildung organisiert werden.",
         "contact": [
@@ -1055,7 +1055,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "fobizz-101skills-gmbh",
         "name": "Fobizz | 101skills GmbH",
         "description": "Fobizz ist Deutschlands gr\u00f6\u00dfte, unabh\u00e4ngige Weiterbildungsplattform f\u00fcr Lehrkr\u00e4fte. Fobizz richtet sich an Lehrkr\u00e4fte aller Fachrichtungen, die Inspiration und praxisorientierte Inhalte f\u00fcr die Unterrichtsgestaltung suchen und sich zu aktuellen Themen im Bereich Medien, IT und Digitales weiterbilden wollen.",
         "contact": [
@@ -1106,7 +1106,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "social-digital-innovation",
         "name": "Social-Digital Innovation",
         "description": "The Social-Digital Innovation Initiative is committed to creating a world where social solutions use technologies meaningfully, are impact driven, sustainable and benefit and belong to those who create them. We create a non-profit, non-equity, independent development program for social projects using tech; with a modular offering designed flexibly to fit any local context.",
         "contact": [
@@ -1148,7 +1148,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "tincon-ev",
         "name": "TINCON e.V.",
         "description": "Die TINCON ist ein interdisziplin\u00e4res Festival f\u00fcr digitale Jugendkultur. Die Veranstaltung vermittelt Medienkompetenz und gesellschaftliche Teilhabe in einem breiten Themenspektrum, das die gesamte junge, digital aufgewachsene Generation der 13- bis 21-J\u00e4hrigen erreicht. Auf den B\u00fchnen stehen jungen Sprecher*innen auf gleicher H\u00f6he mit den bereits bekannten Profis. Die TINCON wird vom Berliner TINCON e.V. gemeinsam mit Jugendlichen geplant, kuratiert und umgesetzt, wof\u00fcr der Verein 2019 mit dem Grimme Online Preis in der Kategorie Spezial ausgezeichnet wurde.",
         "contact": [
@@ -1221,7 +1221,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "my-study-genius-ug-haftungsbeschraenkt",
         "name": "MyStudyGenius UG (haftungsbeschr\u00e4nkt)",
         "description": "MyStudyGenius ist eine speziell entwickelte Plattform f\u00fcr kleine bis mittlere Anbieter von privater Bildung. Dabei hilft die SaaS Plattform die Verwaltung zu automatisieren und Zeit zu sparen. Unsere Module erlauben es alle Teilnehmerdaten, Dozentendaten und Kursdaten einfach zu organisieren. In einem Kalender werden dann alle Termine \u00fcbersichtlich dargestellt und die Planung und Verf\u00fcgbarkeit wird transparenter.",
         "contact": [
@@ -1283,7 +1283,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "growbe-yo-und",
         "name": "GrowbeYOUnd",
         "description": "Wir bieten Workshops und Vorlesungsreihen zu 'Zukunft der Arbeit' und Zukunftsf\u00e4higkeiten an Hochschulen, Universit\u00e4ten und Unternehmen an.",
         "contact": [
@@ -1338,7 +1338,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "maker-store-berlin-allknow-gmbh",
         "name": "Maker Store Berlin (Allknow GmbH)",
         "description": "Im Maker Store der Allknow GmbH findet ihr alle verf\u00fcgbaren Brick\u2019R\u2019knowledge Sets, Arduino Microcontroller, Makeblock Roboter, 3Dsimo 3D Stifte und 3D Drucker von Anycubic und Snapmaker. Kurz gesagt: Wir haben alles, was das Maker-, DIY-, K\u00fcnstler-, Tekkie- und Kinderherz begehrt. In allen genannten Bereichen bieten wir au\u00dferdem Workshops an!",
         "contact": [
@@ -1392,7 +1392,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "kristin-narr-medienpaedagogin",
         "name": "Kristin Narr / Medienp\u00e4dagogin",
         "description": "Ich denke mir Konzepte f\u00fcr innovative, offene Bildungsangebote aus, die vor allem im au\u00dferschulischen Bereich angesiedelt sind: (Jugend)Barcamps, Maker Days for Kids, MOOC",
         "contact": [
@@ -1448,7 +1448,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "edkimo-gmbh",
         "name": "Edkimo GmbH",
         "description": "Edkimo ist eine digitale Kommunikationsplattform, die Feedback, Partizipation und Evaluation im Lernprozess erm\u00f6glicht. Mit Edkimo k\u00f6nnen Lehrkr\u00e4fte, Schulen und Bildungseinrichtungen m\u00fchelos ein konstruktives und anonymes Feedback der Lerngruppe und des Kollegiums einholen, auswerten und besprechen. Diese R\u00fcckmeldungen flie\u00dfen unmittelbar in Partizipations- und Evaluationsprozesse ein und k\u00f6nnen direkt f\u00fcr die Schul- und Unterrichtsentwicklung genutzt werden.",
         "contact": [
@@ -1506,7 +1506,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "diesterweg-hochschule-ev",
         "name": "Diesterweg Hochschule e.V.",
         "description": "Workshops zu digitalen Lernformaten in Schulen, vom Umgang mit OER Materialien bis zu schulinternen Hackathons",
         "contact": [
@@ -1557,7 +1557,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "planpolitik-gbr",
         "name": "Planpolitik GbR",
         "description": "planpolitik designs interactive learning formats on political and social topics and implements them both online and in face-to-face workshop settings. Our main target groups are school classes, university students as well as young professionals. planpolitik was founded in 2005 and is based in Berlin, Germany. The 17 staff members comprise social scientists, web developers and graphic designers that work within a flat management structure. Our collaborative design process works aims at creating rewarding learning experiences. Our core belief is that learning is more sustainable when it is fun and interactive.",
         "contact": [
@@ -1616,7 +1616,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "enlighten-sciences-gmbh",
         "name": "Enlighten Sciences GmbH",
         "description": "Gemeinsam mit dem Deutschen Zentrum f\u00fcr Luft- und Raumfahrt (DLR) entwickeln interaktive und forschungsorientierte Sch\u00fcler-Experimente, die mithilfe einer flexibel anpassbaren Software, Lernende und Lehrende f\u00fcr die MINT\u2013F\u00e4cher begeistern. Erwerben Schulen unsere Experimente, halten unserer innovativer Zugang zu Naturwissenschaften und Motivation Einzug in den Naturwissenschaftlichen Unterricht. Dabei verbinden wir klassische Analoge Vorgehensweisen mit digitaler Messwerterfassung und Auswertung. So bringen wir das 21. JHD ins Klassenzimmer.",
         "contact": [
@@ -1675,7 +1675,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "tueftel-akademie-g-gmbh",
         "name": "T\u00fcftelAkademie gGmbH",
         "description": "Die T\u00fcftelAkademie kombiniert digitale Bildung mit zeitgem\u00e4\u00dfen Inhalten und einem coolen Design f\u00fcr die Zukunfts-Gestalterinnen von morgen. Hierf\u00fcr haben wir eine videobasierte Onlineplattform entwickelt, in der Lehrkr\u00e4fte Video-Tutorials, Arbeitsbl\u00e4tter und Lernnreisen zu Themen der digitalen Bildung finden; Kinder und Jugendliche k\u00f6nnen mit Hilfe der Projektvideos, Anleitungen und T\u00fcftelboxen spannende Projekte gestalten. Zus\u00e4tzlich bieten wir Fortbildungen (Pr\u00e4senz und Blended Learning-Ansatz) f\u00fcr Lehrkr\u00e4fte und Multiplikator*innen an sowie Projekttage f\u00fcr Kinder und Jugendliche.",
         "contact": [
@@ -1731,7 +1731,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "edumode-software-gmbh",
         "name": "Edumode Software GmbH",
         "description": "Auch private Smartphones und Tablets einfach und sicher im Schulalltag integrieren",
         "contact": [
@@ -1779,7 +1779,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "bettermarks-gmbh",
         "name": "bettermarks GmbH",
         "description": "bettermarks ist ein adaptives Lernsystem f\u00fcr Mathematik. Es wird von Lehrern in Deutschland \u00fcberwiegend als \u00dcbungsmaterial f\u00fcr Sch\u00fcler genutzt - sowohl im Klassenraum als auch f\u00fcr Hausaufgaben - und erm\u00f6glicht eine Personalisierung des Lernens. Aktuell decken wir den Stoff der 4. \u2013 10.(11.) Klassen mit \u00fcber 100.000 Aufgaben ab. Die \u201edigitalen Matheb\u00fccher\u201c stehen in Deutsch, Englisch, Spanisch und Holl\u00e4ndisch zur Verf\u00fcgung. Sch\u00fclern erm\u00f6glicht bettermarks, selbstst\u00e4ndig Mathe zu \u00fcben. Dabei begleitet bettermarks jeden Rechenschritt, diagnostiziert Fehler und gibt konstruktive R\u00fcckmeldungen. Lehrer k\u00f6nnen die \u201edigitalen Matheb\u00fccher\u201c einfach in ihren bestehenden Unterricht integrieren. Da bettermarks die Sch\u00fcleraktivit\u00e4ten analysiert und dazu \u00fcbersichtliche Berichte erzeugt, erkennen Lehrerinnen und Lehrer tagesaktuell, welche ihrer Sch\u00fcler bei welchen Themen Unterst\u00fctzung ben\u00f6tigen. bettermarks befreit Lehrkr\u00e4fte von Routinearbeiten und erm\u00f6glicht ihnen, ihre Sch\u00fcler individuell zu f\u00f6rdern. Die leistungssteigernde Wirkung von bettermarks in Schulsystemen ist wissenschaftlich nachgewiesen: https://de.bettermarks.com/wirkung/",
         "contact": [
@@ -1828,7 +1828,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "coding-kids",
         "name": "Coding Kids",
         "description": "Mit der Initaitive www.codingkids.de sind wir sind Botschafter f\u00fcr eine aufgeschlossene digitale Gesellschaft - mit Tipps und Angeboten zum Mitmachen, die Jung und Alt fit f\u00fcr die Zukunft machen.  Als Impuls- und Ratgebermagazin bieten wir unabh\u00e4ngige Infos rund um die digitale Bildung f\u00fcr Eltern, P\u00e4dagogen und alle Vordenker. Wir haben den Schwerpunkt Coding, die sogenannte Sprache der Zukunft, und erkl\u00e4ren auf Augenh\u00f6he. Neben neuen Technologien steht dabei die Menschlichkeit im Fokus.   In Zeiten des digitalen Wandels ist es unabdingbar, sich diese neuen Technologien zunutze zu machen, mit ihnen bewusst und kreativ umzugehen. Wir bilden die Entwicklung ab, ordnen ein, zeigen Hintergr\u00fcnde, bieten praktische Anleitungen und schaffen somit den Raum, die digitale Zukunft mit zu gestalten. Wir, das ist ein Team rund um Anja Horn und Sandra Rexhausen, die die Medienagentur Einhorn Solutions in Berlin f\u00fchren. Seit \u00fcber zehn Jahren entwickeln wir f\u00fcr die f\u00fchrenden Verlagsh\u00e4user Deutschlands und Europas neue Medienkonzepte. Coding Kids ist ein eigenes, selbst finanziertes Projekt \u2013 aus \u00dcberzeugung und Leidenschaft f\u00fcr das Thema.  Wir freuen uns, dass Ihr dabei seid \u2013 als Botschafter der Digitalisierung. #wirsindallecodingkids",
         "contact": [
@@ -1880,7 +1880,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "d-ein-labor-tu-berlin",
         "name": "dEin Labor (TU Berlin)",
         "description": "Workshops f\u00fcr Sch\u00fcler*innen zu Themen der Informatik und Elektrotechnik",
         "contact": [
@@ -1929,7 +1929,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "buendnis-fuer-bildung-ev",
         "name": "B\u00fcndnis f\u00fcr Bildung e.V.",
         "description": "Das B\u00fcndnis f\u00fcr Bildung hat sich als gemeinn\u00fctziger Verein zum Ziel gesetzt, den digitalen Wandel beim Lehren und Lernen zu unterst\u00fctzen. Wir wollen die Chancen digitaler Medien, Werkzeuge und Kommunikationsmittel f\u00fcr alle am Bildungsprozess Beteiligten besser erfahr- und nutzbar machen. Unter dem Dach des BfB versammeln sich IT-Unternehmen, Verlage, Startups und Bildungsinstituten sowie Vertreter der \u00f6ffentlichen Hand, die sich besonders f\u00fcr die Entwicklung und Umsetzung von Standards und Referenzl\u00f6sungen f\u00fcr Bildung und Infrastrukturen in Lehr- und Lernumgebungen engagieren. Das B\u00fcndnis f\u00fcr Bildung ist firmenunabh\u00e4ngig und ideeller Tr\u00e4ger dieser Mission.",
         "contact": [{ "email": "info@bfb.org", "website": "https://www.bfb.org/", "phone": "", "openinghours": "" }],
@@ -1984,7 +1984,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "code-design-ev",
         "name": "Code+Design e.V.",
         "description": "Workshops im Bereich Coding und Design f\u00fcr Jugendliche im Hackathon-Format",
         "contact": [
@@ -2035,7 +2035,7 @@
         "collaborationsheadline": null
     },
     {
-        "autoid": null,
+        "autoid": "career-foundry-gmbh",
         "name": "CareerFoundry GmbH",
         "description": "Mentorenkurse online (in Englisch), um einen neuen Beruf im Bereich Entwicklung und Design zu beginnen",
         "contact": [

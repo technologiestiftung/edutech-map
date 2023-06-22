@@ -81,7 +81,9 @@ const randomizeCoord = (coord) => {
 };
 
 export const loadEntryData = (Store) => async (state, detailId) => {
-	if (!detailId) return { detailData: false };
+	if (!detailId) {
+		return { detailData: false };
+	}
 
 	try {
 		if (state.data) {
@@ -94,9 +96,10 @@ export const loadEntryData = (Store) => async (state, detailId) => {
 			});
 
 			const filtered = all.filter((i) => i.autoid === detailId)[0];
+			const newLocation = filtered.location[0]
 			const coordinates = [
-				parseFloat(randomizeCoord(filtered.location[0].lng.replace(",", "."))),
-				parseFloat(randomizeCoord(filtered.location[0].lat.replace(",", "."))),
+				parseFloat(randomizeCoord(newLocation.lng)),
+				parseFloat(randomizeCoord(newLocation.lat)),
 			];
 
 			if (isNaN(coordinates[1])) {
@@ -123,9 +126,9 @@ export const loadDataApi = (Store) => async () => {
 	Store.setState({ isLoading: true });
 
 	try {
-		const data = await fetchJSON("/public/data/institutions.json");
+		const institutions = await fetchJSON("/public/data/institutions.json");
 		const content = await fetchJSON("/public/data/info.json");
-		const features = data.map(createPoint);
+		const features = institutions.map(createPoint);
 
 		const districtsCenter = await fetchJSON("/public/data/bezirke-zentrum.json");
 		const districts = await fetchTopoJSON("/public/data/berliner-bezirke.json");
