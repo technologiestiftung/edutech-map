@@ -24,7 +24,7 @@ module.exports = merge(common, {
 	],
 	resolve: {
 		alias: {
-			"~": Path.resolve(__dirname, "src"),
+			"~": Path.resolve(__dirname, "../src"),
 		},
 	},
 	module: {
