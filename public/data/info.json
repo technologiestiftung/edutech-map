@@ -1,0 +1,18 @@
+{
+    "contacttext": "Grunewaldstraße 61-62 <br/>\n10825 Berlin <br/>\nTel. +49 30 209 69 99-0 <br/>\ninfo@technologiestiftung-berlin.de <br/>",
+    "links": [
+        {
+            "labellink": "Impressum",
+            "urllink": "https://www.technologiestiftung-berlin.de/de/impressum/"
+        },
+        {
+            "labellink": "Kontakt",
+            "urllink": "https://www.technologiestiftung-berlin.de/de/stiftung/kontakt-anfahrt/"
+        },
+        {
+            "labellink": "Datenschutz",
+            "urllink": "https://www.technologiestiftung-berlin.de/de/datenschutz/"
+        }
+    ],
+    "title": "Infos"
+}
