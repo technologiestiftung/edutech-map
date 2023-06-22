@@ -13,7 +13,7 @@ class FilterView extends PureComponent {
   }
 
   render() {
-    const { data, detailData, isLoading, labels } = this.props;
+    const { data, isLoading } = this.props;
 
     if (data) {
       return (

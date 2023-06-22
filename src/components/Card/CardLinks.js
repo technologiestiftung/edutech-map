@@ -35,29 +35,20 @@ function formatWebsite(str) {
     .replace(/\/$/, '');
 }
 
-class CardParagraph extends PureComponent {
+class CardLinks extends PureComponent {
   render() {
-    const { label, data, type } = this.props;
-    if (data.length > 0) {
-      return (
-        <CardParagraphWrapper>
-          <span>{label}</span>
-          { type == 'mailto:' && 
-            (<WebsiteLink href={`mailto:${data}`} target="_blank" rel="noopener">
-              <h3>{formatWebsite(data)}</h3>
-            </WebsiteLink>)
-          }
-          { type != 'mailto:' && 
-            (<WebsiteLink href={`${data}`} target="_blank" rel="noopener">
-              <h3>{formatWebsite(data)}</h3>
-            </WebsiteLink>)
-          }
-        </CardParagraphWrapper>
-      )
-    } else {
-      return (null)
-    }
+    const { label, links, type } = this.props;
+    return (
+      <CardParagraphWrapper>
+        <span>{label}</span>
+        {links.map(link => (
+          <WebsiteLink key={link} href={type === 'mailto:' ? `mailto:${link}` : link} target="_blank" rel="noopener">
+            <h3>{formatWebsite(link)}</h3>
+          </WebsiteLink>
+        ))}
+      </CardParagraphWrapper>
+    )
   }
 }
 
-export default CardParagraph;
+export default CardLinks;
