@@ -1,6 +1,6 @@
 import fetch from "unfetch";
-// import { feature } from "topojson";
 import feature from "topojson-client/src/feature";
+
 export async function fetchJSON(url) {
 	return fetch(url).then((res) => res.json());
 }

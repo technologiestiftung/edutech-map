@@ -1,14 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { NavLink, withRouter, matchPath, useLocation } from 'react-router-dom';
+import { matchPath, useLocation } from 'react-router-dom';
 
 import Actions from '~/state/Actions';
 import RoundButton from '~/components/RoundButton';
 import { unfilteredFilterSelector, initialFilterSelector } from '~/state/Selectors';
 
 import { connect } from 'unistore/react';
-
-import config from '../../../config';
 
 const StyledRoundButton = styled(RoundButton)`
   margin-top: 5px;
@@ -23,12 +21,6 @@ const StyledRoundButton = styled(RoundButton)`
   }
 `;
 
-import ListIcon from '@material-ui/icons/List';
-import InfoIcon from '@material-ui/icons/InfoOutlined';
-import FavIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import SearchIcon from '@material-ui/icons/Search';
-
-import EdgeButton from '~/components/EdgeButton';
 import { media } from '~/styles/Utils';
 
 const NavWrapper = styled.div`
@@ -48,30 +40,9 @@ const NavWrapper = styled.div`
   `}
 `;
 
-const NavItem = styled(NavLink)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-`;
 
 const UIMap = p => {
-
-  const {
-    initialFilter,
-    unfiltered,
-    setFilter,
-    setZoom,
-    setMapCenter,
-    resetDetailRoute,
-    setDetailData,
-    setSelectedData,
-    setHighlightData,
-    mapCenter,
-    map
-  } = p;
+  const { map } = p;
 
   const zoomIn = () => {
     if (map) {

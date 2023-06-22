@@ -11,10 +11,6 @@ import Paragraph from "~/components/Paragraph";
 
 import SidebarTitle from "../SidebarTitle";
 
-const DetailTitle = styled(SidebarTitle)`
-  margin-bottom: ${(props) => props.theme.padding[0]};
-`;
-
 const ListItems = styled.div``;
 
 const StyledEmptyFavorites = styled.div`
@@ -34,7 +30,7 @@ class SidebarList extends PureComponent {
   };
 
   render() {
-    const { data, selectedData, detailData, setHighlightData } = this.props;
+    const { data, selectedData, detailData } = this.props;
 
     return (
       <Fragment>

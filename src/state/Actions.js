@@ -1,6 +1,3 @@
-// import fetch from 'unfetch';
-import config from "../../config";
-import base64 from "base-64";
 import history from "~/history";
 import xor from "lodash.xor";
 import { isMobile, fetchTopoJSON, fetchJSON } from "~/utils";
@@ -12,7 +9,6 @@ import {
 	featOutOfBounds,
 	countInstPerDistrict,
 } from "./dataUtils";
-import pointInPolygon from "@turf/boolean-point-in-polygon";
 
 const createArray = (d, type) => {
 	const key = `categories${d["category"]}`;
@@ -58,7 +54,6 @@ const checkTargetGroups = (d) => {
 };
 
 const createPoint = (d) => {
-	console.log(d);
 	return {
 		type: "Feature",
 		geometry: {
@@ -120,7 +115,6 @@ export const loadEntryData = (Store) => async (state, detailId) => {
 			}
 		}
 	} catch (err) {
-		console.log(err);
 		return { isLoading: false };
 	}
 };
@@ -131,12 +125,8 @@ export const loadDataApi = (Store) => async () => {
 	try {
 		const response = await fetch("/public/data/institutions.json");
 		if (!response.ok) {
-			const err = await response.text();
-			console.error(err);
 			throw new Error(response.statusText);
 		}
-		// const json = JSON.parse(response.body);
-		// console.log(await response.json());
 		const json = await response.json();
 		const data = json.data.content.institution;
 		const content = await fetch("/public/data/info.json")
@@ -179,7 +169,6 @@ export const loadDataApi = (Store) => async () => {
 			isLoading: false,
 		};
 	} catch (err) {
-		console.log(err);
 		return { isLoading: true };
 	}
 };
@@ -217,7 +206,7 @@ const setDetailRoute = (state, id = false) => {
 	};
 };
 
-const resetDetailRoute = (state, id = false) => {
+const resetDetailRoute = () => {
 	history.push("");
 
 	return {
@@ -267,7 +256,6 @@ const toggleFav = (state, favId) => {
 
 const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
 	let { targetGroupFilter, targetGroupTagsFilter } = state.filter;
-	const { categories } = state;
 
 	if (targetGroupFilter.includes(type) || deactivate) {
 		targetGroupFilter = targetGroupFilter.filter((item) => {
@@ -288,7 +276,6 @@ const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
 
 const toggleHomeschoolFilter = (state, type, deactivate = false) => {
 	let { homeschoolFilter } = state.filter;
-	const { categories } = state;
 
 	if (homeschoolFilter.includes(type) || deactivate) {
 		homeschoolFilter = homeschoolFilter.filter((item) => {
@@ -305,7 +292,6 @@ const toggleHomeschoolFilter = (state, type, deactivate = false) => {
 
 const toggleCategoryFilter = (state, category, deactivate = false) => {
 	let { categoryFilter } = state.filter;
-	const { categories } = state;
 
 	if (categoryFilter.includes(category) || deactivate) {
 		categoryFilter = categoryFilter.filter((item) => {

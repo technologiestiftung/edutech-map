@@ -46,7 +46,6 @@ class AppWrapper extends PureComponent {
             <Sidebar />
             <Map />
             <Spinner loading={isLoading}/>
-            {/* <MapTitle>EduTechMap Berlin</MapTitle> */}
           </StyledAppWrapper>
         </ThemeProvider>
       </MuiThemeProvider>

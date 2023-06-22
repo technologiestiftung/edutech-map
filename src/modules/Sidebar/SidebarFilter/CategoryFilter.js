@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import { styled as styledUi, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import { getCategoryLabel, getSubCategoryLabel } from '~/state/dataUtils';
+import { getCategoryLabel } from '~/state/dataUtils';
 import FormGroup from '@material-ui/core/FormGroup';
-import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SubCategoryTags from '~/components/SubCategoryTags'

@@ -4,7 +4,6 @@ const config = require('../../config.json');
 import Store from 'store';
 import idx from 'idx';
 import pointInPolygon from '@turf/boolean-point-in-polygon';
-import { fetchTopoJSON } from '~/utils';
 
 export const getDistrictBounds = districtFeature => (
   turfBbox(districtFeature)
