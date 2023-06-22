@@ -55,7 +55,6 @@ class LabelLayer extends PureComponent {
         properties={feat.properties}
       />
     );
-    console.log(feature)
     return feature;
   }
 

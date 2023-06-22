@@ -1,7 +1,7 @@
 import createStore from 'unistore';
 
 import { getFavs, subCategories, subCategoriesEmpty, targetGroups, targetGroupTypes, targetGroupsEmpty } from './dataUtils';
-import config from '../../config';
+import config from '../../config.json';
 
 export const filterSection = {
   categoryFilter: [],

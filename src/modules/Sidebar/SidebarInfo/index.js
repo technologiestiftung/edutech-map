@@ -1,42 +1,31 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
 
 import Actions from '~/state/Actions';
 import { createMarkup } from '~/state/dataUtils';
-import { dataAsArraySelector } from '~/state/Selectors'
 
-import CardCompact from '~/components/Card/CardCompact';
-import DetailCard from '~/components/Card/Detail';
-import Logo from '~/components/beBerlinLogo';
+import Logo from '~/components/BeBerlinLogo';
 import LogoIBB from '~/components/IBBLogo';
 import Paragraph from '~/components/Paragraph';
 import SidebarTitle from '../SidebarTitle';
-import SidebarSubtitle from '../SidebarSubtitle';
 import SidebarLinks from './SidebarInfoLinks';
 
 import SidebarInfoParagraph from './SidebarInfoParagraph';
 
-const ListItems = styled.div``;
+const Separator = styled.div`
+  width: 100%;
+  height: ${props => props.theme.margin[2]};
+`;
+
 
 const SidebarInfo = (p) => {
-  const [view, setView] = useState(false);
-
   const { content, activeP } = p;
 
   if (content) {
     return (
       <Fragment>
         <SidebarTitle>EduTechMap Berlin</SidebarTitle>
-        
-        <SidebarInfoParagraph 
-          title={content.abouttitle}
-          text={content.about}
-          intro={content.aboutintro}
-          active={activeP}
-          id={1}
-        ></SidebarInfoParagraph>
-
         <SidebarInfoParagraph
           iconLegend={true} 
           title={content.worktitle}
@@ -45,15 +34,9 @@ const SidebarInfo = (p) => {
           active={activeP}
           id={0}
         ></SidebarInfoParagraph>
+
+        <Separator />
         
-        <SidebarInfoParagraph 
-          title={content.systitle}
-          text={content.sys}
-          intro={content.sysintro}
-          active={activeP}
-          id={1}
-        ></SidebarInfoParagraph>
-      
         <Logo/>
         <LogoIBB/>
         <Paragraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></Paragraph>
@@ -68,7 +51,6 @@ const SidebarInfo = (p) => {
       </Fragment>
     )
   }
-
 };
 
 export default connect(state => ({

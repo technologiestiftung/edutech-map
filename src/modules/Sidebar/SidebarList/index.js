@@ -7,30 +7,9 @@ import { filteredListDataSelector, dataAsArraySelector } from '~/state/Selectors
 
 import CardCompact from '~/components/Card/CardCompact';
 import DetailCard from '~/components/Card/Detail';
-import Button from '~/components/GhostButton';
 import SidebarTitle from '../SidebarTitle';
 
 import Sorter from './Sorter';
-
-const DetailTitle = styled(SidebarTitle)`
-  margin-bottom: ${props => props.theme.padding[0]};
-  padding-right: ${props => props.theme.padding[0]};
-`;
-
-const CardHeaderLeft = styled.div`
-  overflow: hidden;
-  width: 290px;
-  margin-right: 10px;
-`;
-
-const CardHeaderRight = styled.div`
-  margin-left: auto;
-`;
-
-const DetailWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 
 const ListItems = styled.div``;
 

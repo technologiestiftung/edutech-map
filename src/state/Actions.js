@@ -1,6 +1,3 @@
-// import fetch from 'unfetch';
-import config from "../../config";
-import base64 from "base-64";
 import history from "~/history";
 import xor from "lodash.xor";
 import { isMobile, fetchTopoJSON, fetchJSON } from "~/utils";
@@ -12,7 +9,6 @@ import {
 	featOutOfBounds,
 	countInstPerDistrict,
 } from "./dataUtils";
-import pointInPolygon from "@turf/boolean-point-in-polygon";
 
 const createArray = (d, type) => {
 	const key = `categories${d["category"]}`;
@@ -58,7 +54,6 @@ const checkTargetGroups = (d) => {
 };
 
 const createPoint = (d) => {
-	console.log(d);
 	return {
 		type: "Feature",
 		geometry: {
@@ -86,7 +81,9 @@ const randomizeCoord = (coord) => {
 };
 
 export const loadEntryData = (Store) => async (state, detailId) => {
-	if (!detailId) return { detailData: false };
+	if (!detailId) {
+		return { detailData: false };
+	}
 
 	try {
 		if (state.data) {
@@ -99,9 +96,10 @@ export const loadEntryData = (Store) => async (state, detailId) => {
 			});
 
 			const filtered = all.filter((i) => i.autoid === detailId)[0];
+			const newLocation = filtered.location[0]
 			const coordinates = [
-				parseFloat(randomizeCoord(filtered.location[0].lng.replace(",", "."))),
-				parseFloat(randomizeCoord(filtered.location[0].lat.replace(",", "."))),
+				parseFloat(randomizeCoord(newLocation.lng)),
+				parseFloat(randomizeCoord(newLocation.lat)),
 			];
 
 			if (isNaN(coordinates[1])) {
@@ -120,7 +118,6 @@ export const loadEntryData = (Store) => async (state, detailId) => {
 			}
 		}
 	} catch (err) {
-		console.log(err);
 		return { isLoading: false };
 	}
 };
@@ -129,32 +126,11 @@ export const loadDataApi = (Store) => async () => {
 	Store.setState({ isLoading: true });
 
 	try {
-		const response = await fetch("/public/data/institutions.json");
-		if (!response.ok) {
-			const err = await response.text();
-			console.error(err);
-			throw new Error(response.statusText);
-		}
-		// const json = JSON.parse(response.body);
-		// console.log(await response.json());
-		const json = await response.json();
-		const data = json.data.content.institution;
-		// .then((json) => json.json())
-		// .then((d) => {
-		// 	return d.data.content.institution;
-		// });
+		const institutions = await fetchJSON("/public/data/institutions.json");
+		const content = await fetchJSON("/public/data/info.json");
+		const features = institutions.map(createPoint);
 
-		const content = await fetch("/public/data/offline/info.json")
-			.then((json) => json.json())
-			.then((d) => {
-				return d.data.content;
-			});
-
-		const features = data.map(createPoint);
-
-		const districtsCenter = await fetchJSON(
-			"/public/data/bezirke-zentrum.json",
-		);
+		const districtsCenter = await fetchJSON("/public/data/bezirke-zentrum.json");
 		const districts = await fetchTopoJSON("/public/data/berliner-bezirke.json");
 
 		let parsedData = {
@@ -184,7 +160,6 @@ export const loadDataApi = (Store) => async () => {
 			isLoading: false,
 		};
 	} catch (err) {
-		console.log(err);
 		return { isLoading: true };
 	}
 };
@@ -222,7 +197,7 @@ const setDetailRoute = (state, id = false) => {
 	};
 };
 
-const resetDetailRoute = (state, id = false) => {
+const resetDetailRoute = () => {
 	history.push("");
 
 	return {
@@ -272,7 +247,6 @@ const toggleFav = (state, favId) => {
 
 const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
 	let { targetGroupFilter, targetGroupTagsFilter } = state.filter;
-	const { categories } = state;
 
 	if (targetGroupFilter.includes(type) || deactivate) {
 		targetGroupFilter = targetGroupFilter.filter((item) => {
@@ -293,7 +267,6 @@ const toggleTargetGroupTypeFilter = (state, type, deactivate = false) => {
 
 const toggleHomeschoolFilter = (state, type, deactivate = false) => {
 	let { homeschoolFilter } = state.filter;
-	const { categories } = state;
 
 	if (homeschoolFilter.includes(type) || deactivate) {
 		homeschoolFilter = homeschoolFilter.filter((item) => {
@@ -310,7 +283,6 @@ const toggleHomeschoolFilter = (state, type, deactivate = false) => {
 
 const toggleCategoryFilter = (state, category, deactivate = false) => {
 	let { categoryFilter } = state.filter;
-	const { categories } = state;
 
 	if (categoryFilter.includes(category) || deactivate) {
 		categoryFilter = categoryFilter.filter((item) => {

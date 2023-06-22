@@ -2,37 +2,13 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'unistore/react';
 import Actions from '~/state/Actions';
-import Clear from '@material-ui/icons/Clear';
-import FavIcon from '@material-ui/icons/FavoriteBorder';
-import UnFavIcon from '@material-ui/icons/Favorite';
-
-import RoundButton from '~/components/RoundButton';
 
 import CardActions from './CardActions';
 import CardWrapper from './CardWrapper';
-import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import CardDivider from './CardDivider';
 import SidebarTitle from '../../modules/Sidebar/SidebarTitle/';
 import CategoryLabels from '~/components/CategoryLabels';
 import Icon from '~/components/Icon';
-import Button from '~/components/GhostButton';
-
-
-const FavButton = styled(Button)`
-  color: #222;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-`;
 
 const DetailTitle = styled(SidebarTitle)`
   margin-bottom: ${props => props.theme.padding[1]};
@@ -48,16 +24,6 @@ const StyledCategoryLabels = styled(CategoryLabels)`
   margin-bottom: ${props => props.theme.margin[2]};
 `;
 
-const CardImage = styled.div`
-  display: block;
-  width: 70px;
-  height: 70px;
-  background-image: ${props => `url(${props.src.replace(/\s/g, '%20')})`};
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-`;
-
 const DetailHeader = styled.div`
   display: flex;
   width: 270px;
@@ -69,15 +35,6 @@ const DetailCardWrapper = styled(CardWrapper)`
   flex-direction: column;
   padding-top: ${props => props.theme.padding[0]};
   padding-left: ${props => props.theme.padding[1]};
-`;
-
-const DetailWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const StyledCardHeader = styled(CardHeader)`
-  padding: ${props => props.theme.padding[1]};
 `;
 
 const StyledCardBody = styled(CardBody)`
@@ -105,15 +62,10 @@ class DetailCard extends PureComponent {
   }
 
   render() {
-    const { data, favs, toggleFav } = this.props;
-
-    const isFav = favs.includes(data.autoid);
-
+    const { data } = this.props;
     if (!data) {
       return null;
     }
-
-    console.log('data', data)
 
     return (
       <DetailCardWrapper>

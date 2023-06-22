@@ -67,12 +67,6 @@ const StyledFlexWrapper = styled.div`
   }
 `;
 
-const CardTeaserImage = styled.div`
-  background: ${props => `url(${props.src}) no-repeat center center`};
-  background-size: cover;
-  height: 150px;
-`;
-
 const FavButton = styled(Button)`
   color: black;
   width: 24px;
@@ -93,8 +87,6 @@ class CardHeader extends PureComponent {
     const { setDetailRoute, setSelectedData } = this.props;
     setDetailRoute(d.autoid);
     setSelectedData(true);
-
-    console.log('card clicked', d.autoid);
   }
 
   render() {

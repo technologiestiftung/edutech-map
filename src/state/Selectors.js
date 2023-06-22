@@ -1,11 +1,8 @@
 import { createSelector } from 'reselect';
 import { cloneDeep } from 'lodash';
-import { fetchTopoJSON } from '../utils';
-import pointInPolygon from '@turf/boolean-point-in-polygon';
 
 import {
   filterCategories,
-  getSubCategoryLabel,
   filterSubCategories,
   subCategories,
   targetGroupTypes,
@@ -27,14 +24,12 @@ const filterSelector = state => state.filter;
 const additionalDataSelector = state => state.additionalData;
 const listSortingSelector = state => state.listSorting;
 const colorizerSelector = state => state.colorizer;
-const subCategoryListSelector = state => state.subCategoryList;
 export const instPerDistrictSelector = state => state.instPerDistrict;
 const categoriesSelector = state => state.categories;
 const colorizerLightSelector = state => state.colorizerLight;
 
 const geojsonToArray = geojson => geojson.features.map(d => d.properties);
 
-import { filterSection } from './Store';
 
 export const dataAsArraySelector = createSelector(
   [dataSelector],
@@ -203,8 +198,6 @@ export const filteredDataSelector = createSelector(
                 filter = 'category';
                 break;
             }
-
-            console.log('filteredDataselector', filter)
 
             feat.properties.isFiltered = (filter);
           return feat;

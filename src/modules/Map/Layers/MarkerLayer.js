@@ -4,26 +4,13 @@ import Actions from "~/state/Actions";
 import { Layer, Feature } from "react-mapbox-gl";
 import idx from "idx";
 
-import { isMobile, noop } from "~/utils";
-
 let clickTimeout = null;
-
-const layoutIcon = { "icon-image": "marker-15" };
-
-const paintProps = {
-  "circle-radius": 10,
-  "circle-color": "#223b53",
-  "circle-stroke-color": "white",
-  "circle-stroke-width": 1,
-  "circle-opacity": 1,
-};
 
 function getPaintProps(props) {
   const detailId =
     idx(props, (_) => _.detailData.name) ||
     idx(props, (_) => _.highlightData.name) ||
     "";
-  const tooltipId = idx(props, (_) => _.tooltipData.name) || "";
   const activeExpr = [
     "case",
     ["==", ["string", ["get", "name"]], detailId],
@@ -170,7 +157,6 @@ class MarkerLayer extends PureComponent {
             id="MarkerLayer"
             type="circle"
             paint={paintProps}
-            // minZoom={10}
             onMouseMove={(evt) => this.handleMouseMove(evt)}
           >
             {data.features

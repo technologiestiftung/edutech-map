@@ -3,8 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 import Actions from '~/state/Actions';
-import history from '~/history';
-import config from '../../../../config';
 import { unfilteredFilterSelector } from '~/state/Selectors';
 
 import { connect } from 'unistore/react';

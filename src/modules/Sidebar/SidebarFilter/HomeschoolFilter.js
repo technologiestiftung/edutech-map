@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import { styled as styledUi, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import { getHomeschoolType, targetGroups } from '~/state/dataUtils';
 import FormGroup from '@material-ui/core/FormGroup';
-import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import TargetGroupTags from '~/components/TargetGroupTags'
 
 import Actions from '~/state/Actions';
 
@@ -49,7 +47,6 @@ class HomeschoolFilter extends Component {
 
   onChange(type) {
     const { setActiveFilter } = this.props;
-    console.log(type)
     this.props.toggleHomeschoolFilter(type);
     setActiveFilter('homeschool');
   }

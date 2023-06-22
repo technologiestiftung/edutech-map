@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 const Icon = p => {
   const { isHomeschool, color } = p;
@@ -27,9 +26,9 @@ const Icon = p => {
           <g
             id="Page-1"
             stroke="none"
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           >
             <g id="Group-16" fill={color}>
               <circle id="Oval-Copy-34" cx="10" cy="10" r="5"></circle>

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import styled from 'styled-components';
-import ReactMapboxGl, {Layer, Feature} from 'react-mapbox-gl';
+import ReactMapboxGl from 'react-mapbox-gl';
 import MapUtils from './MapUtils';
 
 const LayerOrder = ['DistrictsLayer', 'FilteredMarkerLayer', 'MarkerLayer', 'HighlightLayer'];
@@ -46,25 +46,15 @@ class Map extends PureComponent {
         map: false,
     };
 
-    posArray(e) {
-        const obj = e.lngLat.wrap();
-        const lat = obj.lat;
-        const lng = obj.lng;
-        // console.log(`[${lng},${lat}]`)
-    }
-
     componentDidMount() {
         this.props.loadDataApi();
     }
 
     onData(map) {
-        const { data } = this.props;
         const layerIds = Object.keys(map.style._layers).join(''); // eslint-disable-line
-
         if (layerIds !== this.lastLayerIds) {
-        MapUtils.orderLayers(map, LayerOrder);
+            MapUtils.orderLayers(map, LayerOrder);
         }
-
         this.lastLayerIds = layerIds;
     }
 
@@ -91,11 +81,10 @@ class Map extends PureComponent {
                 <MapGL
                     zoom={mapZoom}
                     center={mapCenter}
-                    style={process.env.MAP_STYLE} // eslint-disable-line
+                    style={process.env.MAP_STYLE}
                     containerStyle={{ height: '100%', width: '100%' }}
                     onStyleLoad={map => this.onStyleLoad(map)}
                     onData={map => this.onData(map)}
-                    onClick={(map, e) => {this.posArray(e)}}
                     flyToOptions={config.map.flyToOptions}
                 >
                     <Route exact path={['/', '/suche', '/liste', '/favoriten', '/info']} component={FilterView} />
