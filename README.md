@@ -2,17 +2,16 @@
 
 ## Installation
 
+1. Your node version should match the version specified in `.nvmrc` (if you are using nvm, you can run `nvm use`)
+2. Install dependencies:
+
 ```sh
-$ npm install
+npm install
 ```
 
-To get the project started you need to add a ```.env``` file inside the root directory and provide the following keys:
+3. Add an `.env` file inside the root directory and provide the following values:
 
 ```sh
-API_USER=[userOfApiHere]
-API_PW=[pwOfApiHere]
-API_URL=[ApiUrlHere]
-API_URL_INFO=[[ApiUrlHere]]
 MAP_TOKEN=[MapboxTokenHere]
 MAP_STYLE=[MapboxStyleHere]
 ```
@@ -23,7 +22,7 @@ Builds the application and starts a webserver with hot loading.
 Runs on [localhost:8080](http://localhost:8080/)
 
 ```sh
-$ npm run start
+npm run start
 ```
 
 ## Build
@@ -31,5 +30,5 @@ $ npm run start
 Builds a minified version of the application in the build folder.
 
 ```sh
-$ npm run build
+npm run build
 ```
