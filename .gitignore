@@ -18,5 +18,6 @@ yarn.lock
 config.json
 .env
 api/
+*.zip
 kirby
 edutech.fabiandinklage.com.zip
