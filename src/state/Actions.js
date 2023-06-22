@@ -123,23 +123,11 @@ export const loadDataApi = (Store) => async () => {
 	Store.setState({ isLoading: true });
 
 	try {
-		const response = await fetch("/public/data/institutions.json");
-		if (!response.ok) {
-			throw new Error(response.statusText);
-		}
-		const json = await response.json();
-		const data = json.data.content.institution;
-		const content = await fetch("/public/data/info.json")
-			.then((json) => json.json())
-			.then((d) => {
-				return d.data.content;
-			});
-
+		const data = await fetchJSON("/public/data/institutions.json");
+		const content = await fetchJSON("/public/data/info.json");
 		const features = data.map(createPoint);
 
-		const districtsCenter = await fetchJSON(
-			"/public/data/bezirke-zentrum.json",
-		);
+		const districtsCenter = await fetchJSON("/public/data/bezirke-zentrum.json");
 		const districts = await fetchTopoJSON("/public/data/berliner-bezirke.json");
 
 		let parsedData = {
