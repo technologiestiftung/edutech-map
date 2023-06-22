@@ -139,12 +139,7 @@ export const loadDataApi = (Store) => async () => {
 		// console.log(await response.json());
 		const json = await response.json();
 		const data = json.data.content.institution;
-		// .then((json) => json.json())
-		// .then((d) => {
-		// 	return d.data.content.institution;
-		// });
-
-		const content = await fetch("/public/data/offline/info.json")
+		const content = await fetch("/public/data/info.json")
 			.then((json) => json.json())
 			.then((d) => {
 				return d.data.content;
