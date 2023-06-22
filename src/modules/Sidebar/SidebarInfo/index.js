@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'unistore/react';
+import styled from 'styled-components';
 
 import Actions from '~/state/Actions';
 import { createMarkup } from '~/state/dataUtils';
@@ -12,6 +13,11 @@ import SidebarLinks from './SidebarInfoLinks';
 
 import SidebarInfoParagraph from './SidebarInfoParagraph';
 
+const Separator = styled.div`
+  width: 100%;
+  height: ${props => props.theme.margin[2]};
+`;
+
 
 const SidebarInfo = (p) => {
   const { content, activeP } = p;
@@ -20,15 +26,6 @@ const SidebarInfo = (p) => {
     return (
       <Fragment>
         <SidebarTitle>EduTechMap Berlin</SidebarTitle>
-        
-        <SidebarInfoParagraph 
-          title={content.abouttitle}
-          text={content.about}
-          intro={content.aboutintro}
-          active={activeP}
-          id={1}
-        ></SidebarInfoParagraph>
-
         <SidebarInfoParagraph
           iconLegend={true} 
           title={content.worktitle}
@@ -37,15 +34,9 @@ const SidebarInfo = (p) => {
           active={activeP}
           id={0}
         ></SidebarInfoParagraph>
+
+        <Separator />
         
-        <SidebarInfoParagraph 
-          title={content.systitle}
-          text={content.sys}
-          intro={content.sysintro}
-          active={activeP}
-          id={1}
-        ></SidebarInfoParagraph>
-      
         <Logo/>
         <LogoIBB/>
         <Paragraph dangerouslySetInnerHTML={createMarkup(content.contacttext)}></Paragraph>
