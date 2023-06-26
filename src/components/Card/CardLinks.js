@@ -23,16 +23,22 @@ const CardParagraphWrapper = styled.div`
   }
 `;
 
-function formatWebsite(str) {
-  if (!str) {
-    return '';
-  }
-
-  return str
+function formatLink(link) {
+  return link
     .toLowerCase()
     .replace(/https?:\/\//, '')
     .replace(/www\./, '')
     .replace(/\/$/, '');
+}
+
+function getHref(type, link) {
+  if (type === 'mailto:') {
+    return `mailto:${link}`
+  }
+  if (!link.startsWith('http')) {
+    return 'https://' + link
+  }
+  return link
 }
 
 class CardLinks extends PureComponent {
@@ -42,8 +48,8 @@ class CardLinks extends PureComponent {
       <CardParagraphWrapper>
         <span>{label}</span>
         {links.map(link => (
-          <WebsiteLink key={link} href={type === 'mailto:' ? `mailto:${link}` : link} target="_blank" rel="noopener">
-            <h3>{formatWebsite(link)}</h3>
+          <WebsiteLink key={link} href={getHref(type, link)} target="_blank" rel="noopener">
+            <h3>{formatLink(link)}</h3>
           </WebsiteLink>
         ))}
       </CardParagraphWrapper>
