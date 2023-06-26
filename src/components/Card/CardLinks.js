@@ -23,41 +23,38 @@ const CardParagraphWrapper = styled.div`
   }
 `;
 
-function formatWebsite(str) {
-  if (!str) {
-    return '';
-  }
-
-  return str
+function formatLink(link) {
+  return link
     .toLowerCase()
     .replace(/https?:\/\//, '')
     .replace(/www\./, '')
     .replace(/\/$/, '');
 }
 
-class CardParagraph extends PureComponent {
+function getHref(type, link) {
+  if (type === 'mailto:') {
+    return `mailto:${link}`
+  }
+  if (!link.startsWith('http')) {
+    return 'https://' + link
+  }
+  return link
+}
+
+class CardLinks extends PureComponent {
   render() {
-    const { label, data, type } = this.props;
-    if (data.length > 0) {
-      return (
-        <CardParagraphWrapper>
-          <span>{label}</span>
-          { type == 'mailto:' && 
-            (<WebsiteLink href={`mailto:${data}`} target="_blank" rel="noopener">
-              <h3>{formatWebsite(data)}</h3>
-            </WebsiteLink>)
-          }
-          { type != 'mailto:' && 
-            (<WebsiteLink href={`${data}`} target="_blank" rel="noopener">
-              <h3>{formatWebsite(data)}</h3>
-            </WebsiteLink>)
-          }
-        </CardParagraphWrapper>
-      )
-    } else {
-      return (null)
-    }
+    const { label, links, type } = this.props;
+    return (
+      <CardParagraphWrapper>
+        <span>{label}</span>
+        {links.map(link => (
+          <WebsiteLink key={link} href={getHref(type, link)} target="_blank" rel="noopener">
+            <h3>{formatLink(link)}</h3>
+          </WebsiteLink>
+        ))}
+      </CardParagraphWrapper>
+    )
   }
 }
 
-export default CardParagraph;
+export default CardLinks;
