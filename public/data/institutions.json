@@ -7,7 +7,7 @@
             {
                 "email": "ulho85@gmail.com",
                 "website": "https://lingoset.com/",
-                "phone": "1.7696655548102E+20",
+                "phone": "",
                 "openinghours": ""
             }
         ],
@@ -153,7 +153,14 @@
         "autoid": "kon-te-xis",
         "name": "KON TE XIS",
         "description": "KON TE XIS ist die tr\u00e4gereigene Fortbildungsst\u00e4tte der Technischen Jugendfreizeit- und Bildungsgesellschaft (tjfbg) gGmbH.  Wir unterst\u00fctzen Schulen und KITAs dabei, die Themenbereiche Natur, Umwelt & Technik im p\u00e4dagogischen Alltag umzusetzen und weiterzuentwickeln.",
-        "contact": [{ "email": "k.klaus@tjfbg.de", "website": "www.kontexis.de", "phone": "30", "openinghours": "" }],
+        "contact": [
+            {
+                "email": "k.klaus@tjfbg.de",
+                "website": "www.kontexis.de",
+                "phone": "+49 30 97 99 13 186",
+                "openinghours": ""
+            }
+        ],
         "location": [{ "address": "Wilhelmstra\u00dfe 52 10117 Berlin", "lat": 52.5131155, "lng": 13.3828681 }],
         "homeschooling": false,
         "logo": [],
@@ -668,7 +675,7 @@
             {
                 "email": "info@lev-berlin.de",
                 "website": "www.lev-berlin.de",
-                "phone": "176",
+                "phone": "0176 5888 4209",
                 "openinghours": ""
             }
         ],
@@ -826,7 +833,7 @@
             {
                 "email": "programmleitung@jugendhackt.org",
                 "website": "https://www.jugendhackt.org",
-                "phone": "30",
+                "phone": "+49 30 57703666",
                 "openinghours": ""
             }
         ],
@@ -887,7 +894,7 @@
             {
                 "email": "tf@edcosystems.com",
                 "website": "www.edcosystems.com,www.atlas.schule",
-                "phone": "173",
+                "phone": "0173 6145482",
                 "openinghours": ""
             }
         ],
@@ -938,7 +945,7 @@
             {
                 "email": "s.ricker@edulektra.de",
                 "website": "http://www.edulektra.de",
-                "phone": "49",
+                "phone": "+49 173 29 62 182",
                 "openinghours": ""
             }
         ],
@@ -1155,7 +1162,7 @@
             {
                 "email": "kontakt@tincon.org",
                 "website": "https://tincon.org/",
-                "phone": "",
+                "phone": "+49 30 612 099 17",
                 "openinghours": ""
             }
         ],
@@ -1345,7 +1352,7 @@
             {
                 "email": "service@allknow.de",
                 "website": "https://www.maker-store.de/",
-                "phone": "",
+                "phone": "+49 30 4737 5680",
                 "openinghours": "Mo-Fr, 10-19 Uhr"
             }
         ],
@@ -1455,7 +1462,7 @@
             {
                 "email": "contact@edkimo.com",
                 "website": "https://edkimo.com/de/",
-                "phone": "",
+                "phone": "+49 30 34060312",
                 "openinghours": ""
             }
         ],
@@ -1623,7 +1630,7 @@
             {
                 "email": "kontakt@enlightensciences.de ",
                 "website": "https://enlighten-sciences.ddns.net/",
-                "phone": "",
+                "phone": "+49 30 55571242",
                 "openinghours": ""
             }
         ],
@@ -1786,7 +1793,7 @@
             {
                 "email": "kontakt@bettermarks.de",
                 "website": "https://de.bettermarks.com/",
-                "phone": "",
+                "phone": "0172 2997441",
                 "openinghours": "Mo-Fr, 8:30 bis 17:00 Uhr"
             }
         ],
